@@ -1,0 +1,1000 @@
+\chapter{\'Algebras asociadas a un m\'odulo}
+\justifying 
+\section{\'Algebra tensorial}
+Sea $M$ un $A$-m\'odulo. Definimos
+\begin{defi}
+    El \'algebra tensorial de $M$, que denotamos por $T^{\bdot}_AM$ como
+    $$T^0_AM = A $$
+    $$T^1_AM = M $$
+    $$T^2_AM = M \underset{A}{\otimes} M $$
+    $$T^n_AM =  M \underset{A}{\otimes} \overset{n)}{\cdots} \underset{A}{\otimes} M $$
+    y as\'i
+    $$T^{\bdot}_AM = \bigoplus_{n \geq 0} T^n_AM =A \oplus M \oplus T^2M\oplus \cdots $$
+    que es una \'algebra graduada. Los elementos de grado 0 son los elementos de $A$, los de grado 1 los de $M$, los de grado 2 los de $M \underset{A}{\otimes} M$, y as\'i sucesivamente.
+\end{defi}
+\begin{propis} Esta \'algebra tiene un producto, que construimos gracias al producto tensorial, como vemos en el siguiente diagrama $$\bt T^pM \times T^qM \arrow{d} \arrow{r} & T^{p+q}M \\ T^pM \underset{A}{\otimes} T^q M \arrow[equal]{ru}\et$$
+        lo cual nos da un producto asociativo. En cambio no es conmutativo. Como tenemos el morfismo $A \hookrightarrow T^{\bdot}M$, es una \'algebra no conmutativa. 
+
+        Como todo elemento de $M\underset{A}{\otimes} M$ es de la forma $\sum m \otimes m'$ finita, todo elemento de $T^pM$ es de la forma $\sum m_1\otimes \cdots \otimes m_p$ finita. Esto nos dice que es una \'algebra generada por elementos de grado 1. 
+\end{propis}
+
+Sea $A \longrightarrow B$ una $A$-\'algebra con el morfismo de anillos, sin ser necesariamente conmutativa. Si tenemos otra $A$-\'algebra $C$, un morfismo de $A$-\'algebras $f$ es un morfismo de anillos que hace el siguiente diagrama conmutativo $$\bt A \arrow{r} \arrow{rd} & B \arrow{d}{f} \\ & C \et$$ y  con $a\cdot b = f(a)\cdot b$ es $A$-m\'odulo.
+
+ Sea $M$ un $A$-m\'odulo, $B$ una $A$-\'algebra. 
+\begin{propi}
+    [Universal del \'algebra tensorial]Dar un morfismo de $A$-\'algebras $$\bt T^{\bdot} M \arrow{r} & B \et$$ es equivalente a dar un morfismo de $A$-m\'odulos
+    $$\bt M \arrow{r} & B \et$$
+
+    Dicho como f\'ormula
+    $$Hom_{A-alg} (T^{\bdot}_A M, B) = Hom_{A-mod} (M,B)$$
+\end{propi}
+\begin{dem}
+    Si tenemos el morfismo de $A$-\'algebras $f: T^{\bdot}M \longrightarrow B$ en particular es de $B$-m\'odulos, pero $M \subset T^{\bdot}_A M$ es subm\'odulo luego tenemos el morfismo
+    $$\bt M \arrow[hook]{r} \arrow[bend left=15mm]{rr}& T^{\bdot}_A M \arrow{r}{f} & B \et$$
+    que nos dice, intuitivamente, d\'onde mandamos los elementos de grado 1.
+
+    Rec\'iprocamente, dado un morfismo de $A$-m\'odulos $f: M \longrightarrow B$ definimos $T^{\bdot}_AM \longrightarrow B$, y usando la propiedad universal de la suma directa, como $\displaystyle T^{\bdot}_AM = \bigoplus T^p_A M$ basta definir $T^pM \longrightarrow B$ para cada $p$, y tiene que ser lineal en cada elemento, luego
+    $$\bt T^pM \arrow{r} & B \\[-5mm] m_1 \otimes \cdots \otimes m_p \arrow[mapsto]{r} &[10mm]  f(m_1) \cdot f(m_2) \cdots f(m_p) \et$$
+    y hay que comprobar que sea de anillos, es decir, que sea conmutativo el diagrama
+    $$\bt T^pM \arrow[shift left=10pt]{d} \times T^qM \arrow[shift right=10pt]{d} \arrow{r}{\otimes} & T^{p+q} M \arrow{d} \\ B \times B \arrow{r}{\bdot} & B\et$$
+\end{dem}
+\begin{defi}
+    Una $A$-\'algebra graduada es una $A$-\'algebra ($A\longrightarrow B$ sin ser $B$ necesariamente conmutativo) con una descomposici\'on como $A$-m\'odulo
+    $$B = \bigoplus_n B_n$$
+    compatible con el producto, es decir, 
+    $$b_p \cdot b_q \in B_{p+q}, \, \forall b_p \in B_p, \, b_q \in B_q$$
+    y $A\longrightarrow B$ valora en $B_o$. 
+    
+    Diremos que es $\bb N$-graduada si $n \in \bb N$ o $\bb Z$-graduada si $n \in \bb Z$. 
+\end{defi}
+\begin{propi}
+    [Universal de $T^{\bdot}_A M$ como $A$-\'algebra graduada] Dar un morfismo de $A$-\'algebras graduadas $$T^{\bdot}_AM \longrightarrow B$$ es equivalente a dar un morfismo de $A$-m\'odulos 
+    $$M \longrightarrow B_1$$
+\end{propi}
+
+Sea $A \longrightarrow A'$ un morfismo de anillos. Sea $M$ un $A$-m\'odulo, tenemos por un lado $(T^{\bdot}_AM) \underset{A}{\otimes} A'$, y por otro lado, para  $M_{A'} = M \underset{A}{\otimes} A'$, $T^{\bdot}_{A'} (M_{A'})$. Entonces 
+$$(T^{\bdot}_AM) \underset{A}{\otimes} A'= T^{\bdot}_{A'} (M_{A'})$$
+
+Como $$(M\underset{A}{\otimes} N) \underset{A}{\otimes} A' = M_{A'} \underset{A'}{\otimes} N_{A'}$$
+entonces
+$$(M \underset{A}{\otimes} \overset{p)}{\cdots} \underset{A}{\otimes} M) \underset{A}{\otimes} A' = (T^pM) \underset{A}{\otimes} A' = M_{A
+'} \underset{A'}{\otimes}  \overset{p)}{\cdots} \underset{A'}{\otimes} M_{A'} = T^p_A{A'}(M_{A'})$$
+
+Esta construcci\'on es funtorial. Para un morfismo $f: M \longrightarrow N$ de $A$-m\'odulos, se induce 
+$$T^{\bdot}_AM \overset{T^{\bdot}(f)}{\longrightarrow}T^{\bdot}_AN$$
+un morfismo de $A$-\'algebras graduadas que es 
+$$\bt T^p_AM \arrow{r}{T^{p}(f)} \arrow[equal]{d}& T^p_AN\arrow[equal]{d} \\[-5mm] M \otimes \cdots \otimes M \arrow{r}{f\otimes \cdots\otimes f} & N \otimes \cdots \otimes N \\[-5mm] m_1\otimes \cdots \otimes m_p \arrow[mapsto]{r} & f(m_1)\otimes \cdots \otimes f(m_p) \et$$
+
+\section{\'Algebra sim\'etrica}
+Sea $B$ un anillo con $+, \cdot$ sin ser $\cdot$ necesariamente conmutativo. En esta situaci\'on, se define 
+\begin{defi}
+    Un ideal $I\subseteq B$ como aquel que queremos que cumpla que $\modulo{B}{I}$ sea anillo y $B \longrightarrow \modulo{B}{I}$ morfismo de anillos. 
+\end{defi}
+\begin{obs}
+    Como las operaciones son
+    \begin{enumerate}
+        \item $[b]\cdot [b'] = [b\cdot b']$
+        \item $[b]+[b'] = [b+b']$
+    \end{enumerate}
+    para que est\'e bien definidas debe cumplirse que 
+    \begin{enumerate}
+        \item $\forall b\in B, i \in I \Rightarrow b\cdot i \text{ y } i \cdot b \in I$
+        \item $\forall a,b \in I \Rightarrow a+b\in I$
+    \end{enumerate}
+\end{obs}
+\begin{defi}
+    Dados $b_1, \ldots, b_n$, definimos el ideal generado por ellos $\langle b_1, \ldots, b_n\rangle$ como aquel cuyos elementos son sumas finitas de elementos de la forma $a b_i a'$. 
+\end{defi}
+Dado $B$ anillo, vamos a hacer 0 los elementos no conmutativos. 
+\begin{defi} Consideremos el siguiente ideal $I=\langle bb'-b'b \rangle$, entonces el anillo $B$ conmutativizado es
+    $$B_{conm} = \modulo{B}{I}$$
+y as\'i $B \longrightarrow B_{conm}$ es autom\'aticamente morfismo de anillos al hacer cociente por un ideal. As\'i $[b]\cdot[b'] = [bb'] = [b'b] = [b']\cdot [b]$ pues $[bb']$ y $[b'b]$ difieren en un elemento del ideal, luego su clase es la misma.
+\end{defi}
+\begin{propi}
+    [Universal de $B_{conm}$] 
+    Se tiene el diagrama
+    $$\bt B \arrow{r}{\pi} \arrow{d}[swap]{morf. ani.} & B_{conm} = \modulo{B}{I} \arrow{dl}{\bar f} \\ C_{conm} \et$$
+    dicho como f\'ormula
+    $$\bt Hom_{ani}(B,C) \arrow[equal]{r} & Hom_{ani} (B_{conm}, C) \\[-5mm] \bar f\circ \pi & \arrow[mapsto]{l} \bar f \\[-5mm] f \arrow[mapsto]{r} & \bar f \, &[-28mm] / \, \bar f([b]) = f(b) \et \quad \forall \, C \text{ anillo conmutativo}  $$
+\end{propi}
+\begin{dem}
+    $f$ se anula sobre $I$, $f(bb'-b'b) = f(b)f(b') - f(b')f(b)$ pues $C$ es conmutativo 
+\end{dem}
+
+Sea $M$ un $A$-m\'odulo, $T^{\bdot}_AM$ es una \'algebra no conmutativa, entonces consideramos $I = \langle m \otimes m' - m' \otimes m\rangle$ y entonces
+\begin{defi}
+    $S^{\bdot}_AM = \modulo{T^{\bdot}_AM}{I}$ es el \'algebra sim\'etrica de $M$. As\'i, $T^{\bdot}_AM \longrightarrow S^{\bdot}_AM $ es morfismo de \'algebras. El producto es $[O_p]\cdot[O_q] = [O_p \otimes O_q]$, y denotaremos $m \cdot m' = [m \otimes m']$.
+\end{defi}
+\begin{propi}
+    El \'algebra sim\'etrica $S^{\bdot}_AM$ descompone en grados, de la forma 
+    $$S^{\bdot}_AM = A \oplus M \oplus S^{2}_AM \oplus \cdots \oplus S^{n}_AM \oplus \cdots$$
+\end{propi}
+Sea $\displaystyle B = \bigoplus B_n$ una \'algebra graduada
+\begin{defi}
+    Un ideal diremos que es homog\'eneo si la inclusi\'on $\displaystyle I \supseteq \bigoplus_n (I \cap B_n)$ es una igualdad.
+
+    Esto cumple que $B \longrightarrow \modulo{B}{I}$ es un morfismo de \'algebras graduadas, y hace que $\displaystyle \modulo{B}{I} = \bigoplus \left(\modulo{B}{I}\right)_n$, es decir, que el siguiente diagrama sea conmutativo
+    $$\bt B \arrow{r} \arrow[equal]{d} & \modulo{B}{I} \arrow[equal]{d} \\ \displaystyle \bigoplus B_n \arrow{r} & \displaystyle \bigoplus \left(\modulo{B}{I}\right)_n \et$$
+    donde $B_n \overset{epi}{\longrightarrow}  \left(\modulo{B}{I}\right)_n = \modulo{B_n}{\ker_n\, }$ queriendo que $\ker_n = I \cap B_n$, se tiene que cumplir $\displaystyle I = \bigoplus_n (I \cap B_n)$.
+\end{defi}
+\begin{ejer}
+    Probar que para $\{b_i\}$ colecci\'on de elementos homog\'eneos de $B$, $\langle\{b_i\}_{i \in I} \rangle$ es un ideal homog\'eneo. Demostrar para generaciones finitas $\langle b_1, \ldots, b_n \rangle$. 
+\end{ejer}
+Como $S^{\bdot}_AM = \modulo{T^{\bdot}_AM}{\langle m\otimes m' -m'\otimes m \rangle}$, estamos haciendo cociente por un ideal homog\'eneo de grado 2, luego el \'algebra sim\'etrica es un \'algebra conmutativa y graduada. As\'i pues
+\begin{align*} S^{\bdot}_AM = A \oplus M \oplus \modulo{M \underset{A}{\otimes} M}{\langle m\otimes m' -m' \otimes m\rangle} \oplus & \\ 
+&\hspace{-30mm} \oplus \modulo{M \underset{A}{\otimes} M \underset{A}{\otimes} M}{\langle m''(m\otimes m' -m' \otimes m)\bar m''\rangle} \oplus \cdots \end{align*}
+\begin{propi}
+    [Universal del \'algebra sim\'etrica] Dada una $A$-\'algebra conmutativa $B$, 
+    $$Hom_{A-alg} (S^{\bdot}_AM , B) = Hom_{A-alg} (T^{\bdot}_AM , B) = Hom_{A-mod} (M , B)$$
+    y para $A$-\'algebras graduadas tambi\'en se verifica, de forma que 
+    $$Hom_{A-alg} \left(S^{\bdot}_AM , \bigoplus_n B_n\right) =Hom_{A-mod} (M , B_1)$$
+\end{propi}
+\noindent\textit{Notaci\'on.} Sea $O_p \in S^{p}_AM$, $O_p$ es suma finita de elementos de la forma $m_1\cdot m_2 \cdots m_p, \, m_i \in M$, que ahora es ya un producto conmutativo. 
+
+
+Sea $f: M \longrightarrow N$ un morfismo de $A$-m\'odulos
+\begin{propi} [funtorialidad]
+    $f$ induce un morfismo de $A$-\'algebras graduadas 
+    $$S^{\bdot}_AM \overset{S^{\bdot}(f)}{\longrightarrow}S^{\bdot}_AN$$
+    grado a grado: $S^{p}_AM \longrightarrow S^{p}_AN $.
+\end{propi}
+\begin{dem}
+    Tenemos el diagrama conmutativo
+    $$ \bt T^{\bdot} M \arrow{r}{T^{\bdot}(f)} \arrow{d}{\pi} \arrow{dr} & T^{\bdot} N \arrow{d}{\pi'} 
+    \\ S^{\bdot}_AM \arrow{r}{S^{\bdot}(f)} & S^{\bdot}_AN \\ M \arrow{r} \arrow{ru} & N \arrow[hook]{u}
+    \et$$
+\end{dem}
+y es funtorial
+$$\bt A\mathbf{-mod} \arrow[squiggly]{r} & A\mathbf{-alg} \et$$
+
+Sea $M$ un $A$-m\'odulo y $A \longrightarrow B$ un cambio de base, 
+\begin{propi}
+    $S^{\bdot}_AM$ cambia de base. Esto es
+    $$(S^{\bdot}_AM) \underset{A}{\otimes} B = S^{\bdot}_B M_B$$
+\end{propi}
+\begin{dem}
+    Con la propiedad universal, 
+    $$Hom_{B-alg}((S^{\bdot}_AM) \underset{A}{\otimes} B , C) = Hom_{A-alg} (S^{\bdot}_AM , C ) = Hom_{A-mod}(M,C)$$
+    y por otro lado, 
+    $$Hom_{A-alg}(S^{\bdot}_B M_B, C) = Hom_{B-mod}(M_B,C)$$
+    lo cual coincide por la f\'ormula de cambio de base para m\'odulos, pues 
+    $$Hom_{A-mod}(M,C)=Hom_{B-mod}(M \underset{A}{\otimes} B,C)$$
+    y mantiene la graduaci\'on, pues si $S = \bigoplus S_n$, 
+    $$S \underset{A}{\otimes} B = (\bigoplus_n S_n) \underset{A}{\otimes} B = \bigoplus_n(S_n \underset{A}{\otimes} B)$$
+\end{dem}
+
+Sean $M, N$ dos $A$-m\'odulos, 
+\begin{propi}
+    $S^{\bdot}_A(M \oplus N) =S^{\bdot}_AM \underset{A}{\otimes} S^{\bdot}_A N$
+\end{propi} 
+\begin{dem}
+    Usando propiedades universales:
+    $$Hom_{A-alg}(S^{\bdot}_A(M \oplus N), B) = Hom_{A-mod}(M\oplus N, B) $$
+    y por otro lado
+    $$Hom_{A-alg} (S^{\bdot}_AM \underset{A}{\otimes} S^{\bdot}_A N, B) = Hom_{A-alg}(S^{\bdot}_AM, B) \times Hom_{A-alg}(S^{\bdot}_AN, B) = $$
+    $$ = Hom_{A-mod}(M, B) \times Hom_{A-mod}(N, B) $$
+    y usando la propiedad de la suma directa se verifica la igualdad, que no solo va a ser una igualdad de \'algebras, si no tambi\'en graduadas. Veamos c\'omo. 
+    
+    Sean $B, C$ dos $A$-\'algebras graduadas, $B = \bigoplus B_n, \, C=\bigoplus C_n$
+    $$B \underset{A}{\otimes} C = (\bigoplus B_n) \underset{A}{\otimes} (\bigoplus C_n) = \bigoplus_{p,q} B_p \underset{A}{\otimes} C_q = \bigoplus_n \left(\bigoplus_{p+q=n} B_p \otimes C_q \right) $$
+    es decir, la componente de grado $n$ es el agrupamiento de todos los productos tensoriales cuyos grados suman $n$. Hemos graduado as\'i esta $A$-\'algebra, denotaremos $$(B \underset{A}{\otimes} C)_n = \bigoplus_{p,q} B_p \otimes C_q$$
+    es decir, el grado $n$ de $B \underset{A}{\otimes} C$. 
+\end{dem}
+\begin{propi}
+    [Universal de $A$-\'algebras graduadas]
+    $$Hom_{A-alg \, grad}(B \underset{A}{\otimes} C, D) = Hom_{A-alg \, grad} (B,D)\times Hom_{A-alg \, grad} (C,D)$$
+\end{propi}
+\begin{cor}
+    $$S^{n}_A(M\oplus N) = \bigoplus_{p+q=n} (S^{p}_AM \underset{A}{\otimes} S^{q}_AN)$$
+\end{cor}
+\begin{prop}
+    Sea $L = A^{\oplus n}$, el $A$-m\'odulo libre trivial
+    $$S^{\bdot}_A L = A[x_1, \ldots, x_n]$$
+\end{prop}
+\begin{dem}
+    Ambos tienen la misma propiedad universal 
+    $$Hom_{A-alg}(S^{\bdot}_AL, B) = Hom_{A-mod}(L, B) = B \times \overset{n)}{\cdots} \times B = Hom_{A-alg}(A[x_1, \ldots, x_n], B)$$
+\end{dem}
+\begin{obs}
+    Eligiendo la base est\'andar en $L$, $e_i = (0,\ldots, 0, 1, 0,  \ldots, 0)$, 
+    $$\bt S^{\bdot}_A L \arrow[equal]{r} & A[x_1, \ldots, x_n] \\[-5mm] e_i \arrow[mapsto]{r} & x_i \\[-5mm] e_i \cdot e_j\arrow[mapsto]{r} & x_i \cdot x_j \et$$
+    y del rev\'es igual. Observamos adem\'as que si $L=A$, $S^{\bdot}_AL = T^{\bdot}_A L$, es decir, es conmutativa, pues 
+    $$ T^{\bdot}_A L = A \, \oplus \, L \, \oplus \,  L\underset{A}{\otimes} L \, \oplus \, L\underset{A}{\otimes} L \underset{A}{\otimes} L \, \oplus \,  \cdots = A \, \oplus \, L\cdot e \, \oplus\,  A(e\otimes e) \, \oplus \, A(e\otimes e\otimes e) \, \oplus\,  \cdots $$
+    \end{obs}
+    \begin{ejer}
+    \begin{enumerate}
+        \item Si $M \longrightarrow N$ es morfismo de $A$-m\'odulos epiyectivo, entonces $S^{\bdot}M \longrightarrow S^{\bdot}N$ es epiyectivo.
+        \item Sea $\bt 0 \arrow{r} & \ker\, f \arrow{r} & M \arrow{r}{f} & N \arrow{r} & 0 \et$ una sucesi\'on exacta, 
+        la sucesi\'on
+        $$\bt K\underset{A}{\otimes} S^{\bdot}M \arrow{r} & S^{\bdot}M \arrow{r} & S^{\bdot} N \arrow{r} & 0 \\[-5mm] k \otimes \theta \arrow[mapsto]{r} & k \cdot \theta \et$$ es exacta $\left(\modulo{M}{\ker\, f} = N\right)$
+    \end{enumerate}        
+    \end{ejer} 
+    \begin{ejem}
+        Sea $M$ un $A$-m\'odulo finito generado, $0 \longrightarrow k \longrightarrow L \longrightarrow M \longrightarrow 0$, con $e_1, \ldots, e_n$ base de $L$, entonces
+        $$S^{\bdot}_A M = \modulo{S^{\bdot}L}{\langle \text{ideal generado por }k \rangle}$$
+
+        Supongamos que $k$ es finito generado, sean $v_1, \ldots, v_r$ generadores, entonces por ser elementos de $L$ 
+        a su vez, $v_1 = a_{11}  e_1 + \cdots + a_{1n} e_n, v_2 = a_{21}  e_1 + \cdots + a_{2n} e_n, \ldots, v_r = a_{r1} e_1 + \cdots + a_{rn} e_n$, entonces
+        $$S^{\bdot}_A M = \modulo{A[x_1,\ldots, x_n]}{\langle a_{11}x_1+\cdots+a_{1n}x_n, \ldots,  a_{r1}x_1+\cdots+a_{rn}x_n \rangle}$$
+    \end{ejem}
+\section{\'Algebra exterior de un m\'odulo}
+
+Sea $B$ una $A$-\'algebra graduada no necesariamente conmutativa, $\displaystyle B = \bigoplus_n B_n$ es la descomposici\'on de $A$-m\'odulos
+\begin{defi}
+    Una $A$-\'algebras graduada es anticonmutativa si $$b_p \cdot b_q = (-1)^{pq} b_q \cdot b_p \quad \forall \, b_p \in B_p, \, b_q \in B_q$$
+\end{defi}
+\begin{defi}
+    Un morfismo de $A$-\'algebras graduadas anticonmutativas es aquel que preserva la suma, el producto (anticonmutativo) y el grado.
+\end{defi}
+
+Sean $B,C$ dos $A$-\'algebras graduadas anticonmutativas,
+\begin{prop}
+    $B \underset{A}{\otimes} C$ es una $A$-\'algebra graduada anticonmutativa. 
+\end{prop}
+\begin{dem} 
+    \begin{itemize}
+        \item Graduaci\'on: $\displaystyle (B \underset{A}{\otimes} C)_n = \bigoplus_{p+q=n} B_p \underset{A}{\otimes} C_q$
+        \item Producto:
+        $$(b_p \otimes c_q) \cdot (b'_{p'} \otimes c'_{q'}) = (-1)^{b'q} b_pb'_{p'} \otimes c_q c'_{q'}$$
+        que se comprueba que es anticonmutativo.
+    \end{itemize}
+\end{dem}
+\begin{obs}
+    $$\bt b \arrow[mapsto]{rd} \\[-5mm] B \arrow{dr} & b\otimes 1 \arrow[mapsto]{rrd} \\[-5mm] & B \underset{A}{\otimes} C \arrow{r} & D & b\otimes c 
+    \\[-7mm] C \arrow{ur} & c\otimes 1 \arrow[mapsto]{rru} \\[-4mm] c \arrow[mapsto]{ru} \et$$
+\end{obs}
+\begin{propi}
+    [Universal de $A$-\'algebra graduada anticonmutativa] Misma que para las conmutativas
+    $$Hom_{A-alg\,grad} (B \underset{A}{\otimes} C , D) = Hom_{A-alg \, grad}(B, D) \times Hom_{A-alg \,grad}(C, D)$$
+\end{propi}
+Y tambi\'en cambian de base, es decir, $A \longrightarrow A'$ morfismo de anillos (ambos conmutativos), $A\longrightarrow B$ graduada anticonmutativa, $B \underset{A}{\otimes}A'$ es una $A'$-\'algebra anticonmutativa, y as\'i
+$$(B \underset{A}{\otimes} A')_n = B_n \underset{A}{\otimes} A'$$
+y as\'i
+$$(b_p \otimes a_1') \cdot (b'_{p'} \otimes a_2') = b_p b'_{p'} \otimes a_1' a_2'$$
+\textbf{F\'ormula del cambio de base}
+
+Sea $M$ un $A$-m\'odulo, sea $T^{\bdot}_A M$ que es una $A$-\'algebra graduada, escogemos el ideal $I = \langle m \otimes m' + m' \otimes m \rangle$ con $m,m'\in M$, son elementos de grado 2 y es un ideal homog\'eneo
+\begin{defi}
+    $\displaystyle \bigwedge^{\bdot}_A M = \modulo{T^{\bdot}_A M }{I}$ es la \'algebra exterior de $M$ y es una $A$-\'algebra graduada:
+    $$ \bigwedge^{\bdot}_A M = A \, \oplus \, M \, \oplus \,  \bigwedge^{2}_A M  \, \oplus \cdots $$
+    de forma que existe una epiyecci\'on
+    $$M \underset{A}{\otimes}M \longrightarrow  \bigwedge^{2}_A M $$
+    para todo grado (con sus m\'ultiplos), por el ideal $I$.
+
+    Denotaremos $m \wedge m' = [m \otimes m']$ y $m_1 \wedge \cdots \wedge m_p = [m_1 \otimes \cdots \otimes m_p]$.
+\end{defi}
+\begin{prop}
+\begin{enumerate}
+    \item $ \bigwedge^{\bdot}_A M $ es anticonmutativa.
+\begin{dem}
+    Sean $m,m' \in M$, $m \wedge m' = -m'\wedge m$ pues por definici\'on, $m \wedge m' +m'\wedge m  = [ m\otimes m' + m' \otimes m]= 0$. Adem\'as, todo elemento de $ \bigwedge^{p} M $ es una suma finita de elementos de la forma $m_1\wedge \cdots \wedge m_p, \, m_i \in M$.
+\end{dem}
+\item $m \wedge m =0  \iff m \wedge m' = - m' \wedge m$ si $ch(A)\neq 2$
+\begin{dem} $\Leftarrow) \, m \wedge m =0 \iff 2 (m \wedge m)=0$, como $m\wedge m' = -m'\wedge m$ aplicando a $m$ en ambas, $$m\wedge m' = -m'\wedge m \iff 2(m \wedge m)=0 \Rightarrow m \wedge m = 0 \, \, (\text{si } ch(A) \neq 2)$$
+
+$\Rightarrow)$ Escogemos $m = m + m'$,
+$$0 = (m+m') \wedge (m+m') = \cancelto{0}{m \wedge m} + \cancelto{0}{m' \wedge m'} + m \wedge m' + m' \wedge m $$
+\end{dem}
+\end{enumerate}
+\end{prop}
+\begin{cor}
+    Por lo que $I = I' = \langle m \otimes m' \rangle$ si 2 es invertible.
+\end{cor}
+\begin{prop}
+    $$ \bigwedge^{\bdot}_A M = \left\{ \begin{array}{l}
+         \modulo{T^{\bdot}_A M}{I}  \\
+         \downarrow epi \\
+          \modulo{T^{\bdot}_A M}{I'}
+    \end{array} \right.$$
+    donde la epiyecci\'on es una igualdad si 2 es invetrible.
+\end{prop}
+Supodremos a partir de ahora que 2 es invertible.
+\begin{propi}
+    [Universal del \'algebra exterior] Sea $B$ $A$-\'agebra graduada conmutativa,
+$$Hom_{A-alg\, grad} \left(\bigwedge^{\bdot}_A M , B\right) = Hom_{A-mod}(M,B_1)$$
+    misma que para la \'algebra sim\'etrica, e id\'entica demostraci\'on.
+\end{propi}
+\begin{prop}
+    [Cambio de base] Sea $M$ $A$-m\'odulo, $A\longrightarrow A'$ cambio de base, se verifica que 
+    $$ \left( \bigwedge^{\bdot}_A M \right) \underset{A}{\otimes}A' =  \bigwedge^{\bdot}_{A'} (M_{A'})$$
+    y la demostraci\'on es id\'entica a la del \'algebra sim\'etrica. Tambi\'en se verifica
+    $$ \bigwedge^{\bdot}_A (M \oplus N) =  \bigwedge^{\bdot}_A M \underset{A}{\otimes} \bigwedge^{\bdot}_A N$$
+    y fijando un grado,
+    $$ \bigwedge^{n}_A (M \oplus N) = \bigoplus_{p+q=n}  \bigwedge^{p}_A M \underset{A}{\otimes} \bigwedge^{q}_A N  $$
+\end{prop}
+\begin{obs}
+    Sea $L=A\cdot e$ siendo $e$ base, $ \bigwedge^{\bdot}_A L = A \oplus L$ pues $ \bigwedge^{p}_A L = 0 $ con $p\geq 2$ porque $e\wedge e=0$. 
+\end{obs}
+\begin{ejer}
+    Usar las f\'ormulas anteriores para demsotrar que si $L = Ae_1 \oplus \cdots \oplus Ae_n$ siendo $\{e_i\}$ base, 
+    $$ \bigwedge^{p}_A L = 0 \text{ si } p \geq n $$
+    $$ \bigwedge^{2}_A L \text{ es libre de base } e_i \wedge e_j \, /\, i<j $$
+    $$ \bigwedge^{3}_A L \text{ es libre de base } e_i \wedge e_j \wedge e_k \, /\, i<j<k $$
+    $$ \bigwedge^{n}_A L \text{ es libre de base } e_1 \wedge e_2 \wedge \cdots \wedge e_n $$
+\end{ejer}
+\begin{prop}
+    El \'algebra exterior es funtorial. Para cada $f: M \longrightarrow N$, se induce un morfismo de $A$-\'algebras graduadas anticonmutativas $\bigwedge^{\bdot} (f)$. 
+    $$\bt \bigwedge^{\bdot} (f): &[-12mm] A\mathbf{-mod} \arrow{r} &  A\mathbf{-alg \, grad} \\[-7mm] & M \arrow{dd}{f} & \bigwedge^{\bdot}_A M \arrow{dd}[swap]{\bigwedge^{\bdot}(f)}
+    \\[-5mm] & \arrow[squiggly]{r} \hspace{8mm} & \hspace{18mm}\\[-5mm] & N & \bigwedge^{\bdot}_A N \et$$
+\end{prop}
+
+\begin{ejer}
+    Si existe un morfismo inyectivo entre m\'odulos libres, entonces sus \'algebras exteriores tambi\'en tienen un morfismo inyectivo, es decir, 
+    $$L' \hookrightarrow L \Rightarrow \bigwedge^r L' \hookrightarrow \bigwedge^r L$$
+\end{ejer}
+\begin{sol}
+    Consideremos $L$ libre con su base $e_1, \ldots, e_n$, $\bigwedge^2L$ tiene por base $e_i \wedge e_j$ con $i<j$, de forma que $\bigwedge^r L \hookrightarrow L \underset{A}{\otimes} \bigwedge^{r-1} L$. En el caso de $r=2$, $\bigwedge^2L \hookrightarrow L \otimes L$ donde $e_i \wedge e_j \longmapsto e_i \otimes e_j$. Usamos una especie de derivaci\'on $i_D$, 
+    $$i_D(e_i)\otimes e_j - i_D(e_j) \otimes e_i  = e_i \otimes e_j - e_j \otimes e_i$$
+
+    Para $r$ general, 
+    $$\bt \bigwedge^r L \rar & L \otimes \bigwedge^{r-1} \\[-5mm] e_1 \wedge \cdots \wedge e_r \rarmaps & e_1 &[-18mm] \otimes (e_2\wedge \cdots \wedge e_r) - e_2 \otimes (e_1\wedge e_3 \wedge \cdots ) + e_3 \otimes \cdots \\[-5mm] & &   \cdots + (-1)^{r-1} e_r \otimes (e_1\wedge \cdots \wedge e_{r-1})  \et$$
+    Se puede usar inducci\'on:
+
+    Hacemos que $\bigwedge^r L' \hookrightarrow L \otimes \bigwedge^{r-1}L'$ y $\bigwedge^r L \hookrightarrow L \otimes \bigwedge^{r-1}L$, luego tenemos el diagrama
+    $$\bt \bigwedge^r L' \arrow{d} \rar[hook] &  L \otimes \bigwedge^{r-1}L \arrow{d} \\ \bigwedge^r L'\rar[hook] & L \otimes \bigwedge^{r-1}L \et$$
+    y la composici\'on es inyectiva porque la otra composici\'on lo es.
+\end{sol}
+
+Ten\'iamos que $A \longrightarrow B$, $\modulo{A[x]}{(P(x))}$ es una $A$-\'algebra, si la cambiamos de base, $$\modulo{A[x]}{(P(x))} \underset{A}{\otimes} B = \modulo{B[x]}{(P_B(x))}$$
+siendo $P(x) = \sum a_i x^i, \, P_B(x) = \sum f(a_i) x^i$. Y para cualquier ideal
+$$\modulo{A[x]}{I} \underset{A}{\otimes} B = \modulo{B[x]}{I \cdot B[x]}$$
+y como tenemos $A \longrightarrow B$, se induce $A[x] \longrightarrow B[x]$, de forma que para $I \subseteq A[x]$, $I\cdot B[x]$ es el ideal generado por la imagen de $I$. Esto es consecuencia de lo que sab\'iamos: $A[x] \underset{A}{\otimes} B = B[x]$. Con la sucesi\'on exacta
+$$\bt 0 \rar & I \rar & A[x] \rar & \modulo{A[x]}{I} \rar & 0 \et$$
+al tensorializar por $B$
+$$\bt I\underset{A}{\otimes} B  \rar{p} & A[x]\underset{A}{\otimes} B  \rar &\left( \modulo{A[x]}{I} \right) \underset{A}{\otimes} B  \rar & 0 \et$$
+de forma que $\Im p= I \cdot B[x]$. La sucesi\'on exacta nos dice que 
+$$\left( \modulo{A[x]}{I} \right) \underset{A}{\otimes} B = \modulo{B[x]}{ I\underset{A}{\otimes} B}$$
+
+\section{Relaci\'on entre el producto tensorial y los tensores}
+Sea $E$ un $k$-espacio vectorial, un tensor de tipo $(p,q)$ sobre $E$ es una aplicaci\'on
+$$\bt T^q_p : &[-10mm] E \times \overset{p)}{\cdots} \times E \times E^* \times \overset{q)}{\cdots} \times E^* \arrow{r} & k\et$$
+que es multilineal, es decir, lineal en cada factor.
+
+Ten\'iamos dos $A$-m\'odulos $M,N$, de forma que una aplicaci\'on bilineal $M \times N \longrightarrow P$ induce una aplicaci\'on lineal $M \underset{A}{\otimes} N  \longrightarrow P$. De la misma forma, una aplicaci\'on $M_1\times M_2 \times M_3 \longrightarrow P$ multilineal, induce otra lineal $M_1 \underset{A}{\otimes} M_2 \underset{A}{\otimes} M_3 \longrightarrow P$. En general, para una colecci\'on $\{M_i\}_{i=1, \ldots, n}$, la aplicaci\'on multilineal $\prod M_i \longrightarrow P$ induce otra $M_1 \underset{A}{\otimes} \cdots \underset{A}{\otimes} M_n \longrightarrow P$ lineal. 
+
+Por tanto, un tensor $T_p^q$ es una aplicaci\'on lineal 
+$$\bt T^q_p : &[-10mm] E \underset{k}{\otimes}\overset{p)}{\cdots} \underset{k}{\otimes}E \underset{k}{\otimes}E^* \underset{k}{\otimes}\overset{q)}{\cdots} \underset{k}{\otimes}E^* \arrow{r} & k\et$$\
+de forma que $T_p^q(E) = ( E \underset{k}{\otimes}\overset{p)}{\cdots} \underset{k}{\otimes}E \underset{k}{\otimes} E^* \underset{k}{\otimes}\overset{q)}{\cdots} \underset{k}{\otimes}E^* )^* =E^* \underset{k}{\otimes}\overset{p)}{\cdots} \underset{k}{\otimes}E^* \times E \underset{k}{\otimes}\overset{q)}{\cdots} \underset{k}{\otimes}E $, suponiendo que $E$ es de dimensi\'on finita. 
+
+\begin{ejem}
+    Una m\'etrica $T_2(E) = E^* \otimes E^*$, y toda m\'etrica es una combinaci\'on de $\omega_i \otimes \omega_j$, que defin\'iamos como aquel tensor que cumpl\'ia que $(\omega_i \otimes \omega_j)(e,e') =\omega_i(e) \otimes \omega_j(e')$. 
+\end{ejem}
+
+\begin{prop}
+    Sean $E,V$ dos espacios de dimensi\'on finita, $(E \underset{k}{\otimes}V)^* = E^* \underset{k}{\otimes}V^*$. 
+\end{prop}
+\begin{dem}
+    Definimos una aplicaci\'on lineal
+    $$\bt E^* \underset{k}{\otimes}V \arrow{r} & Hom_k(E,V) \\[-5mm] 
+    \omega \otimes v \arrow[mapsto]{r} & f_{\omega\otimes v}: E \to V &[-13mm] \, /\, f_{\omega\otimes v}(e):= \omega (e) v   \et$$
+    y esta asignaci\'on es lineal en $\omega$ y en $v$, y est\'a bien definida.
+
+    Veamos que si $E$ o $V$ son de dimensi\'on finita, esta aplicaci\'on es un isomorfismo. Supogamos $V$ de dimensi\'on finita. De forma que $V=V_1\oplus V_2$, luego 
+    $$E^* \otimes V = E^* \otimes V_1 \,  \oplus \, E^* \otimes V_2$$
+    y por la aplicaci\'on
+    $$Hom_k(E, V) = Hom_k(E,V_1) \oplus Hom_k(E, V_2)$$
+    y por ser $V$ de dimensi\'on finita, $V=k \oplus \cdots \oplus k$, luego si demostramos para $V=k$, se deduce para el resto. 
+
+    $$\bt E^* \arrow[equal]{r} & E\otimes k \arrow{r} & Hom_k(E,k) = E^* \\[-5mm] \omega \arrow[mapsto]{r} & \omega \otimes 1 \arrow[mapsto]{r} & f_{\omega \otimes 1} = \omega \et$$
+
+    Hacer lo mismo para $E$ de dimensi\'on finita. 
+
+    Sea ahora $E, V$ de dimensi\'on finita, aplicando la f\'ormula anterior,
+    $$E^* \underset{k}{\otimes}V^* = Hom_k(E, V^*) = Hom_k(E, Hom_k(V,k)) = Hom_k(E\underset{k}{\otimes} V,k) = (E\underset{k}{\otimes} V)^*$$
+    y la aplicaci\'on que definimos es
+    $$\bt E^* \otimes V^* \arrow{r} & (E\otimes V)^* \\[-8mm] \omega \otimes \theta \arrow[mapsto]{r} & f_{\omega \otimes \theta}: &[-15mm] E\otimes V \arrow{r} & k \\[-5mm] & &[-15mm] e\otimes v \arrow[mapsto]{r} & \omega(e) \cdot \theta(v)\et$$
+\end{dem}
+\begin{ejem}
+    Un tensor $T_p, T^q$ es hemisim\'etrico si 
+    $$T_p(e_{\sigma(1)}, \ldots, e_{\sigma(p)}) = sig (\sigma) T_p(e_1, \ldots, e_p)$$
+    es decir, 
+    $$T_p(e_1, \ldots, e_p) = - T_p(e_1, \ldots, e_{i+1}, e_i, \ldots, e_p)$$
+    en particular, $T_2(e,e') = -T_2(e',e)$. 
+
+    Definimos $H(T_p)$ la hemisimetrizaci\'on de $T_p$ los tensores que cumplen que
+    $$(\sigma T_p)(e_1, \ldots, e_p) = T_p(e_{\sigma(1)}, \ldots, e_{\sigma(p)}) = sig(\sigma) T_p (e_1,\ldots, e_n)$$
+    y en general
+    $$H(T_p) = \frac{1}{p!} \sum_{\sigma\in S_p} sig(\sigma) (\sigma T_p)$$
+    
+
+    Sean $H_p(E)$ todos los tensores hemisim\'etricos de orden $p$, 
+    $$H_{\bdot}(E) = k \oplus \underbrace{E^*}_{\tiny \begin{array}{c}
+    T_1(E) \\[-1.5mm] = \\[-1.5mm] H_1(E)
+    \end{array}} \oplus H_2(E) \oplus  $$
+    que es una $k$-\'algebra graduada anticonmutativa, con el producto exterior $\wedge$. 
+
+    Es decir, $\bigwedge^{\bdot} E = k \oplus E \oplus \bigwedge^2 E \oplus \cdots$
+\end{ejem}
+\begin{teo}
+    $$H_{\bdot}(E) = \bigwedge^{\bdot}_k E^*$$
+    y $H_{\bdot}(E) \subseteq T_{\bdot}(E)$ aunque en sentido contrario tenemos aplicaci\'on de hemisimetrizaci\'on (epiyectiva).
+\end{teo}
+\begin{dem}
+    Definimos 
+    $$\bt \bigwedge^{\bdot}_k  E^* \arrow{r} & H_{\bdot} E  \\[-5mm] E^* \arrow{r}{Id} & E^*  \et$$
+    usando la propiedad universal de $A$\'algebras graduadas. Y el producto exterior va al producto exterior, aunque son distintos en cada sitio. Y en general
+    $$\bt \bigwedge^2 E^* \arrow{r} & H_2(E) \\[-5mm] \text{Base } (\omega_i \wedge \omega_j) \arrow[mapsto]{r} & \omega_i \wedge \omega_j \text{ base } \et$$
+    como $Id(\omega_i) = \omega_i$, la aplicaci\'on entre los grados 2, es isomorfismo. Y as\'i para todo grado.
+\end{dem}
+
+%22/10/2025
+
+
+\begin{ejer}
+    Sea $0 \longrightarrow M' \longrightarrow M \overset{\pi}{\longrightarrow} L \longrightarrow 0$ una sucesi\'on exacta de $A$-m\'odulos. Si $L$ es libre, entonces la sucesi\'on rompe 
+\end{ejer}
+\begin{sol}
+    \begin{enumerate}[a)]
+        \item Sea $\{e_i\}$ una base de $L$, $\displaystyle L = \bigoplus_i Ae_i$. Vamos a encontrar una secci\'on. 
+
+        Como $\pi$ es epiyectiva, cada $e_i$ tiene una antiimagen, Sea $m_i\in M$ tal que $\pi(m_i) = e_i$, definimos 
+        $$\bt L \arrow[bend left=15mm] {rr} \arrow{r}{s} & M \arrow{r}{\pi} & L \\[-5mm] e_i \arrow[mapsto]{r}&  m_i\arrow[mapsto]{r}& e_i \et$$
+        de forma que esta composici\'on es la identidad, pues si es la identidad sobre los elementos de la base, lo es sobre todo elemento.
+        \item Consideremos el funtor $Hom_A (L,-)$. Es exacto por ser $L$ libre. Si $L= A$, \\ $Hom_A(A,M) = M$, como $L = \bigoplus_i A$, por la propiedad universal del producto directo, $Hom_A(L,M) = \prod_i M$. Esto nos dice que la sucesi\'on de partida, al hacer $Hom_A(L,-)$, 
+        $$\bt s \arrow[mapsto]{r} & Id_L \\[-5mm] Hom(L,M) \arrow{r} & Hom_A(L,L) \arrow{r} & 0 \\[-5mm]
+        f \arrow[mapsto]{r} & \pi \circ f \et$$
+        por lo que $s$ es una secci\'on de $\pi$. 
+    \end{enumerate}
+\end{sol}
+\begin{ejer}
+    Sea $L$ libre finito, $L = A\oplus \overset{n)}{\cdots} \oplus A$ de rango $n$. El rango est\'a bien definido.
+\end{ejer}
+\begin{sol}
+     Sea $L = A^n$, y $L'=A^m$, $\bt L \arrow{r}{\pi} & L' \et$ un morfismo epiyectivo, 
+     $n \geq m$. Sea $\m$ un maximal, $k =\modulo{A}{\m}$ es un cuerpo, luego tensorializamos por $\underset{A}{\otimes}  k$, $A \longrightarrow \modulo{A}{\m} = k$, 
+     $$\bt k^n \arrow{r} & k^m \arrow{r} & 0 \et$$
+     sigue siendo epiyectivo porque el producto tensorial mantiene epiyecciones, y es de $k$-espacios vectoriales, luego usando lo que sabemos de espacios vectoriales, $n \geq m$.
+
+     De la misma forma, si existe un isomorfismo entre $L$ y $L'$, $m \geq n$ y $n \geq m$ por existir el morfismo inverso, luego $m = n$. 
+\end{sol}
+\begin{ejer}[dif\'icil]
+    Sea $L$ libre finito, $\bt L \arrow{r}{\pi} & L = L' \et$ epiyectivo. Entonces $\pi$ es isomorfismo.
+\end{ejer}
+\begin{sol} Veamos que $\ker \, \pi = 0$
+
+Tenemos $\bt 0 \arrow{r} & \ker \, \pi \arrow{r} & L \arrow{r} & L' \arrow{r} & 0 \et$ rompe por ser $L'$ libre 
+(ejercicio anterior), luego $L = \ker\, \pi \oplus L'$ y tenemos la aplicaci\'on epiyectiva $L\longrightarrow \ker\, \pi$, luego $\ker \, \pi = K$ es finito generado.
+
+Veamos que $K= 0 \iff K_x = 0 \, \forall\, x\in Spec\, A$. Usando el lema de Nakayama, 
+$$\modulo{K_x}{\m_x K_x} = 0$$
+que es un $\Bbbk(x)=\modulo{A_x}{\m_x}$-espacio vectorial, y como $L = K \oplus L'$, tenemos la igualdad de espacios vectoriales
+$$\modulo{L_x}{\m_x L_x} = \modulo{L_x}{\m_x L_x} \oplus \modulo{L'_x}{\m_x L'_x}$$
+y por dimensi\'on $\modulo{L_x}{\m_x L_x} \equiv 0$, pues los otros son el mismo espacio, misma dimensi\'on.
+\end{sol}
+\section{Equivalencia de m\'odulos en espacios vectoriales}
+Sea $M$ un $A$-m\'odulo, $x\in Spec\, A$, $x\equiv \p_x$ es un ideal primo y esto nos da
+\begin{defi}
+$$\modulo{A_x}{\p_x A_x} = \Bbbk(x) = \text{ cuerpo residual de }x$$
+y tenemos los morfismos $A \longrightarrow A_x \longrightarrow \Bbbk(x)$ son cambios de base. Aplicando a $M$, 
+$$M \underset{A}{\otimes}\Bbbk(x) = \modulo{M_x}{\p_x M_x}$$
+usando que 
+$$M \underset{A}{\otimes} A_S = M_S \qquad M \underset{A}{\otimes} \modulo{A}{I} = \modulo{M}{IM}$$
+de forma que $M \underset{A}{\otimes}\Bbbk(x)$ es un $\Bbbk(x)$-espacio vectorial. 
+\end{defi}
+
+Sea $f: M \longrightarrow N$ un morfismo de $A$-m\'odulos, induce 
+$$\bt M \underset{A}{\otimes}\Bbbk(x) \arrow{r} & N \underset{A}{\otimes}\Bbbk(x) \et$$
+morfismo de $\Bbbk(x)$-espacios vectoriales. 
+
+Si $M$ es $A$-m\'odulo finito generado $\Rightarrow M \underset{A}{\otimes}\Bbbk(x)$ es $\Bbbk(x)$ es espacio vectorial finito.
+
+Usando Nakayama, 
+$M = 0 \iff M_x =0 \, \forall \, x \iff \modulo{M_x}{\p_x M_x} = 0$, es decir, 
+$$M =0 \iff M \underset{A}{\otimes}\Bbbk(x) = 0 \, \forall\, x$$
+
+\section{Versi\'on generalizada de Nakayama}
+Sea $\mc O$ anillo local de maximal $\m$, si elegimos $I \neq \mc O$ un ideal tal que $I \subsetneqq \m$. Entonces
+$$\modulo{M}{IM} = 0 \Rightarrow \modulo{M}{\m M} = 0 \Rightarrow M=0$$
+Es decir, si $IM = M $, $\m M = M$ pues $I \subset \m$.
+
+\begin{ejer}
+    Sea $M$ $A$-m\'odulo finito generado, $I$ ideal de $A$. Veamos qu\'e $I$ cumple que $\modulo{M}{IM} = 0 \equiv IM = M$. 
+    $$\modulo{M}{IM} = 0 \iff \, \exists \, i \in I \, /\, 1+i \text{ anula a } M \equiv (1+i)m = 0\,  \forall \, m \in M$$
+\end{ejer}
+\begin{sol}
+    $\Leftarrow)$ $(1+i)m = 0 \iff m = -im \in IM \Rightarrow IM = M$
+
+    $\Rightarrow)$ $IM = M\iff I_x M_x = M_x \, \forall \, x \in Spec \, A$. 
+
+    Si $I_x \neq A_x$, entonces por Nakayama, $M_x = 0$. 
+
+    Siempre tenemos la sucesi\'on $\bt 0 \arrow{r} & I  \arrow{r} & A  \arrow{r} & \modulo{A}{I}  \arrow{r} & 0 \et$ y la localizada $\bt 0 \arrow{r} & I_x  \arrow{r} & A_x  \arrow{r} & \left(\modulo{A}{I}\right)_x  \arrow{r} & 0\et $. Y $I_x \neq 0 \iff \left(\modulo{A}{I}\right)_x \neq 0 \Rightarrow x \in Sop\left(\modulo{A}{I}\right) = (I)_0$, y $M_x = 0 \equiv x \nin sop(M) = (Ann(M))_0$, luego si $x \in  (I)_0 \Rightarrow x\nin (Ann(M))_0$, es decir, 
+    $$(I)_0 \cap (Ann(M))_0 = \emptyset \iff (I + Ann(M))_0 = \emptyset$$
+    es decir, si no hay ning\'un primo que contenga un ideal, este ideal $I + Ann(M)$ es $A$. Por tanto, $1 = i+a$ con $i \in I, a\in Ann(M)$, y despejando $a=1-i$. 
+\end{sol}
+Se puede usar para el ejercicio dif\'icil.
+
+\begin{ejer}
+    [otro dif\'icil] Sea $V \longrightarrow E$ una aplicaci\'on inyectiva de espacios vectoriales, 
+    se cumple que $\dim E \leq \dim V$. En nuestro lenguaje, se verifica que $A^m \hookrightarrow A^n$ inyectivo, $m \leq n$. En cambio, si $A^m \hookrightarrow A^m$ no implica que sea isomorfismo. Sea $L'\hookrightarrow L$, $\bigwedge^p L' \hookrightarrow \bigwedge^p L$ es inyectiva tambi\'en. Supongamos $m>n$, tomando $A = \bigwedge^m A^m \hookrightarrow \bigwedge^m A^n = 0$ para $m>n !!$ se epiyecta.
+\end{ejer}
+\begin{ejem}
+    Sea $\bb Z \overset{\cdot 3}{\longrightarrow} \bb Z$ es inyectivo, pero no isomorfismo, pues no todo $n \in \bb Z$ es m\'ultiplo de 3. 
+\end{ejem}
+
+%23/10/2025
+
+Volviendo al primer ejercicio (dif\'icil). 
+
+\begin{prop}
+    Sea $M$ un $A$-m\'odulo finito generado y $T: M \longrightarrow M$ un endomorfismo epiyectivo, entonces es isomorfismo.
+\end{prop}
+\begin{dem}
+    A $M$ le dotamos de estructura de $A[x]$-m\'odulo, de forma que 
+    $$P(x) \cdot m = P(T)(m) \iff x\cdot m = T(m)$$
+    y es un $A[x]$-m\'odulo finito generado. $\cdot x$ es epiyectivo, es decir, si $I=(x) \subseteq A[x]$, entonces $I \cdot M = M$, y aplicando el lema de Nakayama generalizado, $\exists \, Q \in I \, / \, 1+Q $ anula a $M$. Como $Q\in I, \, Q=x\cdot P(x)$, luego 
+    $$(1+x\cdot P(x))m = 0 \, \forall\, m \in M \Rightarrow m = P(T)(T(m)) = T(P(T)(m)) $$
+    y por tanto, $T \circ P(T) = Id = P(T) \circ T$, es decir, que $T$ es un isomorfismo y hemos encontrado su inversa. 
+\end{dem}
+\begin{ejer}
+    
+Sean $M_1,M_2$ dos subm\'odulos de $M$, 
+$$\bt M\rar{\pi} \arrow[bend left=10mm]{rr} & \modulo{M}{M_1} \rar & \modulo{\modulo{M}{M_1}}{\pi(M_2)} \arrow[equal]{r} &[-5mm] \modulo{M}{M_1 + M_2}  \\[-5mm] M_2 \rar & \pi(M_2) \et$$
+\end{ejer}
+
+\begin{obs}
+    Si $f: M\longrightarrow L$ es morfismo de m\'odulos, si $L' \subseteq L$ es subm\'odulo, se cumple que $f^{-1}(L')$ es subm\'odulo de $M$.
+\end{obs}
+
+Sea $K\subseteq M$ un subm\'odulo, $\bt M \rar{\pi} & \modulo{M}{K} \et$, sea $N \subseteq  \modulo{M}{K}$, $\pi^{-1}(N)$ contiene a $\pi^{-1}(0) = K$, es decir, cada subm\'odulo del cociente por el que cogemos su antiimagen, contiene al $K$ de partida. Tenemos pues
+$$\bt \left\{ \begin{array}{c}
+    \text{Subm\'odulos de }  \\
+      \modulo{M}{K}
+\end{array} \right\} \rar{\sim} & \left\{ \begin{array}{c}
+    \text{Subm\'odulos de } M  \\
+     \text{ que contienen a } K
+\end{array} \right\} \\[-5mm] 
+N \rar[mapsto] & \pi^{-1}(N) \\[-5mm] 
+\pi(M') & \arrow[mapsto]{l} M'\subseteq M \, / \, K \subseteq M'
+\et$$
+y una asignaci\'on es la inversa de la otra.
+\begin{dem}
+    $\bt N \rar[mapsto] & \pi^{-1}(N) \rar[mapsto] & \pi(\pi^{-1}(N)) = N \et$ por ser $\pi$ epiyectiva.
+
+    Rec\'iprocamente, $\bt M' \rar[mapsto] & \pi(M') \rar[mapsto] & \pi^{-1}(\pi(M')) = M'+K \et$ y como $K \subseteq M'$, $M'+K = M'$.  
+
+    Y demostramos as\'i que la correspondencia es biun\'ivoca.
+
+    
+\end{dem}
+\begin{prop}
+    Sean $N_1, N_2 \subseteq \modulo{M}{K}$ dos subm\'odulos, supongamos que $N_2\subseteq N_1$. $\pi^{-1}(N_2)\subseteq \pi^{-1}(N_1)$, 
+    $$\modulo{\pi^{-1}(N_1)}{\pi^{-1}(N_2)} = \modulo{N_1}{N_2}$$
+\end{prop}
+\begin{dem}
+    Se tiene el isomorfismo
+    $$\bt \modulo{\pi^{-1}(N_1)}{\pi^{-1}(N_2)} \rar[equal]{\sim}[swap]{\bar \pi} &  \modulo{N_1}{N_2} \\[-5mm] \left[m_1\right] \rar & \left[ \pi(m_1) \right]\et$$
+    y se comprueba que est\'a bien definida, y es epiyectiva e inyectiva. 
+\end{dem}
+
+Sea $A$ un anillo y $x\equiv \p, \, x\in Spec\, A$, el cuerpo residual de $x$ verifica
+$$\Bbbk(\p) = \modulo{A_{\p}}{\p A_\p} = \left( \modulo{A}{\p} \right)_0 = \text{ cuerpo de fracciones de }\modulo{A}{\p}$$
+
+Si escogemos el sistema multiplicativo $S = A-\p$, $f: A\longrightarrow \modulo{A}{\p}$, $f(S) = \modulo{A}{\p} - \{0\}$. 
+\cleardoublepage
+
+\chapter{Noetherianidad}
+\section{Longitud de un m\'odulo}
+\begin{defi}
+    Un $A$-m\'odulo $M$ se dice simple si $M\neq 0$ y no tiene subm\'odulos propios, es decir, los \'unicos subm\'odulos son el 0 y el propio $M$.
+\end{defi}
+\begin{prop}
+    Sea $M\neq 0$ es simple $\iff$ $M \simeq \modulo{A}{\m}$ para $\m$ maximal de $A$. 
+\end{prop}
+\begin{dem}
+    Si $M$ es simple, entonces $M$ es mon\'ogeno. Sea $0 \neq m \in M$, $\langle m\rangle \neq 0$, es subm\'odulo, y al ser $M$ simple, $M = \langle m \rangle$. Y todo m\'odulo mon\'ogeno cumple que $M\simeq \modulo{A}{I}$ tal que $I \neq A$ ideal no total. Veamos pues que $\modulo{A}{I}$ es simple $\iff$ $I$ es maximal.
+
+    Pero los subm\'odulos de $\modulo{A}{I}$ son los subm\'odulos de $A$ que contienen a $I$, y como $\modulo{A}{I}$ es simple, solo tiene subm\'odulo 0 o el mismo, y el subm\'odulo 0 se corresponde con el ideal $I$, luego $I$ es el \'unico ideal de $I$, es decir, $I$ es maximal. 
+\end{dem}
+\begin{defi}
+    Sea $M$ un $A$-m\'odulo, la cadena de subm\'odulos $ 0 = M_o \subseteq M_1 \subseteq \cdots \subseteq M_n = M$ diremos que es de composici\'on cuando los factores $\modulo{M_{i+1}}{M_i}$ son simples. En particular $M_i \subset M_{i+1}$. Esto es equivalente a decir que no existe $N$ tal que $M_i \subset N \subset M_{i+1}$, la cadena es estricta. 
+\end{defi}
+\begin{defi}
+    Llamaremos longitud de $M$ a (la m\'inima) $n$. Lo denotaremos como $\ell(M)$.
+\end{defi}
+\begin{defi}
+    $M$ es de longitud finita si admite alguna cadena de composici\'on. 
+\end{defi}
+\begin{ejer}
+ [elemental] Un m\'odulo es simple $\iff$ $\ell(M) = 1$. $\ell(0)=0$. 
+\end{ejer}
+Sea $\bt 0\rar & M' \rar & M \rar & \bar M \rar & 0 \et$ exacta o equivalentemente, $M'\subset M$ un subm\'odulo y $\bar M = \modulo{M}{M'}$.
+\begin{prop}
+    $M$ es de longitud finita si y solo si $M'$ y $\bar M$ son de longitud finita.
+\end{prop}
+\begin{dem}
+    $\Leftarrow)$ Sea $ 0 \subset M_1' \subset \cdots \subset M_r' = M'$ una cadena de composici\'on de $M'$ y 
+    $0 \subset \bar M_1 \subset \cdots \subset \bar M_s = \bar M$  una cadena de composici\'on de $\bar M$, tenemos $\bt M \rar{\pi} & \bar M  \et$ y se aplicamos la inversa a la cadena de $\bar M$, de forma que 
+    $$M' = \pi^{-1}( 0) \subset \pi^{-1}( \bar M_1) \subset \cdots \pi^{-1}( \bar M_{s-1}) \subset \pi^{-1}(\bar M_s) = M$$ 
+    y como 
+    $$\modulo{\pi^{-1}( \bar M_{i+1})}{\pi^{-1}( \bar M_i)} = \modulo{\bar M_{i+1}}{\bar M_i}$$ esta cadena vuelve a ser nuevamente de composici\'on, la ``enchufamos'' en la de $M'$ y teemos una cadena de composici\'on de $M$ de longitud $r + s$. 
+
+    $\Rightarrow)$ Sea $0 \subset M_1 \subset \cdots \subset M_n = M$ una cadena de composici\'on de $M$, $M_i' = M_i \cap M'$ cortando con $M'$, nos da la cadena 
+    $$ 0 \subseteq M_1' \subseteq \cdots \subseteq M_n' = M'$$
+    y de la misma forma, $\bar M_i = \pi(M_i)$ con $\pi: M \longrightarrow \bar M = \modulo{M}{M'}$, nos da la cadena
+    $$ 0 \subseteq \bar M_1 \subseteq \cdots \subseteq \bar M_n = \bar M$$
+    Tenemos la sucesi\'on exacta trivial para cada $i$
+    $$\bt 0 \rar & M_i' \rar & M_i \rar{\pi} & \bar M_i \rar & 0 \et$$
+    y por tanto
+     $$\bt 0 \rar & M_i' \arrow[d, phantom, "\rotatebox{-90}{$\subseteq$}"] \rar & M_i \arrow[d, phantom, "\rotatebox{-90}{$\subset$}"]\rar{\pi} & \bar M_i \arrow[d, phantom, "\rotatebox{-90}{$\subseteq$}"] \rar & 0 \\ 0 \rar & M_{i+1}'   \rar & M_{i+1}  \rar{\pi} & \bar M_{i+1} \rar & 0  \et$$
+     lo que nos da la sucesi\'on exacta
+     $$\bt 0 \rar & \modulo{M'_{i+1}}{M_i'} \rar & \modulo{M_{i+1}}{M_i} \rar{\pi} & \modulo{\bar M_{i+1}}{\bar M_i} \rar & 0 \et$$
+     y entonces como $\modulo{M_{i+1}}{M_i}$ es simple por hip\'otesis, sumando las longitudes de los extremos de la sucesi\'on, $\modulo{M'_{i+1}}{M_i'}$ solo tiene dos posibilidades
+     $$\modulo{M'_{i+1}}{M_i'} = \left\{ \begin{array}{l}
+          0 \,  (\equiv M_i' = M_{i+1}') \text{ entonces } \modulo{\bar M_{i+1}}{\bar M_i} \text{ es simple }   \\
+          \modulo{M'_{i+1}}{M_i'} \text{ es simple y entonces } \modulo{\bar M_{i+1}}{\bar M_i} = 0 \, (\equiv \bar M_i = \bar M_{i+1}) 
+     \end{array} \right.$$
+     y si en ambas cadenas de $M'_i$ y $\bar M_i$ eliminando las redundancias, obteniendo en ambas dos cadenas de composici\'on, de longitud $r$ (hemos eliminado $n-r$) y $n-r$ respectivamente, pues cuando eliminamos una igualdad de una de las cadenas, no la eliminamos de la otra, y viceversa. 
+
+     Terminar la demostraci\'on buscando el argumento para igualar las longitudes. 
+\end{dem}
+\begin{teo}
+    Todas las cadenas de composici\'on de un m\'odulo son de la misma longitud.
+\end{teo}\begin{dem}
+    Es equivalente a demostrar que toda cadena de longitud $r$ es de $\ell(M)$. Se hace por inducci\'on sobre $r$, pues $0\subset M_1 \subset \cdots \subset M_{r-1}$, $\ell(M_{r-1}) = r-1$, usamos la sucesi\'on exacta 
+    $$\bt 0 \rar & M_{r-1} \rar & M_r = M \rar & \modulo{M_r}{M_{r-1}} \rar & 0 \et$$ siendo $\ell(M_{r-1}) = r-1$ y $\modulo{M_r}{M_{r-1}} $ es simple, luego $\ell(M) = \ell(M_{r-1}) + \ell(\modulo{M_r}{M_{r-1}}) = r-1 + 1 = r$. 
+\end{dem}
+
+% 28/10/2025
+
+
+
+\begin{lem}
+    Si $\bt 0\rar &  M ' \rar & M \rar{\pi} & \bar M \rar & 0 \et$ es sucesi\'on exacta y $M', \bar M$ son finito generados, entonces $M$ es finito generado.
+\end{lem}
+\begin{dem}
+    Sean $m_1', \ldots, m_r'$ generadores de $M'$ y $\bar m_1, \ldots, \bar m_s$ generadores de $\bar M$. Por ser $\pi$ epiyectiva, $\bar m_i = \pi (m_i) _ {i=1, \ldots, s}$. Veamos que $m_1', \ldots, m_r ', m_1, \ldots, m_s$ generan $M$. Sea $m \in M$,
+    $$\pi(m) = a_1 \bar m_1 + \cdots + a_s \bar m_s = \pi(a_1 m_1 + \cdots + a_s m_s)$$
+    por la linealidad de $\pi$. Por tanto, 
+    $$m-(a_1m_1 + \cdots + a_sm_s) \in \ker \pi = M ' $$
+    y por estar en $M'$, lo podemos expresar en funci\'on de los generadores
+    $$m-(a_1m_1 + \cdots + a_sm_s) = b_1m_1' + \cdots + b_r m_r'$$
+    luego despejando
+    $$m =  b_1m_1' + \cdots + b_r m_r' + a_1m_1 + \cdots + a_sm_s$$
+    como quer\'iamos demostrar. 
+\end{dem}
+\begin{prop}
+    Si $M$ es un $A$-m\'odulo de longitud finita, entonces $M$ es finito generado. 
+\end{prop}
+\begin{dem}
+    Por inducci\'on sobre $l = \ell(M)$. 
+
+    Si $l=1$, $M \simeq \modulo{A}{\m}$ es finito generado. 
+
+    Cierto para $l-1$. 
+
+    Sea $M$ de longitud $l$, se tiene la cadena de composici\'on
+    $$0=M_o \subset \cdots \subset M_{l-1} \subset M_l = M$$
+    y escogemos la sucesi\'on
+    $$\bt 0 \rar & M_{l-1} \rar & M \rar & \modulo{M}{M_{l-1}} \rar & 0 \et$$ donde $M_{l-1}$ tiene longitud $l-1$ y $\modulo{M}{M_{l-1}}$ es simple, luego tiene longitud 1. As\'i pues, ambos son finito generados y por tanto, $M$ tambi\'en lo es por el lema anterior.
+\end{dem}
+\begin{cor}
+    Si $M$ es de longitud finita, entonces todo subm\'odulo suyo es tambi\'en finito generado. 
+\end{cor}
+
+\section{M\'odulos noetherianos}
+\begin{defi}
+    Un $A$-m\'odulo se dice noetheriano si toda cadena ascendente de subm\'odulos $M_1\subseteq M_2 \subseteq M_3 \subseteq \cdots \subseteq M_n \subseteq \cdots \, (M_i \text{ subm\'odulos de } M)$ estabiliza (existe $r$ tal que $M_r = M_{r+1} = M_{r+2} = \cdots$). Esto es equivalente a decir que toda cadena de inclusiones estrictas es finita. 
+\end{defi}
+\begin{defi}
+    Un m\'odulo $M$ es noetheriano si todo subm\'odulo suyo es finito generado (y por tanto $M$ tambi\'en).
+\end{defi}
+\begin{prop} Las definiciones son equivalentes, es decir, $M$ es noetheriano $\iff$ todo subm\'odulo de $M$ es finito generado.
+\end{prop}
+\begin{dem}
+    $\Rightarrow)$ Sea $M'$ un subm\'odulo de $M$, con $m_1 \in M'$, $\langle m_1\rangle$. Si $\langle m_1\rangle = M'$, hemos terminado. Si $\langle m_1\rangle\subsetneqq M'$, escogemos $m_2\in M', \, m_2\nin \langle m_1\rangle$, luego tenemos $\langle m_1\rangle \subset \langle m_1, m_2\rangle$ y 
+    $$\langle m_1, m_2\rangle = \left\{ \begin{array}{ll}
+         = M' & \text{ hemos terminado} \\
+         \neq M' & \exists m_3\in M', \, / m_3 \nin \langle m_1, m_2\rangle
+    \end{array} \right.$$
+    y en el segundo caso $\langle m_1\rangle \subset \langle m_1, m_2\rangle \subset \langle m_1,m_2,m_3\rangle$. De esta disyuntiva, el segundo caso no puede ocurrir infinitamente por la hip\'otesis de que toda cadena estabiliza, por lo que en alg\'un momento caemos en el caso 1. Por lo que $M$ es finito generado. 
+
+    $\Leftarrow)$ Sea $M_1\subseteq M_2 \subset M_3 \subset \cdots \subseteq M_n \subseteq \cdots$ una cadena ascendetne de subm\'odulos de $M$. Elijamos $\displaystyle M' = \bigcup_i M_i$. En general no es subm\'odulo, pero las inclusiones hacen que sea subm\'odulo de $M$, y por hip\'otesis es finito generado, luego $M' =\langle m_1, \ldots, m_n \rangle$. Por ser $M'$ uni\'on de los $M_i$, $m_1 \in M_{i_1}, m_2 \in M_{i_2}, \ldots, m_n \in M_{i_n}$, si elegimos $k \geq i_1, \ldots, i_n$, 
+    $$m_1, \ldots, m_n \in M_k \Rightarrow \langle m_1, \ldots, m_n \rangle \subseteq M_k$$
+    por lo que $\displaystyle M' = \bigcup_i M_i = M_k$ y cualquier $M_{k+j} \subseteq M'$ y la cadena estabiliza. 
+\end{dem}
+
+Consideremos la sucesi\'on exacta 
+$\bt 0 \rar &  M' \rar & M \rar{\pi} & M'' \rar & 0 \et$
+\begin{prop}
+    $M$ es noetheriano $\iff$ $M', M''$ son noetherianos.
+\end{prop}
+\begin{dem}
+    $\Rightarrow)$ Supongamos $M$ noetheriano, $M'$ es noetheriano  por que todo subm\'odulo de $M'$ es subm\'odulo de $M$, que es noetheriano. $M''$ es noetheriano pues si escogemos $N \subseteq M''$ un subm\'odulo suyo, $\pi^{-1}(N) \subseteq M$ es finito generado por ser $M$ noetheriano, y por ser $\pi$ epiyectiva, $\pi(\pi^{-1}(N)) = N$ es finito generado (aplicaciones epiyectivas mantienen sistemas de generadores). 
+
+    $\Leftarrow)$ Si $M'$ y $M''$ son noetherianos, sea $N \subseteq M$ un subm\'odulo, 
+    $$\bt 0 \rar &  M' \rar & M \rar{\pi} & M'' \rar & 0  \\ 0 \rar &  M'\cap N \arrow[u, phantom, "{\rotatebox{90}{$\subseteq$}}"]\rar & N\arrow[u, phantom, "{\rotatebox{90}{$\subseteq$}}"] \rar{\pi} & \pi(N)\arrow[u, phantom, "{\rotatebox{90}{$\subseteq$}}"] \rar & 0  \et   $$
+    de forma que $M' \cap N$ es subm\'odulo de $M'$ y como es noetheriano, $M' \cap N$ es finito generado. De la misma forma $\pi(N)$ es finito generado por ser subm\'odulo de $M''$ y por la proposici\'on anterior, $N$ es finito generado. Como es general para cualquier $N$, hemos demostrado que $M$ es noetheriano. 
+
+\end{dem}
+Sean $M, N$ dos $A$-m\'odulos
+\begin{cor}
+    $M,N$ son noetherianos $\iff$ $M \oplus N$ es noetheriano.
+\end{cor}\begin{dem}
+    Usando la sucesi\'on exacta trivial $$\bt 0 \rar &  M \rar & M\oplus N \rar{\pi} & N \rar & 0 \et$$
+\end{dem}
+\section{Anillos noetherianos}
+\begin{defi}
+    Diremos que un anillo $A$ es noetheriano si lo es como $A$-m\'odulo. Es decir, que toda cadena ascendente de ideales estabiliza. O dicho de otra forma, todo ideal de $A$ es finito generado.  
+\end{defi}
+
+\begin{prop}
+Sea $A$ noetheriano, un $A$-m\'odulo $M$ es noetheriano $\iff$ $M$ es finito generado.     
+\end{prop}
+\begin{dem}
+    $\Rightarrow)$ Siempre se cumple. 
+    
+    $\Leftarrow)$ Si $M$ es finito generado, siempre existe un libre que se epiyecte en \'el, $A^n \longrightarrow M \longrightarrow 0$, $A^n$ es noetheriano por el corolario anterior, y como la noetherianidad se mantiene por epiyecciones, $M$ es noetheriano. 
+\end{dem} 
+\begin{ejems}
+    Todo cuerpo es noetheriano, pues no tiene ideales. $\bb Z, k[x], k[x_1, \ldots, x_n]$ son ejemplos de noetherianos. Veremos que si $A$ es noetheriano, entonces $A[x]$ tambi\'en. $\modulo{A}{I}$ es noetheriano.
+\end{ejems}
+
+\section{Teorema de la base de Hilbert}
+Sea $M$ un $A$-m\'odulo, hemos dado dos definiciones de m\'odulo noetheriano:
+$$M \text{ es noetheriano}: \left\{\begin{array}{c}
+    \text{Todo subm\'odulo de } M \text{ es finito generado} \\[5mm] \text{Toda cadena de subm\'odulos} \\ M_o \subseteq M_1 \subseteq M_2 \subseteq \cdots \\ 
+    \text{estabiliza}
+\end{array} \right.$$
+
+Tambi\'en vimos que si se tiene la s.e. para todo $A$ $$\bt 0 \rar & M' \rar &M \rar & \modulo{M}{M'} \rar & 0 \et$$
+
+$M$ es noetheriano $\iff$ $M'$ y $\modulo{M}{M'}$ lo son.
+
+$M$ es noetheriano $\Rightarrow \, M_S$ noetheriano $/A_S$
+\begin{teo}
+    [de la base de Hilbert] Si $A$ es noetheriano, entonces $A[x]$ es noetheriano (y por tanto, $A[x_1, \ldots,x_n]$ es noetheriano). 
+\end{teo}
+\begin{dem}
+    Tenemos nuestro anillo noetheriano $A$, veamos que todo ideal $I$ de $A[x]$ es finito generado, concluyendo que $A[x]$ es noetheriano.
+
+    Sea $p(x) \in I, \, p(x) = a_o x^n + a_1x^{n-1} + \cdots + a_n, \, a_i \in A, \, a_o \neq 0$. De esta forma, elegimos para todo $p(x)$ su coeficiente de grado m\'aximo $a_o\in A$, es decir, la aplicaic\'on
+    $$\bt I \rar{\phi} & A \\[-5mm] p(x) \rarmaps & a_o \et$$
+    y elegimos la imagen de esta aplicaci\'on $\Im \phi = J$. $J$ es un ideal de $A$. El 0 pertenece pues $0 \in A[x], \, 0 \in J$. Sean $a,b \in J, \, p(x), q(x) \in I$, veamos que $a+b \in J$
+    $$p(x) = ax^n + \cdots \qquad q(x) = bx^m + \cdots$$
+    $$I \ni x^m \cdot p(x) + x^n q(x) = (a+b) x^{n+m} + \cdots = \begin{cases}
+        a+b= 0 \in J \\ a+b = \text{coef. gr. m\'ax. } \in J
+    \end{cases}$$
+    Probar tambi\'en para $b \in J, \, a\in A\Rightarrow a\cdot b \in J$. 
+
+    Una vez que sabemos que $J$ es ideal, por ser $A$ noetheriano, $J$ es finito generado: $J=(b_1,\ldots, b_r)$, siendo cada $b_i$ el coeficiente de grado m\'aximo de alg\'un $p_i(x) \in I$. Podemos suponer, reemplazando cada $p_i(x)$ por $x^{n_i} \cdot p_i(x)$ con $n_i$ conveniente, $p_1, \ldots, p_r$ son del mismo grado $=n$. 
+
+    Todo $p\in I$ puede ser expresado como $p = p_1+q$ con $p_1 \in (p_1, \ldots, p_r)$ y $q \in I, \, gr(q) < n$. 
+
+    Si $gr(p) < n$, es inmediato
+
+    Si $gr(p) \geq n$, $p=a_o x^r + \cdots (r \geq n)$, $a_o \in J, \, a_o = a_1b_1 + \cdots  + a_r b_r$, de forma que 
+    $$p'=a_1 x^{r-n} + \cdots + a_r x^{r-n} p_r \in (p_1, \ldots, p_r)$$
+    $$I \ni p-p' \text{ es de grado } r'<r  \Rightarrow p = p+(p-p')$$
+    de forma que $p'\in I$ y $p-p'$ con $gr(p-p') < r$. Si $r> n$, se repite el proceso hasta que $r<n$ y se cumple lo que quer\'iamos. 
+
+    Todos los elementos de grado $<n$ son elementos de $A \oplus Ax \oplus \cdots \oplus Ax^{n-1}$, luego los $q$ pertenecen a $I \cap (A \oplus Ax \oplus \cdots \oplus Ax^{n-1})$, que es un sub-$A$-m\'odulo de $A \oplus Ax \oplus \cdots \oplus Ax^{n-1}$, que es noetheriano como $A$-m\'odulo, luego la intersecci\'on es $A$-m\'odulo noetheriano, por tanto finito generado. 
+\end{dem}
+\begin{cor}
+    Si $k$ es un cuerpo ($\iff$ noetheriano), $k[x_1,\ldots,x_n]$ es noetheriano.
+
+    Si $A$ es noetheriano, entonces $\modulo{A}{I}$ y $A_S$ es noetheriano.
+\end{cor}
+\begin{defi}
+    Una $k$-\'algebra $A$ es de tipo finito si existen $a_1, \ldots, a_n \in A$ tal que para todo $a\in A$, existe $p(x_1, \ldots, x_n) \in k[x_1, \ldots, x_n]$ tal que $a=p(a_1, \ldots, a_n)$. 
+    
+    Dados $a_1, \ldots, a_n\in A$, dar un morfismo de $k$-\'algebras 
+    $$\bt k[x_1, \ldots, x_n] \rar & A \\[-5mm] x_i \rarmaps & a_i \et$$
+    es equivalente a dar $n$ elementos de $A$. Que los $a_i$ genere significa que para todo $a\in A$ tiene asociado un polinomio. Es decir, decir que una $k$-\'algebra sea de tipo finito es decir que este morfismo es epiyectivo.
+
+    En conclusi\'on, las $k$-\'algebras $A$ de tipo finito son $A \simeq \modulo{k[x_1, \ldots, x_n]}{I}$.
+\end{defi}
+\begin{cor}
+    Si $k$ es noetheriano (por ejemplo un cuerpo), entonces toda $k$-\'algebra de tipo finito es noetheriana. 
+\end{cor}
+\begin{obs}
+    [Problema de la noetherianidad] Sean $A,B$ dos $k$-\'algebras, $A \underset{k}{\otimes} B$ es otra $k$-\'algebra. Que $A$ y $B$ sean noetherianas no asegura que su producto tensorial lo sea. Las de tipo finito ayudan a que eso no ocurra, si $B$ es adem\'as de tipo finito, ahora $A \underset{k}{\otimes} B$ es noetheriano. 
+\end{obs}
+
+
+%29/10/2025
+
+\section{Soporte, longitud, espectro y radical}
+
+Sea $M$ un $A$-m\'odulo, $X=Spec\, A$, $Sop(A) = \{x\in X \, : \, M_x \neq 0\} = (I)_0$ si $M$ es finito generado, donde $I = $ anulador de $M$.  
+\begin{prop}
+    Sea $M$ un $A$-m\'odulo de longitud finita
+    $$Sop(M) = \{ \m_1, \ldots, \m_r\} \qquad \text{ con } \m_i \text{ ideal maximal}$$
+    luego $Sop(M) \subseteq Spec_{max} A$
+\end{prop}
+\begin{dem}
+    Por inducci\'on sobre $l=\ell(M)$. El primer caso, si $l=1$, entonces $M\simeq \modulo{A}{\m}$, con $\m$ maximal, luego
+    $$Sop(M) = Sop\left(\modulo{A}{\m}\right) = (\m)_0 = \{ \m \}$$
+
+    En general, $M' \subset M$ el subm\'odulo de la cadena de composici\'on con $\modulo{M}{M'}$ simple (es el t\'ermino anterior a $M$ en la cadena).
+    Tenemos pues la s.e.
+    $$\bt 0 \rar & M'  \rar & M  \rar & \modulo{M}{M'}  \rar & 0 \et$$
+    y $Sop(M) = Sop(M') \cup Sop\left( \modulo{M}{M'}\right)$, donde $Sop(M')$ es un conjunto de maximales por inducci\'on, y $Sop\left( \modulo{M}{M'}\right)$ es un solo maximal, luego $Sop(M)$ es un conjunto finito de maximales. 
+\end{dem}
+Usando el siguiente
+\begin{lem} Si 
+    $$\bt 0 \rar & M'  \rar & M  \rar & M'' \rar & 0 \et$$ es una sucesi\'on exacta, entonces
+    $$Sop(M) = Sop(M') \cup Sop(M'') $$
+\end{lem}
+\begin{dem}
+    Directa localizando la sucesi\'on en $x\in X$, 
+    $$\bt 0 \rar & M'_x  \rar & M_x  \rar & M''_x \rar & 0 \et$$
+    entonces $M_x = 0 \iff M_x'$ y $M_x'' = 0$.  
+\end{dem}
+\begin{teo}
+    Un $A$-m\'odulo $M$ es de longitud finita $\iff$ es noetheriano y $Sop(M)= \{ \m_1, \ldots, \m_r\}$. 
+\end{teo}
+\begin{dem}
+    $\Rightarrow)$ Ya probado.
+
+    $\Leftarrow)$ Queda pendiente. 
+\end{dem}
+
+Sea $k$ un cuerpo, $\mc O$ una $k$-\'algebra local (de maximal $\m$), $k \longrightarrow \mc O$, es decir, $\mc O$ es cierto anillo que contiene un cuerpo, y el morfismo es necesariamente inyectivo pues los \'unicos ideales de un cuerpo es $k$ \'o 0. De forma que 
+$$\bt k \rar \arrow{dr} & \mc O \arrow{d} \\ & \modulo{\mc O}{\m } = \bar k\et$$
+$\bar k$ es una extensi\'on del cuerpo $k$, y $\bar k$ es un $k$-espacio vectorial, y supondremos que es de dimensi\'on finita ($\dim_k \bar k < + \infty$), que es lo que llamamos una extensi\'on finita de $k$. 
+
+Sea $M$ un $\mc O$-m\'odulo, autom\'aticamente es un $k$-m\'odulo, es decir, un $k$-espacio vectorial. Con estas hip\'otesis se verifica la siguiente
+\begin{prop} $M$ es un $\mc O$-m\'odulo de longitud finita $\iff$ es de dimensi\'on finita como $k$-espacio vectorial. Y adem\'as, $\ell_{\mc O} (M) \cdot \dim_k \bar k = \dim_k M$. 
+\end{prop}
+\begin{dem}
+    Supogamos que $M\neq 0$. $M$ adem\'as es finito generado (en ambos casos del enunciado).
+
+    $\Rightarrow)$ Inducci\'on sobre $l = \ell_{\mc O}(M)$
+
+    Si $l=1$, $M$ es simple , luego $M \simeq \modulo{\mc O}{\m} = \bar k$, y como por hip\'otesis $\bar k$ es de dimensi\'on finita sobre $k$, $M$ lo es. Se cumple la f\'ormula, $\cancelto{1}{\ell_{\mc O} (M)} \cdot \dim_k \bar k = \dim_k M$.
+
+    Suponemos cierto para cualquier $M'$ con $l'= \ell(M') = l-1$. Consideramos la sucesi\'on exacta
+    $$\bt 0 \rar & \m M  \rar[hook] & M  \rar & \modulo{M}{\m M}  \rar & 0 \et$$
+    y la longitud de los extremos tienen menor longitud que $M$, ambos $k$-espacios vectoriales de dimensi\'on finita (por inducci\'on), entonces $M$ tambi\'en es de longitud finita. Y adem\'as
+    $$\ell(M) = \ell(\m M) + \ell\left(  \modulo{M}{\m M}\right) \Rightarrow$$
+    $$\ell(M)\cdot \dim_k \bar k  = \underbrace{\ell(\m M)\cdot \dim_k \bar k  }_{\dim _k \m M}+\underbrace{ \ell \left(  \nicefrac{M}{\m M}\right) \cdot \dim_k \bar k}_{\dim_k  \modulo{M}{\m M}} = \dim_k M$$
+
+    $\Leftarrow)$ Similar al anterior. Sea $n = \dim_k M$, hacemos inducci\'on sobre $n$. 
+
+    Si $n=1$, $M \longrightarrow  \modulo{M}{\m M}$, como $ \modulo{M}{\m M} \neq 0$, y $\dim M=1$, es un isomorfismo. Pero $ \modulo{M}{\m M}$ no solo es $k$-espacio vectorial, es tambi\'en $\bar k$-espacio vectorial, entonces $ \modulo{M}{\m M} = \bar k = k = M$. 
+
+    En general, consideramos la sucesi\'on exacta
+    $$\bt 0 \rar & \m M  \rar[hook] & M  \rar & \modulo{M}{\m M}  \rar & 0 \et$$
+    siendo $M$ de dimensi\'on finita, los extremos son dimensi\'on finita menor que $M$, luego por inducci\'on, son de longitud finita, entonces $M$ tambi\'en. 
+\end{dem}
+\begin{ejem}
+    Sea $A = \modulo{k[x_1, \ldots, x_n]}{I}$, es una $k$-\'algebra, $\m$ un maximal de $A$, $\mc O = A_\m$, ya es local, de maximal $\m \cdot \mc O$. Tenemos los morfismos $k \to A \to I$ y $k \to A$. Entonces
+    $$\modulo{\mc O}{\m \mc O} = \modulo{A}{\m}$$
+
+    Es decir, para todo $\p$ primo, 
+    $$\modulo{A_\p}{\p \cdot A_\p} = \left( \modulo{A}{\p} \right)_0$$
+    pero si $\p$ es maximal, $\modulo{A}{\p}$ es cuerpo y localizar es no hacer nada.
+\end{ejem}
+\begin{teo}
+    Si $\m$ es maximal de $A$, entonces $k \longrightarrow \modulo{A}{\m}$ es una extensi\'on finita. 
+\end{teo}
+\begin{defi}
+        $a\in A$ se llama nilpotente si $a^n = 0$ para alg\'un $n\in \bb N$. 
+
+    Se define el radical de un anillo $A$ (conmutativo con elemento unidad)
+    $$Rad(A) = \{a\in A \, : \, a \text{ es nilpotente}\} \subseteq A$$
+    y es un ideal de $A$. 
+\end{defi}
+\begin{teo}
+    $\displaystyle Rad(A) = \bigcap_{\p \text{ primo}} \p $
+
+    Es decir, un elemento es nilpotente si pertenece a todos los primos
+\end{teo}
+\begin{dem}
+    $\boxed{\subseteq}$ Sea $a \in Rad(A)$, $\p$ primo. $a^n = 0 \in \p$, y como es primo, $a\in \p$ por la condici\'on de primo (si $a^n = a \cdots a \in \p$, alguna $a\in \p$).
+
+    $\boxed{\supseteq}$ Sea $\displaystyle a\in \bigcap_{\p\text{ primo}} \p$. Localizamos $A_a = A_{\{1,a,a^2, \ldots, a^n , \ldots\}}$ y cogemos su espectro
+    $$Spec\, A_a = Spec \, A - (a)_0 = \emptyset$$
+    por suponer que $a \in \p$ para todo primo, luego el \'unico anillo con espectro vac\'io es el 0 (todo anillo distinto de 0 tiene espectro tiene alg\'un primo, pues existe al menos un maximal $\m$). Esto es $A_a = 0$, luego $0 \in\{1,a,\ldots, a^n,\ldots\} \Rightarrow a^n = 0$, es decir, es nilpotente.
+\end{dem}
+\begin{ejer}
+    Si $S$ sistema multiplicativo de $A$, $A_S = 0 \iff 0 \in S$
+\end{ejer}
+\begin{defi}
+    Un anillo $A$ se dice reducido si $Rad(A)=0$. 
+\end{defi}
+\begin{ejem}
+    Todo anillo \'integro es reducido.
+\end{ejem}
+\begin{ejer}
+    Sea $A$ anillo, $A \longrightarrow\modulo{A}{Rad(A)}$, $\modulo{A}{Rad(A)} = A_{red}$ es reducido.
+
+    Sea $f: A \longrightarrow B$ un morfismo de anillos, si $a \in Rad(A), \, f(a) \in Rad(B)$. Tener en cuenta las propiedades de morfismos de anillos. De esta forma $f: Rad(A) \longrightarrow Rad(B)$ y existe $f_{red} : A_{red} \longrightarrow B_{red}$. 
+
+    Sea $I = (a_1, \ldots, a_r)$ ideal de $A$ con $a_1, \ldots, a_r$ son nilpotentes, tambi\'en lo es el ideal, $I^n = 0$ para $n>>0$. Como $I = (a_1) + (a_2, \ldots, a_r)$, y solo hay que probar que si $I = I_1+I_2$, entonces $I^n = I_1^n + I_1^{n-1} I_2 + \cdots+ I_1 I_2^{n-1} + I_2^n$. 
+\end{ejer}
+\begin{teo}
+    Sea $A$ un anillo. Supongamos que $Spec\, A = \{\m_1, \ldots, \m_r\}$. Entonces $A \longrightarrow A_{\m_1} \times A_{\m_2} \times \cdots \times A_{\m_r}$ es un isomorfismo. 
+\end{teo}
+\begin{dem}
+    Basta ver que $A_{\m_i} \longrightarrow ( A_{\m_1} \times A_{\m_2} \times \cdots \times A_{\m_r}) _{\m_i}$ es isomorfismo, pero 
+    $$ (A_{\m_1} \times \cdots \times A_{\m_r})_{\m_i} =  (A_{\m_1})_{\m_i} \times \cdots \times (A_{\m_r})_{\m_i}$$
+    Basta ver que 
+    $$(A_{\m_j})_{\m_i} = \left\{ \begin{array}{cc}
+            A_{\m_i} & \text{ si } i=j  \\
+         0  & \text{ si } i\neq j 
+    \end{array} \right.$$
+
+    En primer lugar, $(A_{\m_i})_{\m_i} = A_{\m_i}$ pues $(A_S)_S = A_S$.
+
+    Veamos que $(A_{\m_j})_{\m_i} = 0$ si $i \neq j$. Sea $a\in \m_j, \, a\nin \m_i$, cuando localizamos en $\m _j$, 
+    $$\bt A \rar & A_{\m_j} \\[-5mm] a \rar[mapsto] & \frac{a}{1}  \et$$
+    $\m_j$ es el \'unico primo de $\m_j$, luego $Spec\, A_{\m_j} = \{\m_j\}$ luego $Rad(A_{\m_j}) = \m_j$, por lo que $a$ es nilpotente en $A_{\m_j}$, luego en $(A_{\m_j})_{\m_i}$ tambi\'en lo es. Si localizamos en $\m_i$
+    $$\bt A \rar\arrow{d} & A_{\m_i} \\ A_{\m_j} \rar & (A_{\m_j})_{\m_i} \et$$
+    y $a$ es invertible en $A_{\m_i}$, luego es invertible en $(A_{\m_j})_{\m_i}$. Es decir, tenemos un $a$ nilpotente y es invertible.  Esto nos dice que $A$ es 0. 
+\end{dem}
+\begin{obs}
+    Este teorema es el Teorema Chino de los Restos. En $\bb Z$, 
+    $$Spec\, \bb Z = \left\{ \begin{array}{cc}
+         0 &  \\
+         (p) & p \text{ primo} 
+    \end{array} \right.$$
+    $$Spec \, \modulo{\bb Z}{n \bb Z} = (n)_0 = \{(p), \, p \text{ primo y divisor de } n\}$$
+     es decir, 
+     $$Spec \, \modulo{\bb Z}{24\bb Z} = \{(2),(3)\}$$
+     y si aplicamos el teorema, 
+     $$\modulo{\bb Z}{24 \bb Z} = \modulo{\bb  Z}{8 \bb Z} \times \modulo{\bb Z}{3 \bb Z}$$
+     es la descomposici\'on dada por el teorema chino de los restos.
+
+     En polinomios $k[x]$, 
+     $$Spec \, k[x] = \left\{ \begin{array}{cc}
+         0 &  \\
+         (p(x)) & p(x) \text{ irreducible} 
+    \end{array} \right.$$
+    $$\modulo{k[x]}{(Q(x))} = \{(p(x)), p \text{ irreducible y divisor de } Q\}$$
+    $$Q(x)=p_1(x)^{n_1} \cdots p_r(x)^{n_r}$$
+    $$\modulo{k[x]}{(Q(x))} = \modulo{k[x]}{p_1(x)^{n_1}} \times \cdots \times \modulo{k[x]}{p_r(x)^{n_r}}$$
+\end{obs}
+Sea $M$ un $\modulo{A}{I}$-m\'odulo (es decir, un $A$-m\'odulo anulado por $I$), $M' \hookrightarrow M$ un subm\'odulo (anulado por $I$) tambi\'en. Entonces $\ell_A(M) = \ell_{\nicefrac{A}{I}}(M)$. 
+\begin{teo}
+    Un $A$-m\'odulo $M$ es de longitud finita $\iff$ es noetheriano y $Sop(M) = \{\m_1, \ldots, \m_r\}$ con $\m_i$ maximal.
+\end{teo}
+\begin{dem}
+    $\Rightarrow)$ Ya demostrado.
+
+    $\Leftarrow)$ $M = \langle m_1, \ldots, m_r\rangle$. Si $M$ es mon\'ogeno $M=\langle m_1 \rangle$, y se cumple, podemos proceder por inducci\'on. 
+
+    Entonces por inducci\'on, para $r-1$
+    $$\bt 0 \rar &  \langle m_1, \ldots, m_{r-1} \rangle \rar[hook] & M\rar & \modulo{M}{\langle m_1, \ldots, m_r\rangle} \rar & 0 \et$$
+    y los extremos son de longitud finita, luego noetherianos, y sus soportes son un n\'umero finito de maximales (por ser $M$ as\'i). Luego $\modulo{M}{\langle m_1, \ldots, m_r\rangle}$ es mon\'ogeno, y su generador es $m_r$. 
+
+    Volviendo al caso $r=1$, entonces $M$ es mon\'ogeno y $M\simeq \modulo{A}{I}$. Sabemos que $Spec\, \modulo{A}{I} = (I)_0 = sop \, \modulo{A}{I} =$ nº finito de maximales por hip\'otesis (sin demostrar), y entonces
+    $$\bt A\rar{\sim} & \left(\modulo{A}{I}\right)_{\m_1} \times \cdots \times \left(\modulo{A}{I}\right)_{\m_r} \rar{epi} & \left(\modulo{A}{I}\right)_{\m_i}  \et$$
+    hemos llegado al caso en que $A$ es noetheriano con un \'unico $\m$, $Rad(A) = \m$ y es finito generado, por lo que $\m^n=0$, escogemos $0 = \m^n \subseteq \m^{n-1}\subseteq \cdots \subseteq \m^2 \subseteq \m \subseteq A$ de forma que 
+    $\modulo{\m^i}{\m^{i+1}} = \m^i \underset{A}{\otimes}\underbrace{\modulo{A}{\m}}_k$ siendo $\m^i$ es un $A$-m\'odulo finito generado, luego $ \m^i \underset{A}{\otimes}\underbrace{\modulo{A}{\m}}_k$ es un $k$-espacio vectorial (de dimensi\'on finita), entonces $A$ es de longitud finita. Si hacemos 
+    $$\bt 0 \rar & \m \rar & A \rar & \modulo{A}{\m} \rar & 0\et$$
+    para probar que $A$ es de longitud finita, hay que probar que $\m$ lo es. Para ello consideramos la sucesi\'on
+    $$\bt 0 \rar & \m^2 \rar & \m \rar & \modulo{\m}{\m^2} \rar & 0\et$$
+    y reiteramos hasta llegar a $\m^n$ que es 0 por ser nilpotente.
+\end{dem}
+\, 
+
+%03/11/2025
+\,
+
+Demostremos unos ejercicios que quedaban por terminar para acabar el capítulo
+
+\begin{ejer}Sea $A$ un anillo e $I \subseteq A$ un ideal
+$$Spec\, \modulo{A}{I} = (I)_0$$
+\end{ejer}
+\begin{dem}
+    Dada la aplicaci\'on de paso al cociente, $A \overset{\pi}{\longrightarrow} \modulo{A}{I}$, tenemos la 
+    identificaci\'on
+    $$\bt \left\{\text{subm\'odulos de } \modulo{A}{I}\right\} \rar & \{\text{subm\'odulos de } A \text{ que contienen a }I\} \\[-5mm] \bar J \rar[mapsto] & \pi^{-1}(\bar J) \\[-5mm] \pi(J) & \arrow[mapsto]{l} J
+    \et$$
+    donde los subm\'odulos de $\modulo{A}{I}$ son los ideales de $\modulo{A}{I}$ y los subm\'odulos de $A$ que 
+    contienen a $I$ son los ideales de $A$ que contienen a $I$.       
+    Consiste en ver que en esta correspondencia biun\'ivoca los ideales primos van a ideales primos en ambos sentidos.
+\end{dem}
+\begin{prop}
+    Sea $A$ un anillo, $S \subseteq A$ un sistema multiplicativo, $M$ un $A$-m\'odulo. 
+
+    Si $M ' \subseteq M$ es un subm\'odulo, entonces $M'_S \subseteq M_S$ es un sub-$A_S$-m\'odulo.
+
+    Si $N$ es un sub-$A_S$-m\'odulo de $M_S$, existe un subm\'odulo $M'\subseteq M$ tal que $M_S'=N$.
+
+    Considerando el morfismo de localizaci\'on 
+$$\bt M \rar{i} & M_S \\[-5mm] M' = i^{-1}(N) \arrow[u, phantom, "{\rotatebox{90}{$\subseteq$}}"] & N \arrow[u, phantom, "{\rotatebox{90}{$\subseteq$}}"]  \et$$\end{prop}
+
+

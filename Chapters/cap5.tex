@@ -1,0 +1,604 @@
+\chapter{Clasificaci\'on de m\'odulos finito-generados sobre un dominio de ideales principales} 
+\justifying
+
+Sea $A$ un anillo
+\begin{defi}
+    Diremos que $A$ es un dominio de ideales principales cuando $A$ sea un anillo \'integro, y todo ideal suyo $I$ es principal $I = (a)=aA$. En particular, $A$ es noetheriano.
+\end{defi}
+\begin{prop}
+    $(a)\simeq A$ como $A$-m\'odulo ($a\neq 0$). 
+\end{prop}
+\begin{dem}
+    Tenemos el morfismo
+    $$\bt A \rar & (a) \\[-5mm] b \rar[mapsto] & ab \et$$
+    epiyectivo autom\'aticamente. Adem\'as es inyectivo pues $A$ es \'integro, $ab =0 \iff a = 0$ \'o $b=0$, y $a\neq 0$, luego $b=0$ necesariamente. Luego isomorfismo.
+\end{dem}
+\begin{ejems} \, \vspace{-3mm}
+    \begin{enumerate}
+        \item $\bb Z$. 
+        \item $k[x]$ con $k$ cuerpo.
+        \item Todo anillo eucl\'ideo ($\bb Z[i]$). 
+    \end{enumerate}
+\end{ejems}
+
+\begin{prop}
+Cada elemento $a\in A$ produce un ideal $(a)$, $b\in A$, $(b)$. Veamos que $(a) = (b)$ si y solo si $b =a\cdot u$ donde $u$ es un invertible.
+\end{prop}
+\begin{dem}
+    Supongamos que $a, b\neq 0$. 
+    
+    $\Rightarrow)$ $(a) \subseteq (b) \Rightarrow a=b\cdot c$, y $(b)\subseteq (a) \Rightarrow b =a\cdot d = b\cdot c \cdot d$, por lo que $1 = c\cdot d$, as\'i que $a$ y $b$ difieren en un invertible.
+
+    $\Leftarrow)$ $b =a\cdot u \Rightarrow (b) = b \cdot A = a \cdot\underbrace{ u \cdot A}_{=A} = (a)$
+\end{dem}
+\begin{defi}
+    Diremos que $a$ es un elemento propio si $a\neq 0$ y no es invertible.
+\end{defi}
+\begin{defi}
+    $a$ es un elemento primo si es propio y cumple la condici\'on de primo, es decir, si $a$ divide a $b\cdot c$, entonces $a$ divide a $b$ \'o $a$ divide a $c$.  
+\end{defi}
+\begin{prop}
+    $a$ es primo $\iff$ $(a)$ es un ideal primo ($\neq 0$). 
+\end{prop}
+Observemos que $a$ divide a $b$ si $(a) \supseteq (b)$. 
+\begin{defi}
+    Diremos que $a$ es irreducible si es propio y $a\neq b \cdot c$, con $b$ y $c$ propios. De forma positiva, si $a=bc$, entonces $b$ \'o $c$ es invertible.
+\end{defi}
+\begin{prop}
+    $a$ es irreducible $\iff$ $(a)$ es maximal.
+\end{prop}
+\begin{dem}
+    $\Rightarrow) $ Sea $a$ irreducible, veamos que $(a)$ es maximal.
+
+    Sea $(a) \subseteq I = (b)$, pero como es irreducible, $a = b \cdot c$ con dos casos
+    $$\begin{cases}
+        b \text{ es invertible } & \Rightarrow (b) = A \\ \text{ \'o} \\ c \text{ es invertible} & \Rightarrow (a) = (b)
+    \end{cases}$$
+
+    $\Leftarrow)$ Sea $(a)$ maximal, veamos que $a$ es irreducible.
+
+    Si $a=b \cdot c$, entonces $(a) \subseteq (b)$ pero como $(a)$ es maximal, tenemos dos casos
+    $$\begin{cases}
+        (b) = A &\, b \text{ es invertible.}\\ \text{ \'o} \\ (a) = (b) &\, c \text{ es invertible.}
+    \end{cases}$$
+\end{dem}
+Por lo que 
+\begin{prop}
+    $a$ es primo $\iff$ $a$ es irreducible. Son las dos definiciones, positiva y negativa, de lo mismo.
+\end{prop}
+\begin{dem}
+    $\Rightarrow)$ Sea $a$ un elemento primo, veamos que es irreducible.
+
+    Sea $a=b\cdot c$, entonces como $a$ es primo
+    $$\begin{cases}
+        a \text{ divide a } b  \Rightarrow b=a\cdot b' \Rightarrow a=a\cdot b' \cdot c \Rightarrow b'\cdot c =1 \Rightarrow & c \text{ es invertible} \\ \text{ \'o} \\
+        a \text{ divide a } c  \qquad '' \qquad '' \qquad '' \qquad ''\qquad '' \qquad '' \qquad '' & b \text{ es invertible} 
+    \end{cases}$$
+    
+
+    $\Leftarrow)$ Como todo ideal maximal es primo, todo irreducible es primo. 
+\end{dem}
+\begin{defi}
+    $(a)+(b) = (d)$ y ese $d$ es ``el'' m\'aximo com\'un divisor $m.c.d.$ de $a$ y $b$, \'unico salvo invertibles. 
+
+    Es decir, $x$ divide a $a$ y a $b$ $\iff$ $x$ divide a $d$. 
+
+    $(a) \cap (b) = (c)$ y ese $c$ es ``el'' m\'inimo com\'un m\'ultiplo $m.c.m$ de $a$ y $b$, \'unico salvo invertibles.
+
+    $a$ y $b$ son primos entre s\'i cuando $(a) + (b) = A=(1)$.
+\end{defi}
+\begin{defi}
+    [Igualdad de Bezout] Sean $a,b \in A$, $d=m.c.d.(a,b)$, existen $x, y \in A \, : \, ax+by = d$. Si $a,b$ son primos entre s\'i, existen $x,y \, : \, ax+by = 1$. Es taut\'ologica usando la definici\'on de $m.c.d$
+\end{defi}
+\begin{teo}[de Eucl\'ides]
+    Todo elemento $a$ propio de $A$ descompone
+    $$a=p_1\cdots p_r$$ con $p_i$ primo, y de modo \'unico salvo el orden e invertibles. Es decir, si encontramos otra descomposici\'on $a=q_1\cdots q_s$ $s=r$, y $p_i = q_j \cdot u$ siendo $u$ invertible.  
+\end{teo} 
+\begin{dem} \, 
+    \begin{enumerate}
+        \item $a$ descompone.
+        $$a \text{ es } \begin{cases}
+            \text{irreducible} & \Rightarrow \text{ hemos terminado}\\ \text{ \'o} \\\text{ no es irreducible} & \Rightarrow (a) \text{ no es maximal} \Rightarrow \exists\,  a_1 \, / \, (a) \subset \underbrace{(a_1)}_{max.} \Rightarrow \\ & \Rightarrow a=a_1\cdot a' \, / \, a' \text{ es propio } \Rightarrow (a) \subset (a')
+        \end{cases}$$
+        Volvemos a hacer la misma disyuntiva con $a'$, con que si es irreducible hemos terminado, o si no lo es, $a' = a_2 \cdot a''$, con $a_2$ irreudcible, $(a') \subset (a'')$ repitiendo el argumento con $a''$
+
+        Este proceso termina cuando en alg\'un momento caemos en la primera opci\'on. No podemos caer siempre en la segunda opci\'on pues tendr\'iamos 
+        $$(a) \subset (a') \subset (a'') \subset (a''') \subset \cdots $$
+        una inclusi\'on estricta infinita de ideales, que como $A$ es noetheriano, no es posible. 
+
+        \item Unicidad. Poner las dos descomposiciones y usar que cada $p_1$ divide a $q_1\cdots q_r$ y usar la condici\'on de primo para ver que coincide con otro $q_j$ salvo invertibles. 
+    \end{enumerate}
+\end{dem}
+\section{Torsi\'on de un m\'odulo}
+Sea $A$ un anillo
+\begin{defi}
+    Un elemento $a$ se dice que es divisor del cero si existe un $b \neq 0$ tal que $a\cdot b=0$. 
+\end{defi}
+Sea 
+$$S = \{a\in A \,  : \, a \text{ no divisor del cero}\}$$
+es un sistema multiplicativo. 
+
+Si $A$ es \'integro, los divisores del cero $=\{0\}$, y entonces $S = A-\{0\}$ y entonces $A_S = \Sigma$ es el cuerpo de fracciones de $A$
+
+Sea $M$ un $A$-m\'odulo
+\begin{defi}
+    Un elemento $m \in M$ se dice de torsi\'on si existe un $a$ no divisor del cero tal que $a\cdot m=0$. De esta forma, definimos 
+    $$T(M) = \{m \in M \,  : \, m \text{ es de torsi\'on}\}$$
+\end{defi}
+\begin{prop}
+    $T(M)$ es un subm\'odulo de $M$.
+\end{prop}
+\begin{dem}
+    Definiendo la aplicaci\'on 
+    $$\bt M \rar{i} & M_S\\[-5mm] m \rar[mapsto] & \frac{m}{1} = \frac{0}{1} \et$$
+    vemos que $T(M) = \ker\, i$ luego es subm\'odulo autom\'aticamente.
+\end{dem}
+Diferenciamos dos casos seg\'un sea $T(M)$:
+\begin{enumerate}
+    \item Si $T(M) = M$, decimos que $M$ es un m\'odulo de torsi\'on.
+    \begin{prop}
+        $M$ es de torsi\'on $\iff$ $M_S=0$
+    \end{prop}
+    \item Si $T(M) = 0$, decimos que $M$ no tiene torsi\'on \'o libre de torsi\'on.
+    \begin{prop}
+        $M$ no tiene torsi\'on $\iff$ $M \hookrightarrow M_S$ es inyectivo. 
+    \end{prop}
+\end{enumerate}
+Si $A$ no tiene torsi\'on, todo $A$-m\'odulo libre es sin torsi\'on. 
+
+Por ejemplo, todo $A_S$-m\'odulo es en particular $A$-m\'odulo (v\'ia $A \longrightarrow A_S$) sin torsi\'on.
+
+Sea $M$ un $A$-m\'odulo, $M_S$ es un $A$-m\'odulo sin torsi\'on. 
+
+Si $M' \subseteq M$ y $M$ es sin torsi\'on, entonces $M'$ es sin torsi\'on.
+
+\begin{prop}
+    $\modulo{M}{T(M)}$ no tiene torsi\'on. V\'ia $M\longrightarrow M_S$, $\modulo{M}{T(M)} \hookrightarrow M_S$ se hace inyectivo.
+\end{prop}
+\begin{dem}
+    Se tiene la s.e
+    $$\bt 0\rar & T(M) \rar & \rar M & \modulo{M}{T(M)} \rar & 0 \et$$
+    es decir, $M$ descompone en un subm\'odulo que es la torsi\'on y otro sin torsi\'on.
+\end{dem}
+\begin{prop}
+    Sea $A$ \'integro y $M$ un $A$-m\'odulo finito generado. 
+    $$M \text{ es de torsi\'on} \iff An(M) \neq 0$$
+     o dicho de otra manera, hay alg\'un elemento $\neq 0$ que anula a $M$.
+\end{prop}
+\begin{dem}
+    $\Rightarrow)$ Sean $m_1, \ldots, m_n$ generadores de $M$, como $m_1$ es de torsi\'on, existe $a_1 \neq 0 \, : \, a_1m_1=0$. Igual para todo $i=1,\ldots, n$. De esta forma,
+    $$a = a_1 \cdots a_n \neq 0 \, \text{ anula a } m_1, m_2, \ldots, m_n $$
+    y como son generadores, $a$ anula a $M$. 
+
+    $\Leftarrow)$ Sea $0\neq a\in An(M)$, $a\cdot m =0 \forall \, m\in M$ luego $m$ es de torsi\'on $\forall\, m \in M$. Obs\'ervese que no hemos usado la hip\'otesis de finito generado en esta implicaci\'on.
+\end{dem}
+Sea $A$ \'integro y $\Sigma$ su cuerpo de fracciones. Sea $M$ un $A$-m\'odulo finito generado, denotamos $M_{\Sigma} = M \underset{A}{\otimes} \Sigma = \{\frac{m}{a} \, : \, a\neq 0\}$, que es un $\Sigma$-espacio vectorial de dimensi\'on finita.  
+\begin{defi}
+    Se define el rango de un m\'odulo como la dimensi\'on de $M_{\Sigma}$, es decir,
+    $$\text{Rango de } M = \dim_{\Sigma} M_{\Sigma}$$
+    Si $M = A \oplus \overset{n)}{\cdots} \oplus A$ es libre, entonces $M_{\Sigma}=\Sigma \oplus \overset{n)}{\cdots} \oplus \Sigma$, es de rango $n$. Hemos generalizado la definci\'on de rango que ten\'iamos para libres a m\'odulos no libres. 
+\end{defi}
+Sea $A$ dominio de ideales principales, $M$ un $A$-m\'odulo
+\begin{teo}
+$M$ no tiene torsi\'on $\iff$ $M$ es libre (de rango finito) ($M\simeq A^n$ con $n=$ rango de $M$) 
+\end{teo}
+\begin{dem}
+    $\Rightarrow)$ Sea $n=$ rango de $M = \dim_{\Sigma} M_{\Sigma}$. Veamos que
+    \begin{enumerate}[1)]
+        \item $M \hookrightarrow A^n$. 
+
+        Sea $\frac{m_1}{a_1}, \ldots, \frac{m_n}{a_n}$ una base de $M_{\Sigma}$ como $\Sigma$-espacio vectorial, luego $\frac{m_1}{1}, \ldots, \frac{m_n}{1}$ es tambi\'en una base de $M_{\Sigma}$ como $\Sigma$-espacio vectorial. Llamemos $M' = \langle m_1, \ldots, m_n\rangle = A\cdot m_1 \oplus \cdots \oplus A\cdot m_n$, hagamos cociente por $M'$:
+        $$\bt 0\rar & M' \rar & \rar M & \modulo{M}{M'} \rar & 0 \et$$
+        de forma que $\left(\modulo{M}{M'} \right)_{\Sigma} = 0$ por ser $M'_{\Sigma} \overset{\sim}{\longrightarrow} M_{\Sigma}$, entonces $\modulo{M}{M'}$ es de torsi\'on por lo visto anteriormente. Luego $An \left(\modulo{M}{M'}\right) \neq 0$. Y si $0 \neq a \in An\left(\modulo{M}{M'}\right)$, $a$ anula a $\modulo{M}{M'}$, $aM\subseteq M'$ es decir, $a\cdot M \subseteq  A\cdot m_1 \oplus \cdots \oplus A\cdot m_n$, de forma que 
+        $$M \subseteq  \underbrace{A\cdot \frac{m_1}{a} \oplus \cdots \oplus A\cdot \frac{m_n}{a}}_{A^n}$$ 
+
+        \item Todo subm\'odulo de un libre (finito) es libre (finito).
+
+        Queremos que ver que si $M \hookrightarrow A^n \Rightarrow M$ es libre de rango finito. Por inducci\'on sobre $n$
+
+        Si $n =1$, $M \hookrightarrow A$, al ser $A$ un dominio de ideales principales y $M$ es un ideal de $A$, $M=(a) \simeq A$.
+
+        Para $n-1$, $A = A \oplus A^{n-1}$, de forma que 
+        $$\bt 0 \rar &  A \rar & A^n \rar{\pi} & A^{n-1} \rar & 0 \\[-3mm]
+        0 \rar & A\cap M \arrow[u, phantom, "{\rotatebox{90}{$\subseteq$}}"] \rar & M \rar{\pi} \arrow[u, phantom, "{\rotatebox{90}{$\subseteq$}}"] & \pi(M) \arrow[u, phantom, "{\rotatebox{90}{$\subseteq$}}"] \rar & 0
+        \et$$
+        siendo $\pi(M)$ libre $=A^r$, luego la sucesi\'on rompe, $M = (A\cap M) \oplus \pi(M)$, siendo ambos libres y as\'i $M$ es libre de rango $n$. 
+    \end{enumerate}
+
+    $\Leftarrow)$ Siempre cierto. 
+\end{dem}
+\begin{teo}
+    [Primero de Clasificaci\'on] Sea $M$ un $A$-m\'odulo finito generado, y $L$ un libre finito de rango $M$
+    $$M = T(M) \oplus L$$
+\end{teo}
+\begin{dem}
+    Se tiene la sucesi\'on exacta
+    $$\bt 0 \rar & T(M) \rar & M \rar & \modulo{M}{T(M)} \rar & 0 \et$$
+    y como $\modulo{M}{T(M)}$ es sin torsi\'on, la sucesi\'on rompe, $\modulo{M}{T(M)} = L$ es libre finito, ser\'a $L = A^r$.
+
+    Si localizamos, $M_{\Sigma} = \cancelto{0}{T(M)_{\Sigma}} \oplus \Sigma^r  = \Sigma^r $
+
+    Esta descomposición es única. Si $M\simeq T' \oplus L'$ su descomposici\'on siendo $T'$ de torsi\'on y $L'$ libre, entonces
+    $$T(M) \simeq T(T'\oplus L') = T' $$
+    y por otro lado, 
+    $$L = \modulo{M}{T(M)} \simeq \modulo{T'\oplus L'}{T'} = L'$$
+ \end{dem}
+ \begin{obs}
+ Los m\'odulos libres est\'an clasificados por el rango. 
+ \end{obs}
+
+Sean $M, N$ dos m\'odulos finito generados
+ \begin{teo}
+    [de clasificaci\'on] $$M \simeq N \iff \begin{cases}
+        T(M) \simeq T(N)\\ rg(M) = rg(N)
+    \end{cases}$$
+ \end{teo}
+ \section{Clasificaci\'on de $A$-m\'odulos finito generados de torsi\'on}
+ Sea $M$ un $A$-m\'odulo finito generado de torsi\'on, sabemos que, por ser $A$ un dominio de ideales principales, $0 \neq An(M) = (a_M)$ y llamaremos a $a_M$ el elemento anulador de $M$. Entonces, 
+ $$a_M = p_1^{n_1} \cdots p_r^{n_r}$$
+ siendo $p_1, \ldots, p_r$ primos distintos. 
+
+ Tenemos el morfismo $h_a : M \xrightarrow{\cdot a} M$, $\ker h_a = \{m \in M\, : 
+ \, a\cdot m =0 \}$
+
+ \begin{lem}
+ Si $a$ y $b$ son primos entre s\'i, entonces $$\ker(h_{ab}) = \ker(h_a) \oplus \ker(h_b)$$
+ \end{lem}
+ \begin{dem}
+    Se cumple que $\ker (h_a) \subseteq \ker(h_{ab}), \, \ker (h_b) \subseteq \ker(h_{ab})$ y veamos que est\'an en posici\'on de suma directa, es decir, que
+    \begin{enumerate}
+        \item $\ker(h_a) \oplus \ker(h_b) = \ker(h_{ab}) $
+        \item $\ker(h_{a}) \cap \ker(h_{b}) = 0$ 
+    \end{enumerate}
+    Como $a$ y $b$ son primos entre s\'i, la igualdad de Bezout aserta que existen $x,y \in A \, : \, xa+yb=1$. \begin{enumerate}
+        \item Si $m \in \ker(h_{ab}), \, ab m = 0$, 
+       $$ m = 1 m = xam + ybm$$
+       donde $xam$ est\'a anulado por $b$ e $ybm$ est\'a anulado por $a$, luego $m \in \ker (h_a) + \ker(h_b)$
+       \item Si $m \in \ker h_a \cap \ker h_b$, $am=0=bm$ luego $m=0$.  
+    \end{enumerate}
+ \end{dem}
+\begin{teo}
+    Sea $M$ un $A$-m\'odulo finito generado con anulador $a_M = p_1^{n_1} \cdots p_r^{n_r}$, siendo $p_1, \ldots, p_r$ primos distintos. Entonces $M$ descompone como 
+    $$M = M_1 \oplus \cdots \oplus M_r$$
+    con $M_i$ de anulador $p_i^{n_i}$. 
+ \end{teo}
+ \begin{dem}
+    Por el Lema, 
+    $$\ker(a_M) = \ker (h_{p_1^{n_1}}) \oplus \cdots \oplus  \ker (h_{p_r^{n_r}})$$
+    y como $a_M$ anula a todo $M$, 
+    $$\ker(a_M) = M = M_1 \oplus \cdots \oplus M_r$$
+    y veamos que $p_i^{n_i}$ es \underline{el} anulador de $M_i$ (lo anula por definici\'on pero no sabemos si es exactamente el anulador). Luego el anulador de $M_i$ es alg\'un divisor de $p_i^{n_i}$, y por ser primo, tiene que ser $p_i^{m_i}$ con $m_i \leq n_i$. 
+
+    Entonces el anulador de $M=M_1\oplus \cdots \oplus M_r$ es $m.c.m.(p_1^{m_1}, \ldots,  p_r^{m_r}) = p_1^{m_1} \cdots p_r^{m_r}$, pero $M$ tiene anulador $a_M = p_1^{n_1} \cdots p_r^{n_r}$, luego $m_i = n_i$ necesariamente.
+
+    Veamos que esta descomposición es \'unica.
+
+    Sea $M = M_1' \oplus \cdots \oplus M_r'$ con $M_i'$ de anulador $p_i^{n_i}$, estos son los mismos elementos que los de $M_i$ (los anulados por $p_i^{n_i}$), luego $M_i = M_i' \, \forall i = 1, \ldots, r$. 
+ \end{dem}
+
+\begin{dem}
+    [2] Sea $M$ de anulador $a_M$, $An(M) = a_M \cdot A$, llamamos $\bar A = \modulo{A}{a_M \cdot A}$, de forma que $M$ es un $\bar A$-m\'odulo. Pero $\bar A$ es noetheriano, y $Spec \bar A = \{(\bar p_1), \ldots, (\bar p_r)\}$, es decir, los primos de $A$ que contengan al ideal $a_M A$, o lo que es lo mismo, los primos que aparecen en la descomposici\'on, y que son maximales, por lo que los denotaremos como $\m_i = (\bar p_i)$.
+    
+    Como vimos, si un anillo es as\'i, descompone $$\bar A = A_{\m_1} \times \cdots \times A_{\m_r}$$, de forma que $\bar A_{\m_1} = \modulo{A}{p_1^{n_1} A}$, y por tanto $M$ tambi\'en descompone 
+    $$M = M \underset{\bar A}{\otimes} \bar A = M_{\m_1} \times \cdots \times M_{\m_r}$$
+    siendo cada $M_{\m_i}$ un $\bar A_{\m_i}$-m\'odulo, y como $\bar A_{\m_i} = \modulo{A}{p_i^{n_i} A}$, est\'a anulado por $p_i^{n_i}$. Con un argumento similar al de la otra demostraci\'on, es el anulador, y por tanto tenemos la descomposición de $M$. 
+\end{dem}
+\section{Clasificaci\'on de $A$-m\'odulos de anulador primario $p^n$}
+Un elemento es primario si es $p^n$ con $p$ primo.
+
+Para clasificar dos m\'odulos con anulador primario $M$ y $N$ vemos si en sus descomposiones son isomorfos los factores.
+
+\begin{teo}
+    $\displaystyle M = \bigoplus_i \modulo{A}{p^{n_i} A}, \, n_i\leq n$. 
+\end{teo}
+
+\begin{lem}
+Llam\'abamos $\bar A = \modulo{A}{(p_1^{n_1} \cdots p_r^{n_r})}$, y $Spec\, \bar A = \{\m_1, \ldots, \m_r\}$ con $\m_i = (\bar p_i)$. Queda pendiente que $\bar A_{\m_i} = \modulo{A}{(p_i^{n_i})}$. 
+\end{lem}
+\begin{dem}
+    $$\bar A_{\m_i}  = \left( \modulo{A}{(p_1^{n_1} \cdots p_r^{n_r})}\right)_{\m_i} = \modulo{A_{\m_i}}{p_1^{n_1} \cdots p_r^{n_r} A_{\m_i}}= $$
+    Vamos a demostrarlo para $\m_1$. En ese caso, tenemos un anillo local, con maximal $\m_1= (p_1)$, de forma que los elementos que no pertenecen a $\m_1$ son invertibles, por lo cualquier $p_i$ con $i\neq 1$ es invertible. De esta forma, el resto de elementos invertibles por los que est\'a multiplicado $p_1$ los podemos eliminar, es decir, 
+    $$ \left( \modulo{A}{(p_1^{n_1} \cdots p_r^{n_r})}\right)_{\m_1}= \modulo{A_{\m_1}}{p_1^{n_1} \cancel{p_2^{n_2} \cdots p_r^{n_r} }A_{\m_1}} = \modulo{A_{\m_1}}{p_1^{n_1}A_{\m_1}} = \left( \modulo{A}{p_1^{n_1}  A} \right)_{\m_1}$$
+    Pero tenemos que $Spec \, \modulo{A}{p_1^{n_1}  A} = \{\m_1\}$, es local de maximal $\m_1$, por lo que localizarlo por $\m_1$ es no hacer nada, por lo que concluimos que
+    $$\bar A_{\m_1} = \modulo{A}{p_1^{n_1}  A}$$
+    
+\end{dem}
+\begin{cor}
+    Luego podemos descomponerlo al localizar en cada maximal
+    $$\bar A = A_{\m_1} \times \cdots \times A_{\m_r} $$
+\end{cor}
+
+Vamos a ver esta descomposic\'on en directo, m\'as general sin ser $A$ como antes
+\begin{teo}
+    [Chino de los Restos generalizado] Sea $A$ anillo, y sean $I,J$ dos ideales tales que $I+J=A$ (son primos entre s\'i). Entonces 
+    $$\modulo{A}{I\cap J} = \modulo{A}{I} \times \modulo{A}{J}$$
+\end{teo}
+\begin{dem}
+    Se define un morfismo $\modulo{A}{I\cap J} \hookrightarrow \modulo{A}{I} \times \modulo{A}{J}$ y se usa que $i+j=1$, es una especie de igualdad de Bezout, para ver que es epiyectivo. La inyectividad es directa. 
+\end{dem}
+\begin{cor}
+    Aplicando a $\modulo{A}{p_1^{n_1} \cdots p_r^{n_r}}$, definimos $I=(p_1^{n_1}), J=(p_2^{n_2}\cdots p_r^{n_r})$, y $I\cap J = m.c.m.(I,J) = (p_1^{n_1} \cdot p_2^{n_2}\cdots p_r^{n_r}) = I\cdot J$. Luego usando el teorema, 
+    $$\modulo{A}{p_1^{n_1} \cdots p_r^{n_r}} =\modulo{A}{p_1^{n_1}} \times \modulo{A}{p_2^{n_2} \cdots p_r^{n_r}}$$
+    y volviendo a aplicar lo mismo, se tiene la descomposi\'on completa. 
+\end{cor}
+\begin{obs}
+    
+Sea $A$ un anillo de ideales principales, sea $M$ un $A$-m\'odulo de anulador $p^n$, es decir, $M$ es un $\bar A = \modulo{A}{p^n}$-m\'odulo. 
+
+Existe entonces $m \in M$ con anulador $p^n$. Por tanto, $\langle m \rangle = \bar A$ pues tiene ese aulador. Tenemos as\'i $\langle m \rangle =\bar A \hookrightarrow M$. Adem\'as, este subm\'odulo tiene suplementario, lo que es equivalente a decir que hay una sucesi\'on que rompe con $M = \bar A \oplus \modulo{M}{\langle m \rangle }$ (no trivial). Podemos repetir el argumento con $ \modulo{M}{\langle m \rangle }$ y es finito por ser $M$ finito generado.
+
+Vamos a definir esto m\'as generalmente a continuaci\'on.
+\end{obs}
+\section{M\'odulos inyectivos}
+
+    Sea $I$ un $A$-m\'odulo
+\begin{defi}
+Diremos que $I$ es un $A$-m\'odulo inyectivo si $Hom_A(-,I)$ es exacto. Esto es, para toda sucesi\'on exacta
+$$(*) \bt 0 \rar & M'  \rar & M  \rar & M''  \rar & 0 \et$$
+la sucesi\'on $Hom((*), I)$ 
+$$\bt 0 \rar & Hom_A(M'',I)  \rar & Hom_A(M,I)  \rar & Hom_A(M',I)  \rar & 0 \et$$
+es exacta.
+\end{defi}
+\begin{obs}
+    Detallemos esto. Cuando $I$ era gen\'erico, la sucesi\'on no era exacta, no estaba asegurada la epiyecci\'on de la \'ultima flecha. As\'i pues, decir que $I$ es inyectivo es equivalente a decir que si $M'\hookrightarrow M$ es inyectiva, $Hom(M,I) \longrightarrow Hom(M',I)$ es epiyectiva. 
+
+    Esto es, si que si existe una aplicaci\'on $f': M' \longrightarrow I$ de un subm\'odulo de $M$ en $I$, 
+    $$\bt M' \arrow{d}{f'} \arrow[hook]{r} & M \arrow[dashed]{dl}{f} \\ I \et$$
+    este se puede extender al m\'odulo total $M$, $f: M \longrightarrow I$.
+\end{obs}
+\begin{custom}
+    [Criterio del ideal] $I$ es inyectivo si:
+    $$\bt \alpha \arrow[hook]{r} \arrow[swap]{d}{h'}& A\arrow[dashed]{dl}{h}  \\ I \et \qquad \forall \, \alpha \in A \text{ ideal }$$
+    es decir, si extiende en el anillo, extiende en el m\'odulo. 
+\end{custom}
+\begin{dem}
+    Sean $M'\hookrightarrow M$ un m\'odulo y un subm\'odulo cualquiera y sea $f: M' \longrightarrow I$, veamos que extiende a $f: M \longrightarrow I$. 
+
+    Consideremos parejas $(M_i, f_i)$, con $M_i$ un subm\'odulo tal que $M ' \subseteq M_i \subseteq M$ y $f_i : M_i \longrightarrow I$ con $f_i|_{M'} = f'$. Es no vac\'io pues al menos tiene $(M', f')$. 
+    
+    Vamos a ordenar estas parejas. $(M_i,f_i) \leq (M_j,f_j)$ si $M_i \subseteq M_j$ y $f_j|_{M_i} = f_i$, esto es, el siguiente diagrama es conmutativo
+    $$\bt M_i \arrow[swap]{dr}{f_i} \arrow[r, phantom, "\subseteq"] &[-5mm] M_j \arrow{d}{f_j} \\ &[-5mm] I \et$$
+
+    Veamos si tenemos las hip\'otesis del Lema de Zorn. Tenemos la colecci\'on $\{(M_i,f_i)\}_{i \in J}$, que es una colecci\'on totalmente ordenada de parejas, luego tienen la cota superior $N = \bigcup_i M_i$ y definimos $f_N : N \longrightarrow I$, que es el obvio, pues cada $n\in N$ pertenece a alg\'un $M_i$, y aplicamos $f_i$. Puede que est\'en en $M_i, M_j$, pero $f_i|_{M_j} = f_j$ (o viceversa), luego est\'a bien definido. As\'i, si $n \in M_i$, $f_N(n) = f_i(n)$. Es decir, $(N,f_N) \geq (M_i,f_i) \, \forall i \in J$ es una cota superior, as\'i que por el Lema de Zorn, existe una pareja $(N, f_N)$ (no tiene porqu\'e ser la cota), con $M' \subseteq N \subseteq M$ con $f_N|_{M'} = f'$,y esta pareja es maximal. 
+
+    Supongamos que $N\neq M$. Sea $m \in M$ tal que $m \nin N$, escogemos $N\subsetneqq N +\langle m\rangle$. Entonces veamos que $f_N$ extiende a $N+\langle m\rangle$, llegando as\'i a contradicci\'on, pues hemos econtrado otro maximal. Usaremos para ello la hip\'otesis del ideal. 
+
+    Los elementos de $N+\langle m \rangle$ son de la forma $n + am = n'+a'm$, de forma que $$(n-n') + (a-a')m = 0 \Rightarrow (a-a')m=n'-n \in N$$
+    entonces elegimos el ideal $\alpha = \{a\in A\, : \, a\cdot m \in M \}$ (ejercicio: probar que es un ideal). 
+
+
+% 10/11/2025
+
+Definimos el morfismo $h'$
+$$\bt \alpha  \arrow[swap]{d}{h'} &[-10mm] \ni a \arrow[mapsto]{d} \arrow[hook]{r} & A \arrow{dl}{h} \\[5mm] I &[-10mm] f_N(a\cdot m)  \et$$
+donde $h$ existe por hip\'otesis, haciendo el diagrama conmutativo. Definomos entonces 
+$$\bt N + \langle m \rangle \rar & I \\[-5mm] n+am\arrow[equal]{d} \rarmaps & f_N(m) + h(a) 
+\\[-5mm] n'+a'm \rarmaps & f_N(n') + h(a') \et$$
+veamos que $f_N(n') + h(a') = f_N(n) + h(a)$. Rest\'andolos, 
+$$f_N(n'-n) - h(a'-a) = 0 $$
+pero $(n-n') + (a-a')m=0$, luego $(a'-a)m=n-n' \in N$, y $(a'-a) \in \alpha$. Y entonces $h(a'-a) = h'(a'-a) = f_N((a'-a)m) = f_N(n-n') = 0$ de forma que en $N$, este morfismo es $f_N$ y hemos encontrado un m\'odulo m\'as grande que $N$, que supusimos que era maximal, llegando a una contradicci\'on.
+\end{dem}
+
+\begin{teo}
+    Sea $A$ un dominio de ideales principales, $p \in A$ un primo y $\bar A = \modulo{A}{p^n A}$. 
+
+    $\bar A$ es un $\bar A$-m\'odulo inyectivo. 
+\end{teo}
+\begin{dem}
+    Veamos que $\alpha \hookrightarrow \bar A$ es isomorfismo, es decir, que $Hom_{\bar A}(\bar A,\bar A) \longrightarrow Hom_{\bar A}(\alpha,\bar A)$ es epiyectiva. Pero $Hom_{\bar A}(\bar A,\bar A) = \bar A$ y veamos qu\'e es $Hom_{\bar A}(\alpha,\bar A)$:
+    \begin{enumerate}
+        \item $\alpha = (\bar p^i ), \, i \leq n$, donde $A \ni p \mapsto \bar p \in \bar A$, pues si $\alpha \in \bar A$, $\pi^{-1}(\alpha) = (a) \supseteq (p^n) \Rightarrow a = p^i, i \leq n$.  
+
+        Como $\alpha$ es mon\'ogeno $\alpha \simeq \modulo{\bar A}{An(\bar p^i)} = \modulo{\bar A}{(\bar p^{n-i})}$ de forma que tenemos el morfismo 
+         $$\bt \modulo{\bar A}{(\bar p^{n-i})} \rar & \alpha \\[-5mm] \bar 1 \rarmaps & \bar p^i \et$$
+
+         Tenemos pues 
+         $$\bt \bar p^i &[-8mm] \alpha \arrow[equal]{d} \arrow[hook]{r} & \bar A \\ &[-8mm] (\bar p^i)
+          \arrow[equal]{d}  \\ 
+          \bar 1 \arrow[mapsto]{uu} &[-8mm] \modulo{\bar A}{(\bar p^{n-i})} \arrow[swap]{ruu}{\cdot \bar p^i} \et$$
+         y veamos que $\cdot \bar p^i$ es epiyectivo.
+         $$\bt & f \rarmaps & f(\bar 1)  \\[-5mm] \bar A \rar \arrow[bend right=10mm]{rr}{\cdot \bar p^i} & Hom_{\bar A}\left( \modulo{\bar A}{(\bar p^{n-i})} , \bar A \right) & [-10mm] \arrow[equal]{l} (\bar p^i) \et$$
+         
+    \end{enumerate}
+\end{dem}
+
+\begin{teo}
+    Sea $A$ un dominio de ideales principales y $M$ un $A$-m\'odulo finito generado de anulador primario $p^n$, con $p$ primo. Entonces 
+    $$M \simeq \modulo{A}{p^n} \oplus \overset{d_n}{\cdots} \oplus \modulo{A}{p^n} \oplus \modulo{A}{p^{n-1}} \oplus \overset{d_{n-1}}{\cdots} \oplus \modulo{A}{p^{n-1}} \oplus \modulo{A}{p^{n-2}}\oplus \cdots \cdots  \oplus \modulo{A}{p}\oplus  \overset{d_1}{\cdots} \oplus \modulo{A}{p}$$
+    con $d_n \neq 0$. 
+\end{teo}
+\begin{lem}
+    En las hip\'otesis del teorema, existe un elemento $m \in M$, con anulador $p^n$.
+\end{lem}
+\begin{dem}
+    Sea $\{m_1 , \ldots, m_r\}$ generadores de $M$, $An(m_1) \supseteq An(M) = (p^n)$, por lo que $(p^{d_1}) = An(m_1)$ con $d_1 \leq n$. Y en general, $An(m_i) = (p^{d_i}), \, d_i \leq n$. Luego $$(p^n) = An(M) = An\langle m_1, \ldots, m_r\rangle = An(m_1) \cap \cdots \cap An(m_r) = (p^{d_1}) \cap \cdots \cap (p^{d_r}) = (p^d)$$ siendo $d=\max\{d_1, \ldots, d_r\}$ pero $d=n$, luego hemos terminado.
+\end{dem}
+\begin{lem}
+    Sea $\bt 0 \rar & I \rar & M \rar & N \rar & 0\et$ una sucesi\'on exacta de $A$-m\'odulos. Si $I$ es inyectivo, la sucesi\'on rompe ($M \simeq I \oplus N$). 
+\end{lem}
+\begin{dem}
+    Como $I$ es inyectivo, $$\bt Hom_A(M, I)\rar{i^*} & Hom_A(I,I) \rar & 0 \\[-5mm] r\rarmaps & Id \\[-5mm] r \rarmaps & r\circ i \arrow[equal]{u} \et$$ es epiyectiva, y hemos encontrado un retracto para $i$.  
+\end{dem}
+\begin{dem}
+    [del Teorema] $\bar A = \modulo{A}{p^n A}$, $M$ es $\bar A$-m\'odulo. Por inducci\'on sobre $\ell(M)$. 
+
+    Si $\ell(M)=1$. $M \simeq \modulo{A}{(\bar p)} = \modulo{A}{p A}$. 
+
+    Existe $m \in M$ tal que $An(m) = p^n (=An(M))$, $\langle m \rangle \simeq \modulo{A}{p^n A} = \bar A$, tenemos la sucesi\'on exacta
+    $$\bt 0 \rar & \langle m \rangle \rar[hook]  & M \rar & \modulo{M}{\langle m \rangle} \rar & 0   \et$$ donde $\bar A \simeq \langle m \rangle$ es inyectivo, es una sucesi\'on exacta de $\bar A$-m\'odulos. 
+    
+    Por el Lema 2, $M =\bar A \oplus \modulo{M}{\langle m \rangle}$ teniendo $ \modulo{M}{\langle m \rangle}$ anulador $p^i, \, i \leq n$, y $\bar A = \modulo{A}{p^n A}$ aparece al menos una vez. 
+\end{dem}
+\begin{cor}
+    Sea $A$ dominio de ideales principales $a\in A$, $a=p_1^{n_1} \cdots p_r^{n_r}$, 
+    $\bar A = \modulo{A}{aA}$ es un $\bar A$-m\'odulo inyectivo. 
+\end{cor}
+\begin{cor}
+    Si $M$ es un $A$-m\'odulo finito generado de anulador $a$, existe $m \in M$ con anulador $=a$. 
+\end{cor}
+\begin{obs}
+    Sea $A$ anillo de forma que $A=A_1\times A_2$. Tenemos dos epiyecciones a cada factor, de forma que 
+    $$\bt & A_1 = \modulo{A}{I_1} \\
+    A = A_1\times A_2 \arrow{ur} \arrow{dr} & \\ & A_2 = \modulo{A}{I_2}  \et$$
+    siendo $I_1 = 0 \times A_2$ y $I_2 = A_1 \times 0$, luego $I_1+I_2 = A$ y $I_1 \cap I_2 = 0$. De esta forma, el Teorema Chino de los Restos es un si y solo si.
+
+    Sea ahora $M$ un $A$-m\'odulo (con $A$ como antes), entonces $M=M_1\times M_2$ de forma que $M_1$ es $A_1$-m\'odulo y $M_2$ es $A_2$-m\'odulo. Esto es porque $M = M \underset{A}{\otimes} (A_1 \times A_2) = M \underset{A}{\otimes} A_1 \times M  \underset{A}{\otimes} A_2$. 
+
+    Si tenemos dos $A$-m\'odulos que descomponen $M = M_1 \times M_2, \, N = N_1\times N_2$, dar un morfismo de m\'odulos $f: M \longrightarrow N$ es equivalente a dar dos morfismos de $A_i$-m\'odulos $f_i : M_i \longrightarrow N_i$. 
+
+    Podemos estudiar la inyectividad de un subm\'odulo $I = I_1 \times I_2$  en cada factor. Si 
+    $$\bt M' \arrow[equal]{d}\rar[hook] & M \arrow[equal]{d}\\[-5mm] M'_1 \times M_2' \arrow[swap]{d}{f_1' \times f_2'} \rar[hook] & M_1 \times M_2 \arrow{dl}{f_1\times f_2}[swap]{?} \\[5mm] I \arrow[equal]{d} \\[-5mm] I_1\times I_2  \et$$
+    y que $f$ levante es equivalente a que $f_1, f_2$ lo hagan. 
+\end{obs}
+\section{Divisores elementales}
+\begin{obs}
+    Sea $A$ dominio de ideales principales, $a\in A$ un elemento propio, $a=p_1^{n_1} \cdots p_r^{n_r}$ y sabemos que 
+    $$\bar A = \modulo{A}{aA} = \modulo{A}{p_1^{n_1}} \times \cdots \times\modulo{A}{p_r^{n_r}} = \bar A_1 \times \cdots \times \bar A_r$$
+    de forma que $\bar A$ es inyectivo si $\bar A_i$ es inyectivo para todo $i=1,\ldots , r$, pero ya hemos probado que cada factor es inyectivo, luego $\bar A$ lo es. %\textcolor{red}{RECOLOCAR}
+\end{obs}
+
+\begin{prop}
+    Sea $M$ un $A$-m\'odulo finito generado anulado por $a$, es equivalente a que $M$ es un $\bar A$-m\'odulo $(\bar A = \modulo{A}{aA})$, pero como $\bar A$ descompone, $M$ descompone $M = M_1\times \cdots \times M_r$ donde $M_i$ es un $\bar A_i$-m\'odulo, con anulador $p_i^{n_i}$ (si $a$ es el anulador de $M$).
+
+    Pong\'amonos en esta situaci\'on, $a$ es \underline{el} anulador de $M$. Entonces podemos encontrar $m_i \in M_i$ de modo que el anulador de $m_i$ es $p_i^{n_i}$ (ya demostrado). Escojamos $m=(m_1, \ldots, m_r)$ de forma que como el anulador de cada $m_i$ es $p_i^{n_i}$, el anulador de $m$ es $p_1^{n_1} \cdots p_r^{n_r} = a$, y la condici\'on de que sean primos asegura que las potencias son m\'aximas y no se repiten. 
+\end{prop}
+\begin{teo}
+    Sea $M$ un $A$-m\'odulo finito generado de anulador $p^n$, $p$ primo $A$ dominio de ideales principales, hemos visto que 
+    \begin{align*}
+        M = & \modulo{A}{p^n} \oplus\overset{r_o)}{\cdots}\oplus \modulo{A}{p^n} \oplus\\  
+        & \modulo{A}{p^{n-1}} \oplus \overset{r_1)}{\cdots} \oplus\modulo{A}{p^{n-1}} \oplus\\ 
+        & \modulo{A}{p^{n-2}} \oplus \overset{r_2)}{\cdots} \oplus\modulo{A}{p^{n-2}} \oplus\\ 
+        & \qquad \qquad \vdots \\ 
+        & \modulo{A}{p} \oplus \overset{r_{n-1})}{\cdots} \oplus\modulo{A}{p} 
+    \end{align*}
+    con $r_o \geq 1$. 
+\end{teo}
+\begin{defi}
+    Se llaman divisores elementales a la colecci\'on
+    $$p^n, \overset{r_o)}{\ldots} , p^n, p^{n-1}, \overset{r_1)}{\ldots}, p^{n-1}, p^{n-2}, \ldots \ldots, p, \overset{r_{n-1})}{\ldots} , p $$
+\end{defi}
+\begin{prop}
+    Esta descomposici\'on es \'unica.
+\end{prop}
+\begin{dem}
+    Escogiendo $p^{n-1}$, 
+    $$p^{n-1} M = \modulo{(p^{n-1})}{(p^n)} \oplus \overset{r_o}{\cdots} \oplus \modulo{(p^{n-1})}{(p^n)} = \modulo{A}{p} \oplus \cdots \oplus \modulo{A}{p}$$ pues $p$ anula a $\modulo{(p^{n-1})}{(p^n)}$. Entonces $\ell (p^{n-1} M ) = r_o$, pues $\ell(\modulo{A}{p}) = 1$. 
+
+    Ahora $p^{n-2}$, 
+    \begin{align*}
+        p^{n-2} M = &  \modulo{(p^{n-2})}{(p^n)} \oplus \overset{r_o}{\cdots} \oplus \modulo{(p^{n-2})}{(p^n)}  = \modulo{A}{p^2} \oplus \overset{r_o}{\cdots} \oplus \modulo{A}{p^2} \\ 
+        &  \modulo{(p^{n-2})}{(p^{n-1})} \oplus \overset{r_1}{\cdots} \oplus \modulo{(p^{n-2})}{(p^{n-1})} = \modulo{A}{p} \oplus \overset{r_1}{\cdots} \oplus \modulo{A}{p}   
+    \end{align*}
+    y calculamos $\ell(\modulo{A}{p^2}) = 2$, luego $\ell(p^{n-2} M) = 2r_o + r_1$.
+
+    Repitiendo el argumento $\ell(p^{n-i} M) = ir_{o} + (i-1)r_1 + \cdots + 2r_i + r_{i-1}$
+\end{dem}
+\begin{lem}
+    $\ell\left(\modulo{A}{p^i}\right) = i$
+\end{lem}
+\begin{dem}
+    Cierto para $l=1$.
+
+    Para $l=2$, 
+    $$\bt 0 \rar & \modulo{(p)}{(p^2)} \rar & \modulo{A}{p^2}  \rar & \modulo{A}{p} \rar & 0 \et$$
+    luego $\ell(\modulo{A}{p^2}) = \ell(\modulo{A}{p} ) + \ell( \modulo{(p)}{(p^2)} ) = 1+\ell(\modulo{A}{p}) = 2$, pues $ \modulo{(p)}{(p^2)} $ tiene a $p$ como anulador ($p \cdot p$ se hace 0 en m\'od. $p^2$), luego $ \modulo{(p)}{(p^2)} \simeq \modulo{A}{p}$.
+
+
+    En $l=i-1$, en general, $\modulo{(p^n)}{(p^i)} \simeq \modulo{A}{p^{i-n}}$, luego
+    $$\bt 0 \rar & \modulo{(p^{i-1})}{(p^i)} \rar & \modulo{A}{p^i}  \rar & \modulo{A}{p} \rar & 0 \et$$
+    luego $\ell(\modulo{A}{p^i}) = \ell(\modulo{A}{p}) + \ell(\modulo{(p^{i-1})}{(p^i)}) = 1+\ell(\modulo{A}{p})$
+\end{dem}
+
+Juntando ambos teoremas, si $M$ es finito generado de torsi\'on es equivalente a que tenga anulador $a = p_1^{n_1} \dots p_r^{n_r}$. Por tanto, 
+$$\modulo{A}{aA} = \modulo{A}{p_1^{n_1}} \times \cdots \times \modulo{A}{p_r^{n_r}}$$
+$$M = M_1\times \cdots \times M_r$$
+siendo 
+$$M_1 = \modulo{A}{p_1^{n_1}} \oplus \cdots \oplus \modulo{A}{p_1^{n_1-1}} \oplus \cdots \cdots \oplus \modulo{A}{p_1} \oplus \cdots \oplus \modulo{A}{p_1}$$
+y as\'i para todo $M_i$. Es decir, todo m\'odulo es descomposici\'on de mon\'ogenos de anulador primario, anulados por cada primo. 
+
+\section{Factores invariantes}
+\begin{teo}
+    Sea $A$ dominio de ideales principales y $M$ un $A$-m\'odulo finito generado de torsi\'on. Entonces 
+    $$M = \modulo{A}{\phi_1} \oplus \modulo{A}{\phi_2} \oplus \cdots \oplus \modulo{A}{\phi_r} $$
+    siendo $\phi_{i+1}$ divisor de $\phi_{i}$. 
+\end{teo}
+\begin{dem}
+    Por inducci\'on sobre $\ell(M)$. 
+
+    Si $\ell(M)=1$, $M = \modulo{A}{p} = \modulo{A}{\phi_1}$ con $p$ primo y se acaba. 
+
+    Caso general. Sea $\phi_1 = An(M)$. Existe $m \in M \, : \, an(m) = \phi_1$ por un lema previo. Tenemos pues $\langle m \rangle \simeq \modulo{A}{\phi_1} \hookrightarrow M$, por lo que como $\langle m \rangle$ es un $\modulo{A}{\phi_1}$-m\'odulo inyectivo, tiene suplementario, luego $M = \modulo{A}{\phi_1} \oplus M'$ siendo $\ell(M') < \ell(M)$, de forma que $An(M')$ es divisor de $An(M)$, y por inducci\'on
+    $$M' = \modulo{A}{\phi'_1} \oplus  \cdots \oplus \modulo{A}{\phi_s'}$$
+    siendo $\phi'_{i+1}$ divisor de $\phi_i'$ y $\phi_1'$ el anulador de $M'$, que es divisor de $An(M) = \phi_1$. Llamando $\phi_2 = \phi_1', \, \cdots, \, \phi_{s+1} = \phi'_s$ hemos terminado. (lo m\'as importante de la demostraci\'on es la existencia del suplementario de $\modulo{A}{\phi_1}$)
+\end{dem}
+\begin{defi}
+    $\{\phi_1, \ldots, \phi_r\}$ son lo que llamaremos factores invariantes.
+\end{defi}
+\begin{obs}
+    $An (M)= m.c.m(\phi_1, \phi_2, \ldots, \phi_r) = \phi_1$
+\end{obs}
+
+Relacion\'emoslo con los divisores elementales.
+
+Tenemos la descomposici\'on de los divisores elementales
+$$M = \modulo{A}{\phi_1} \oplus \modulo{A}{\phi_2} \oplus \cdots \oplus \modulo{A}{\phi_r} $$
+siendo $An(M) = p_1^{n_1} \cdots p_r^{n_r}$, $p_1, \ldots, p_r$ primos distintos, entonces
+$$\phi_1 = p_1^{n_{11}=n_1} \cdot p_2^{n_{21}=n_2} \cdots p_r^{n_{r1} = n_r}$$
+$$\phi_2 = p_1^{n_{12}\leq n_1} \cdot p_2^{n_{22}\leq n_2} \cdots p_r^{n_{r2} \leq n_r}$$
+$$\vdots$$
+$$\phi_r = p_1^{n_{1r}} \cdot p_2^{n_{2r}} \cdots p_r^{n_{rr}  n_r}$$
+de forma que tenemos la otra descomposici\'on, as\'i pues, aplicando el Teorema Chino a cada descomposici\'on en factores invariantes, 
+$$\begin{array}{ccccccccl}
+    M = & \modulo{A}{\phi_1} & \oplus &  \modulo{A}{\phi_2} & \oplus & \cdots& \oplus & \modulo{A}{\phi_r} & = \displaystyle \bigoplus_{i,j} \modulo{A}{p_i^{n_{ij}}}\\ 
+    & \rotatebox{90}{=}  & & \rotatebox{90}{=}&  && & \rotatebox{90}{=} & \\
+    & \modulo{A}{p_1^{n_{11}}}  & \oplus & \modulo{A}{p_1^{n_{12}}}& \oplus&\cdots& \oplus& \modulo{A}{p_1^{n_{1r}}}& = M_1\\
+    & \oplus & & \oplus & & & & \oplus \\ 
+    & \modulo{A}{p_2^{n_{21}}}  &\oplus &\modulo{A}{p_2^{n_{22}}}& \oplus & \cdots& \oplus &\modulo{A}{p_2^{n_{2r}}} & = M_2\\
+    & \oplus & & \oplus& & &&\oplus \\ 
+    & \vdots & &\vdots && &&\vdots \\ 
+    & \oplus &  &\oplus && &&\oplus \\ 
+    & \modulo{A}{p_r^{n_{r1}}} &\oplus &\modulo{A}{p_r^{n_{r2}}}& \oplus &\cdots& \oplus & \modulo{A}{p_r^{n_{rr}}}& = M_r\\
+\end{array}$$
+
+Por ejemplo, si $M =\modulo{A}{p_1^2} \oplus \modulo{A}{p_1^2} \oplus \modulo{A}{p_2^3} \oplus \modulo{A}{p_2} \oplus \modulo{A}{p^2}$, luego $An(M) = p_1^2 \cdots p_2^3$. Los divisores elementales son $\{p_1^2, p_1^2, p_2^3, p_2, p_2\}$. $\phi_1 = p_1^2 \cdot p_2^3$, el producto de los divisores elementales elevados a la m\'axima potencia, luego $\phi_2 = p_1^2 \cdot p_2$. Solo queda $\phi_3 = p_2$. 
+
+\begin{prop}
+    $\phi_i = An(\bigwedge^i_A M)$. 
+\end{prop}
+\begin{dem}
+    Por inducci\'on sobre $\ell(M)$
+
+    Si $\ell(M)=1$, $M = \modulo{A}{p}$, $\bigwedge^1 M = M, \, \bigwedge^2 M = 0$
+
+    Consideremos $$M = \modulo{A}{\phi_1} \oplus \underbrace{\modulo{A}{\phi_2} \oplus \cdots \oplus \modulo{A}{\phi_r}}_{M'}$$
+    luego $M = \modulo{A}{\phi_1} \oplus M'$, de forma que 
+    $$\bigwedge^i M = \bigoplus_{p+q=i} \bigwedge^p \left(\modulo{A}{\phi_1} \right) \underset{A}{\otimes} \bigwedge^q M' = A \underset{A}{\otimes}  \bigwedge^i M'\,  \oplus\, \modulo{A}{\phi_1} \underset{A}{\otimes} \bigwedge^{i-1} M'  =\bigwedge^i M ' \oplus \bigwedge^{i-1} M'$$
+    por ser $M \underset{A}{\otimes}  \modulo{A}{I} = \modulo{M}{I \cdot M}$, $\modulo{A}{\phi_1} \underset{A}{\otimes} \bigwedge^{i-1} M' =  \bigwedge^{i-1} M'$ pues como $\phi_1$ anula a $M$, anula a cualquier subm\'odulo, por lo que hacer cociente por \'el es como no hacer nada. As\'i pues, 
+    $$An\left(\bigwedge^i M \right) = m.c.m.\left(An(\bigwedge^i M') , An(\bigwedge^{i-1} M')\right) = m.c.m.(\phi_i, \phi'_{i-1})  = m.c.m. (\phi_{i+1},\phi_i) = \phi_{i} $$
+\end{dem}
+
+\begin{cor}
+    Como conclusi\'on del cap\'itulo, tenemos $A$ dominio de ideales principales y $M$ $A$-m\'odulo finito generado, entonces $M$ descompone
+    $$M = L(M) \oplus T(M)$$
+    siendo $L(M) = A^r$ siendo $r=rango(M) = \dim_{\Sigma} M_{\Sigma}$.
+
+    $T(M)$ de anulador $a=p_1^{n_1} \cdots p_r^{n_r}$, de forma que $T(M)$ descompone de dos formas, con divisores elementales o con factores invariantes, siendo uno en mon\'ogenos primarios o con mon\'ogenos, divisores uno del siguiente,
+    $$T(M) = \begin{cases}
+        \displaystyle \bigoplus_{i,j} \modulo{A}{p_i^{n_{ij}}} \\ \modulo{A}{\phi_1} \oplus \cdots \oplus \modulo{A}{\phi_r}
+    \end{cases}$$
+    de forma que
+\end{cor}
+\begin{teo}
+    $M \simeq N$ $\iff$ $\begin{cases}
+        r(M) = r(N) \\ \text{Mismos factores invariantes o mismos divisores elementales}
+    \end{cases}$
+\end{teo}
+\begin{ejem}
+    Si $A=\bb  Z$, $M$ es un grupo abeliano finito generado, y $M = \bb Z^r \oplus T(M)$. $r = \dim_{\bb Q} M_{\bb Q}$, y $T(M)$ tendr\'a $p_1^{n_1} \cdots p_r^{n_r}$ por anulador siendo $p_i$ n\'umeros primos. Y descompone como 
+    $$T(M) = \begin{cases}
+        \displaystyle \bigoplus_{i,j} \modulo{\bb Z}{p_i^{n_{ij}}} \\ \modulo{\bb Z}{\phi_1} \oplus \cdots \oplus \modulo{\bb Z}{ \phi_r}
+    \end{cases}$$
+    con $\phi_{i+1}$ divisor de $\phi_i$, y $\phi_i \in \bb N$, pues el ideal generado por $n$ y $-n$ es el mismo.
+\end{ejem}
+
+

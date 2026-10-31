@@ -1,0 +1,795 @@
+\chapter{M\'odulos y otras estructuras algebraicas}
+\justifying
+\section{$A$-m\'odulos}
+
+Sea $A$ un anillo (conmutativo y con elemento unidad),
+\begin{defi}
+    Un $A$-m\'odulo $M$ es un conjunto dotado de las operaciones:
+    $$\begin{array}{rcl}
+         M \times M & \overset{+}{\longrightarrow} & M \\
+         (m,m') & \longrightarrow & m+m' 
+    \end{array} \qquad \begin{array}{rcl}
+         A \times M & \overset{\cdot}{\longrightarrow} & M \\
+         (a,m) & \longrightarrow & a\cdot m 
+    \end{array}$$
+    cumpliendo  \vspace{-3mm}
+    \begin{enumerate}
+        \item $(M,+)$ satisface los axiomas de grupo abeliano:  \vspace{-3mm}
+        \begin{itemize}
+            \item $m+(m+m'')=(m+m')+m'' \qquad \forall m, m',m'' \in M$
+            \item $m+m'=m+m' \qquad \forall m, m' \in M$
+            \item Existe un elementro neutro $0\in M / 0+m=m \qquad \forall m, m',m'' \in M$
+            \item Para cada $m\in M$, existe $-m$, verificando $m+(-m)=0 \qquad \forall m, m',m'' \in M$
+        \end{itemize}
+        \item $a\cdot (a' \cdot m) = (aa') \cdot m \qquad \forall a,a'\in A, \, \forall m \in M$
+
+        $a (m + m') = am + am' \qquad \forall a\in A, \, \forall m, m' \in M$
+
+        $(a+a') \cdot m = am+a'm \qquad \forall a,a'\in A, \, \forall m \in M$
+
+        $1\cdot m = m \qquad \forall m \in M$
+    \end{enumerate}
+\end{defi}
+\begin{propis} \:  \vspace{-3mm}
+    \begin{enumerate}
+        \item $0\in A, \, m\in M \Rightarrow 0 \cdot m = 0$
+        \item $a\in A, \, 0\in M \Rightarrow a \cdot 0 = 0$
+
+        $^*$ El rec\'iproco de las dos propiedades anteriores no es cierto, pues como el anillo $A$ no es cuerpo, todo elemento no tiene invertible y puede darse el caso en que $a\cdot m=0$ con $a\neq 0$ y $m\neq 0$.
+        \item $(-1) \cdot m = -m $
+    \end{enumerate}
+\end{propis}
+
+Dados $M,N$ dos m\'odulos, 
+\begin{defi}
+    Una aplicaci\'on $f: M\longrightarrow N$ es morfismo de m\'odulos si cumple
+    $$f(m+am') = f(m)+a f(m') \qquad \forall a\in A, \, m,m'\in M$$
+\end{defi}
+\begin{propis}\, \vspace{-3mm}
+    \begin{itemize} 
+        \item $f(0)=0$
+        \item $f(-m)=-f(m)$
+    \end{itemize}
+\end{propis}
+\begin{defi}
+    Un morfismo de m\'odulos $f: M\longrightarrow N$ se llama isomorfismo si es biyectivo.
+\end{defi}
+\begin{obs}
+    Tiene inversa $f^{-1} : N \longrightarrow M$ y se verifica que es morfismo de m\'odulos al ser $f$ morfismo de m\'odulos.
+\end{obs}
+\begin{defi}
+    $Hom_A(M,N) = \left\{ f: M \longrightarrow N \, / \, f \text{ es morfismo de m\'odulos} \right\}$
+\end{defi}
+\begin{prop}
+    $Hom_A(M,N)$ tiene estructura de $A$-m\'odulo.
+\end{prop}
+\begin{dem}
+    Sean $f,g: M \longrightarrow N$, definimos $f+g$ como la aplicaci\'on tal que $\forall m \in M$, $(f+g)(m) = f(m) + g(m)$, que se comprueba que es morfismo de m\'odulos. 
+
+    Dado $a\in A$, $f:M \longrightarrow N$, se define la aplicaci\'on $af$ tal $(af)(m) = a\cdot f(m)$, que se comprueba que es morfismo de m\'odulos. 
+
+    Habiendo definido as\'i una estructura de m\'odulo en $Hom_A (M,N)$ que verifica los axiomas de m\'odulo.
+\end{dem}
+\begin{ejem}
+    Sea $M$ un $A$-m\'odulo $a\in A$, se define 
+    $$\begin{array}{rrcl}
+        h_a: & M & \longrightarrow & M \\
+         & m & \longmapsto & h_a(m) = a\cdot m
+    \end{array}$$
+    y se comprueba que es un morfismo de m\'odulos. Sea $a'\in A, m'\in M$, 
+    $$h_a(m+a'm') = a (m+a'm') = am + aa'm' = h_a (m)+a' h_a (m')$$
+    Se verifica adem\'as que $\forall \, a'\in A$, $h_{a+a'} = h_a + h_{a'}, \, h_{a \cdot a'} = h_a \cdot h_{a'}$.
+    \end{ejem}
+
+\section{Subm\'odulos}
+\begin{defi}
+    Un subconjunto $M' \subseteq M$ es un sub\'odulo si cumple que $\forall m_1', m_2' \in M', \, \forall a\in A$, 
+    $$m_1'+am_2' \in M'$$
+\end{defi}
+\begin{prop}
+    Si $M'$ es un subm\'odulo, la inclusi\'on:
+    $$\bt 
+    i: M \arrow[hook]{r} & M \\ [-5mm]
+    \, \, \, m' \arrow[mapsto]{r} & m'
+    \et$$
+    es morfismo de m\'odulos. 
+\end{prop}
+Sean $M', M''$ subm\'odulos de $M$
+\begin{defi}
+    $$M'+M'' = \left\{ m'+m'' / m'\in M', \, m'' \in M'' \right\}\subseteq M$$
+    $$M' \cap M'' = \left\{m \in M / m\in M', \, m\in M'' \right\}\subseteq M $$
+\end{defi}
+\begin{prop}
+    $M'+M''$ y $M' \cap M''$ son subm\'odulos de $M$. Adem\'as, $M'+M''$ es el m\'inimo subm\'odulo que contiene a ambos y $M' \cap M''$ es el m\'aximo subm\'odulo contenido en ambos.
+\end{prop}
+\section{Cociente}
+
+Sea $M$ un $A$-m\'odulo y $M' \subseteq M$ un subm\'odulo,
+\begin{defi}
+Definimos 
+$$\modulo{M}{M'} \coloneq \modulo{M}{\sim} \qquad m_1\sim m_2 \iff m_1 - m_2 \in M'$$
+lo que se comprueba que es una relaci\'on de equivalencia. 
+
+Si $m\in M$, $[m]\in \modulo{M}{M'}$ es la clase de equivalencia de $m$. Dotamos a $\modulo{M}{M'}$ de estructura de m\'odulo como sigue:
+\begin{itemize}
+    \item $[m_1]+[m_2] = [m_1 +m_2]$
+    \item $a[m] = [am]$
+    \item $0 = [0] =[m] \, / \, m'\in M'$
+\end{itemize}
+lo cual se demuestra que no depende el representante elegido, es decir, est\'a bien definido.
+\end{defi}
+\begin{prop}
+    La aplicaci\'on
+    $$\bt
+    \pi : M \arrow{r} & \modulo{M}{M'} \\ [-5mm]
+    m \arrow[mapsto]{r} & \pi(m) = [m]
+    \et$$    
+    es morfismo de m\'odulos y epiyectiva.
+\end{prop}
+\section{N\'ucleo e Imagen}
+Sea $f: M\longrightarrow N$ un morfismo de $A$-m\'odulos, 
+\begin{defi} Definimos los conjuntos imagen de $f$ y n\'ucleo de $f$
+    $$\Im f = \{ n\in N \, / \, n =f(m) \} \subseteq N$$
+    $$ \ker f = \{ m\in M \, / \, f(m) = 0\} \subseteq M$$
+\end{defi}
+\begin{prop}
+   $\Im f$ y $\ker f$ son subm\'odulos de sus respectivos m\'odulos. 
+\end{prop}
+\begin{prop}
+    $f: M \longrightarrow N$ es inyectiva $\iff$ $\ker f = 0$
+\end{prop}
+\begin{teo}[de factorizaci\'on]
+    $$\modulo{M}{\ker f} \underset{\sim}{\overset{\bar f }{\longrightarrow}} \Im f \qquad \, / \,  \bar f([m]) = f(m)$$
+    verificando que  \vspace{-3mm}
+    \begin{enumerate}
+        \item Est\'a bien definida
+        \item Es un morfismo de m\'odulos
+        \item Es epiyectiva e inyectiva
+    \end{enumerate}
+    lo que nos da el siguiente diagrama conmutativo
+    $$\bt 
+    M \arrow{r}{f} \arrow{d}{\pi} & N \\
+    \modulo{M}{\ker\, f} \arrow{r}{\bar f} & \Im f \arrow[hook]{u}{i} 
+    \et \quad \Rightarrow \quad f = i \circ \bar f \circ \pi $$
+    siendo $i$ inyectiva, $\pi$ epiyectiva y $\bar f$ un isomorfismo.
+\end{teo}
+\begin{prop}
+    Si $M' \subseteq M$, $M \overset{\pi}{\longrightarrow} \modulo{M}{M'} \, \Rightarrow \, \ker \pi = M'$.
+\end{prop}
+\begin{ejems} \,  \vspace{-3mm}
+    \begin{enumerate}
+        \item Si $A=k$ cuerpo, un $k$-m\'odulo es un $k$-espacio vectorial, un morfismo de $k$-m\'odulos es una aplicaci\'on lineal, un subm\'odulo es un subespacio vectorial, etc.
+        \item Si $A = \mathbb Z$, un $\mathbb Z$-m\'odulo es un grupo abeliano. Sea $M$ grupo abeliano, añadimos la operaci\'on:
+        $$1\cdot m=m \,, \, 2\cdot m = (1+1)\cdot m = m+ m \, , \, \ldots$$
+         de forma que
+         $$\forall n > 0, \, n \cdot m = (1+\cdots+1)\cdot m = m + \cdots + m $$ $$ (-1) \cdot m = -m \Rightarrow (-n) \cdot m = - m+ \cdots + -m$$
+         \item Sea $k$ un cuerpo y $A = k[x]$, dar un $k[x]$-m\'odulo es equivalente a dar $(E, T)$(donde $E$ es un $k$-espacio vectorial y $T:E \longrightarrow E$ un endomorfismo lineal, y definiendo $T := \cdot x \Rightarrow p(x) \cdot e = p(T)(e)$.
+         
+         \textbf{Ejercicio.} Sea $A=k[x,y]$, un $k[x,y]$-m\'odulo es equivalente a $(E,T,T')$ tal que $T \circ T' = T' \circ T$.
+         \item El anillo $A$ es un $A$-m\'odulo por s\'i mismo, con las operacionesd el anillo. Gracias a esto podemos entender todo $A$-m\'odulo como cierta combinaci\'on del anillo $A$. 
+
+         Los subm\'odulos de $A$ son los ideales $I \subseteq A$. Tenemos entonces el morfismo de m\'odulos
+         $$\bt 
+         A \arrow{r}{\pi} & \modulo{A}{I} \\[-5mm] 
+         a \arrow[mapsto]{r} & \left[a\right]
+         \et \qquad \qquad a \cdot a' := [a\cdot a']$$
+         supongamos que $I\neq 0$. Sea $i \in I \, / \, i\neq 0 \Rightarrow i \cdot [a] = [i\cdot a] = 0$. Pudiendo escoger $[a]\neq [0]$, entonces hemos encontrado un ejemplo de $a\cdot b=0 \, / \, a,b \neq 0$. 
+         \item Sea $f: A \longrightarrow B$ morfismo de anillos, $B$ es $A$-m\'odulo (v\'ia $f$) por el producto $a\cdot b := f(a) \cdot b\, / \, a\in A, \, b \in B$. 
+
+         Si $M$ es un $B$-m\'odulo, entonces tambi\'en es $A$-m\'odulo (v\'ia $f$). Sea $m \in M, \, a \in A$, $a\cdot m : = f(a) \cdot m$
+         \item $\pi :  A \longrightarrow \modulo{A}{I}$ es un ejemplo de lo anterior (v\'ia $\pi$).
+    \end{enumerate}
+\end{ejems}
+\begin{ejer}
+Sea $M$ un $A$-m\'odulo, calcular cu\'antos elementos hay en $Hom_A(M,N)$
+\end{ejer}
+\begin{sol}
+    Se tienen las asignaciones
+    $$\bt 
+    &[-23mm] Hom_A(M,N) \arrow{r} & M \\[-5mm]
+    &[-23mm] f \arrow[mapsto]{r} & f(1) \\[-5mm]
+    f_m(a\cdot m) = a\cdot m \: / \, &[-23mm] f_m & \arrow[mapsto]{l} m
+    \et$$
+    Donde hay que comprobar son morfismos de $A$-m\'odulos, $f_m$ es morfismo de $A$-m\'odulos y que una asignaci\'on es la inversa de la otra.
+\end{sol}
+\section{Producto directo y suma directa}
+Sea $I$ un conjunto de \'indices, $\{M_i\}_{i \in I}$ una colecci\'on de $A$-m\'odulos.
+\begin{defi}
+    Se define 
+    $$\prod_{i \in I} M_i = \left\{(m_i)_{i \in I} \, / \, m_i \in M_i \right\}$$
+    y le podemos dotar de estructura de $A$-m\'odulo  \vspace{-3mm}
+    \begin{itemize}
+        \item $(m_i)_{i \in I} + (m_i')_{i \in I} = (m_i+m_i')_{i \in I}$
+        \item $a\cdot (m_i)_{i \in I} = (a\cdot m_i)_{i \in I}$
+    \end{itemize}
+    
+    Tenemos que para cada $j \in I$, existe
+    $$\bt 
+    \pi_j : \prod M_i \arrow{r} & M_i \\[-5mm] 
+    \, (m_i) \arrow[mapsto]{r} & m_j
+    \et$$
+    que es un morfismo de $A$-m\'odulos.
+\end{defi}
+
+Sea $\{M_i\}_{i \in I}$ una colecci\'on de $A$-m\'odulos, 
+\begin{defi}
+    $\displaystyle \bigoplus _{i \in I} M_i \subseteq \prod_{i \in I} M_i$ es la suma directa definida como
+    $$\bigoplus _{i \in I} M_i = \left\{ (m_i)_{i \in I} \in \prod_{i \in I} M_i / m_i = 0 \text{ para todo } i \text{ excepto un número finito de ellos} \right\}$$
+\end{defi}
+\begin{ejer}
+    Comprobar que es un subm\'odulo (inmediato).
+\end{ejer}
+
+Para cada $j$, tenemos un morfismo de m\'odulos
+$$\begin{array}{rrcl} \phi_j: & M_j & {\longrightarrow} & \displaystyle \bigoplus _{i \in I} M_i \\
+& m_j & \longmapsto & (m_i)_{i \in I} = \left\{\begin{array}{lr}
+     m_i = 0 & \text{ si } i \neq j  \\
+     m_i=m_j & \text{ si } i=j 
+\end{array}\right\} = (0,\ldots, 0, m_j,0,\ldots ,0)\end{array}$$
+
+\section{Propiedades Universales del Producto y la Suma Directa}
+
+Sea $\{M_i\}_{i \in I}$ una colecci\'on de $A$-m\'odulos $\prod_i M_i$ y $N$ otro $A$-m\'odulo. 
+\begin{propi}[Universal del Producto Directo]
+    Dar un morfismo de $A$-m\'odulos $f: N \longrightarrow \prod_i M_i $ es equivalente a dar un morfismo $f_i : N \longrightarrow M_j$ para cada $j$. Escrito como f\'ormula:
+    $$Hom_A\left(N, \prod_i M_i\right) = \prod _i Hom_A (N, M_i)$$
+    existiendo un isomorfismo de $A$-m\'odulos.
+\end{propi}
+\begin{dem}
+    $\Rightarrow)$ Dado $f: N \rightarrow \prod_i M_i$, definimos
+    $$\bt 
+    f_j: N \arrow{r} \arrow{dr}{f} & M_j \\ 
+    & \prod M_i \arrow{u}{\pi_j}
+    \et$$
+    por tanto, $f_j = \pi \circ f$, que es morfismo de $A$-m\'odulos por ser composici\'on de morfismo de $A$-m\'odulos (igual que vimos en $k$-esp. vect.). Por tanto, a cada $f$ le asignamos $\{f_i\}_{i \in I}$.
+
+    $\Leftarrow)$ Rec\'iprocamente, dadas $f_j: N \longrightarrow M_j$, definimos 
+    $$\bt f:  N \arrow{r} &\prod_i M_i\\[-5mm]
+    n \arrow[mapsto]{r} & f(n) = \big(f_i(n)\big)_{i \in I}\et$$
+    y se comprueba que $f$ es morfismo de $A$-m\'odulos.
+
+    Quedar\'ia comprobar que una asignaci\'on es la inversa de la otra y que las asignaciones son morfismos de $A$-m\'odulos.
+\end{dem}
+
+Sea $\{M_i\}_{i \in I}$ una colecci\'on de $A$-m\'odulos, $N$ un $A$-m\'odulo
+\begin{propi}[Universal de la Suma Directa]
+Dar un morfismo de $A$-m\'odulos $\displaystyle f: \bigoplus_i M_i \longrightarrow N$ es equivalente a dar un morfismo $f_j: M_j \longrightarrow N$ para cada $j$. Como f\'ormula:
+$$Hom_A \left( \bigoplus_i M_i, N\right) = \prod_i Hom_A(M_i,N)$$
+\end{propi}
+\begin{dem}
+    $\Rightarrow)$ Dada $\displaystyle f:  \bigoplus_i M_i \longrightarrow N$, definimos
+    $$\bt f_j: M_j \arrow{r} \arrow{rd}{\phi_j} & N \\
+     &  \bigoplus_i M_i \arrow{u}{f}
+    \et$$
+     de forma que tenemos las $(f_i)_{i \in I}$ definidas por $f_i = f \circ \phi_i$. Adem\'as, ser\'a morfismo de m\'odulos por ser composici\'on de morfismos de m\'odulos.
+
+     $\Leftarrow)$ Dadas $(f_i)_{i \in I}$ tal que $f_i: M_i \longrightarrow N$, definimos
+     $$ \bt 
+     f: \displaystyle \bigoplus_i M_i \arrow{r} & N \\[-8mm]
+     \, \, (m_i)_{i \in I} \arrow[mapsto]{r} &\displaystyle \sum_i f_i(m_i)
+     \et$$
+     es decir, $f=\sum_i f_i$, que se comprueba que es morfismo de m\'odulos. Adem\'as, se comprueba que las asignaciones son una la inversa de la otra.
+\end{dem}
+\begin{obs}
+    $\displaystyle \sum_i f_i(m_i)$ no es una suma infinita, ya que existe un n\'umero finito de elementos en ella distintos de 0, es decir, es una suma ``casi nula''.
+\end{obs}
+\begin{obs}
+    $\Im f = \displaystyle \sum_i \Im f_i$
+\end{obs}
+Veamos qu\'e significa la suma infinita de una colecci\'on de subm\'odulos $\{M_i\}_{i \in I}$:
+\begin{defi}
+    $\displaystyle \sum_i M_i$ es el conjunto cuyos elementos son de la forma $$m=m_{i_1} + \cdots + m_{i_r}, \, i_{j}\in I, \, m_{i_j}\in M_{i_j}$$ es decir, sus elementos son sumas finitas de los elementos de los subm\'odulos $M_i$.
+\end{defi}
+\begin{prop}
+    $\sum M_i$ es subm\'odulo de $M$.
+\end{prop}
+\begin{propi}
+    [Universal de Suma Infinita de Subm\'odulos] Se tienen las $f_i : M_i \hookrightarrow M$, por la propiedad universal de la suma directa, tenemos la $f=\sum f_i : \bigoplus M_i \longrightarrow M$ inducida por las $f_i$ de forma que $\Im f = \sum M_i$
+\end{propi}
+
+\section{Generadores, bases y m\'odulos libres}
+Sea $M$ un m\'odulo y $\{m_i\}_{i \in I}$ una colecci\'on de elementos de $M$, cada $m_i$ define un morfismo
+$$\bt 
+A \arrow{r}{f_i} & M \\[-5mm]
+1 \arrow[mapsto]{r} & m_i \\[-5mm]
+a \arrow[mapsto]{r} & a m_i 
+\et$$
+y por la propiedad universal de la suma directa, 
+$$ \bt \arrow[rightsquigarrow]{r} &\displaystyle \bigoplus_i A_i = A \arrow{r}{f} & M\et$$
+por lo que si $\Im f_i = \langle m_i \rangle = \{am_i, \, \forall \, a \in A\}$, entonces
+$$\Im f= \sum_i \langle m_i \rangle \underset{not.}{ = } \left\langle {\{m_i\}_{i \in I}}\right\rangle$$
+es decir, el subm\'odulo de $M$ generado por los $\{m_i\}$. Los elementos de $\left\langle {\{m_i\}_{i \in I}}\right\rangle$ son de la forma 
+$$a_{i_1} m_{i_1} + \cdots + a_{i_r} m_{i_r}\, , \quad i_1, \ldots, i_r \in I$$
+es decir, una combinaci\'on lineal finita de elementos de $\{m_i\}_{i\in I}$. 
+\begin{defi}
+    Dados $\{m_i\}_{i\in I}$ una colecci\'on de elementos de $M$, una combinaci\'on lineal de los $\{m_i\}$ es un elemento de la forma:
+    $$a_{i_1} m_{i_1} + \cdots + a_{i_r} m_{i_r}\, , \quad i_1, \ldots, i_r \in I$$
+\end{defi}
+\begin{defi}
+    El subm\'odulo generado por $\left\langle {\{m_i\}_{i \in I}}\right\rangle$ es el conjunto de combinaciones lineales de $\{m_i\}$. 
+\end{defi}
+\begin{ejem}
+    Caso finito: $m_1, \ldots, m_r \in M$,
+    $$\langle m_1, \ldots, m_r \rangle = \{ a_1m_1 + \cdots + a_r m_r \, / \, a_i \in A \} = \langle m_1 \rangle + \cdots + \langle m_r \rangle $$
+\end{ejem}
+\begin{defi}
+    Diremos que $\{m_i\}_{i\in I}$ es un sistema de generadores de $M$ si $\langle \{m_i\}_{i\in I} \rangle = M$.
+\end{defi}
+\begin{defi}
+    Un m\'odulo es finito generado si podemos encontrar un  si podemos encontrar un n\'umero finito de elementos de $M$ que sea sistema de generadores.
+\end{defi}
+\begin{defi}
+    $M$ es mon\'ogeno si podemos encontrar un elemento del m\'odulo $m\in M$ tal que $M = \langle m \rangle$. 
+\end{defi}
+
+\begin{defi}
+    Un conjunto de elementos $m_1, \ldots, m_r \in M$ son linealmente independientes si toda combinaci\'on lineal igualada a 0, $a_1 m_1 + \cdots + a_r m_r = 0$ implica que $a_1, \ldots, a_r = 0$. $\{m_i\}_i$ son linealmente independientes si los elementos de todo subconjunto finito de ellos son linealmente independientes.
+\end{defi}
+\begin{defi}
+    $\{m_i\}$ son base si son sistema de generadores y linealmente independientes.
+\end{defi}
+\begin{defi}
+    Un m\'odulo $M$ es libre si existe una base.
+\end{defi}
+\begin{ejer}
+    $\{m_1, \ldots, m_r\} \in M$. Probar que $\{m_1, \ldots, m_r\}$ son base si y solo si todo $m\in M$ se expresa de modo \'unico como combinaci\'on lineal de $m_1, \ldots, m_r \, / \, m = a_1 m_1 + \cdots + a_r m_r$ siendo $a_1, \ldots, a_r$ \'unicos.
+
+    $\{m_i\}$ son base si y solo si todo $m \in M $ se expresa de modo \'unico como combinaci\'on lineal de los $\{m_i\}$, es decir, 
+    $$m = \sum_i a_i m_i \, / \, a_i=0 \text{ excepto un n\'umero finito}$$
+\end{ejer}
+\begin{ejems}
+    Sea $I$ un conjunto de \'indices, $\displaystyle \bigoplus_{i \in I} A_i = A^{\oplus I} \, / \, A_i = A \, \forall i \in I$. Llamamos $e_i = ( 0, \ldots, 0, \underbrace{1}_{i)}, 0, \ldots, 0) \, \forall \, i \in I$.  $\{e_i\}$ es una base de $A^{\oplus I}$. Un elemento de $A^{\oplus I}$ es de la forma $$(a_i)_{i \in I} = \sum_i a_i e_i$$
+    siendo las $a_i$ casi todas nulas. 
+
+    As\'i, $A \oplus A \oplus A$ tiene como base $e_1=(1,0,0), \, e_2 = (0,1,0),\, e_3 = (0,0,1)$ y entonces cualquier elemento es
+    $$a= (a_1,a_2,a_3) =a_1e_1 + a_2 e_2 + a_3e_3$$
+\end{ejems}
+\begin{ejer}
+    Sea $f: M\longrightarrow N$ un morfismo de m\'odulos,  \vspace{-3mm}
+    \begin{itemize}
+        \item Si $\{m_i\} \in M$ son linealmente independientes y $f$ es inyectiva $\Rightarrow \, \{f(m_i)\}$ son linealmente independientes.
+        \item Si $\{m_i\} \in M$ son sistema de generadores y $f$ es epiyectiva $\Rightarrow \, \{f(m_i)\}$ son sistema de generadores.
+        \item Si $\{m_i\} \in M$ son base y $f$ es isomorfismo $\Rightarrow \, \{f(m_i)\}$ son base.
+    \end{itemize}
+\end{ejer}
+\begin{sol}
+    Se demuestra exactamente igual que en espacios vectoriales.
+\end{sol}
+\begin{teo}
+    Un $A$-m\'odulo $M$ es libre si y solo si es isomorfo a $A^{\oplus I}$ para alg\'un conjunto de \'indices $I$.
+\end{teo}
+\begin{dem}
+    $\Rightarrow ) \, M$ tiene una base $\{m_i\}_{i \in I}$, que define un morfismo $\bt A^{\oplus I} \arrow{r}{f=\sum f_i} & M \et$ por definir $i$ morfismos $f_i$:
+    $$\bt A \arrow{r}{f_i} \arrow{r} & M \\[-5mm] 1 \arrow[mapsto]{r} & m_i\et$$
+    uno por cada elemento de la base. $f$ es epiyectiva pues $Im f = \langle \{ m_i \} \rangle = M$ ya que generan $M$. Adem\'as, $f$ es inyectiva porque $f((a_i)) = \sum a_i m_i = 0 \iff (a_i) = 0$ por ser las $\{m_i\}$ linealmente independientes. Por lo que concluimos que $f$ es un isomorfismo.
+
+    $\Leftarrow) \, A^{\oplus I}$ tiene como base $e_i$, es libre y como existe un isomorfismo con $M$, la imagen de los $e_i$ es una base de $M$, por lo que $M$ es libre.
+\end{dem}
+
+\section{Sucesiones exactas}
+Dada la sucesi\'on de m\'odulos y morfismos de m\'odulos 
+$$\bt \cdots \arrow{r} & M_{n-1} \arrow{r}{f_{n-1}} & M_{n} \arrow{r}{f_{n}} & M_{n+1} \arrow{r}{f_{n+1}} & M_{n+2} \arrow{r} & \cdots \et$$
+\begin{defi}
+    Se dice que la sucesi\'on es exacta cuando $\Im f_{n-1} = \ker  f_n$. Equivalentemente, diremos que  \vspace{-3mm}
+    \begin{enumerate} 
+        \item $\Im f_{n-1} \subseteq \ker  f_n \, \, \equiv \, \,  f_n \circ f_{n-1} = 0 $
+        \item $\modulo{\ker f_n}{\Im f_{n-1}} = 0$
+    \end{enumerate}
+\end{defi}
+\begin{ejems} \,  \vspace{-3mm}
+    \begin{enumerate}
+        \item $\bt 0\arrow{r} & M \arrow{r}{f} & N \et$ es exacta $\equiv \, f$ es inyectiva.
+        \item $\bt M \arrow{r}{f} & N \arrow{r}& 0   \et$ es exacta $\equiv \, f$ es epiyectiva.
+        \item $\bt 0 \arrow{r}&  M \arrow{r}{f} & N \arrow{r}& 0   \et$ es exacta $\equiv \, f$ es isomorfismo.
+        \item Una sucesi\'on exacta corta $\bt 0 \arrow{r} & M ' \arrow{r}{i}& M \arrow{r}{p} & M'' \arrow{r} & 0 \et$ es exacta $\equiv \, i$ es inyectiva, $p$ es epiyectiva y $\Im i = \ker  p$.
+        \begin{enumerate}
+            \item Sea $M$ un m\'odulo, $M'\subseteq M$ un subm\'odulo, consideremos $\modulo{M}{M'}$ tal que
+            $$\bt 0 \arrow{r} &M' \arrow[hook]{r}{i} & M \arrow{r}{\pi} & \modulo{M}{M'} \arrow{r} & 0 \et$$ es sucesi\'on exacta, entonces $\Im i  = \ker  \pi = M'$. 
+        \end{enumerate}
+    \end{enumerate}
+\end{ejems}
+\begin{prop}
+    Toda sucesi\'on exacta corta se identifica con la del ejemplo 4.a)
+\end{prop}
+\begin{dem}
+    Veamos que existe un isomorfismo entre estas sucesiones. Como $\Im i \subseteq M$, podemos hacer
+    $$\bt  0 \arrow{r} & M' \arrow[d, "i", "\rotatebox{270}{$\sim$}"'] \arrow{r}{i} & M\arrow{d}{Id} \arrow{r}{p} & M'' \arrow[d, "", "\rotatebox{270}{$\sim$}"']\arrow{r} & 0 \\
+           0 \arrow{r} & \Im i \arrow[hook]{r}{i} & M \arrow{r}{\pi} & \modulo{M}{\Im i} \arrow{r} & 0
+    \et$$
+    de forma que $\modulo{M}{\Im i} = \modulo{M}{\ker p} \overset{\sim}{\longrightarrow} \Im p = M''$ por el teorema de factorizaci\'on y por ser $p$ epiyectiva.  
+\end{dem}
+\begin{prop}
+    Toda sucesi\'on exacta larga se puede romper en sucesiones exactas cortas.
+\end{prop}
+\begin{dem}    
+    Sea $\bt \cdots \arrow{r} & M_{n-1} \arrow{r}{f_{n-1}} & M_{n} \arrow{r}{f_{n}} & M_{n+1} \arrow{r}{f_{n+1}} & M_{n+2} \arrow{r} & \cdots \et$ una sucesi\'on exacta, definimos $K_n = \ker  f_n = \Im f_{n-1}$, 
+    $$ \bt 
+    0 \arrow{r} & K_n \arrow[hook]{r} & M_n \arrow{r}{f_n} & \Im f_n = K_{n+1} \arrow{r} & 0 \\[-5mm]
+    & & 0 \arrow{r} & K_{n+1} \arrow[hook]{r} & M_{n+1} \arrow{r}{f_{n+1}} & K_{n+2} \arrow{r} & 0
+    \et$$
+    y as\'i dada una colecci\'on sucesiones exactas cortas que acaben donde empieza la siguiente, construimos una sucesi\'on exacta larga tal que $f_{n-1} = i_{n} \circ p_{n-1}$ siendo las sucesiones exactas cortas:
+    $$ \bt 
+    0 \arrow{r} & K_{n-1} \arrow[hook]{r}{i_{n-1}} & M_{n-1} \arrow{r}{p_{n-1}} &  K_{n} \arrow{r} & 0 \\[-5mm]
+    & & 0 \arrow{r} & K_{n} \arrow[equal]{u} \arrow[hook]{r}{i_n} & M_{n} \arrow{r}{p_{n}} & K_{n+1} \arrow{r} & 0
+    \et$$
+    verificando que $K_n = \Im f_{n-1}$, pues $p_n$ es epiyectiva, $\Im p_{n-1} = K_n$ e $i_n$ es inyectiva $\Rightarrow \, \ker i_n = K_n$ 
+    \end{dem}
+
+Sea $f: M \longrightarrow N$ un morfismo de m\'odulos, 
+\begin{defi} El conúcleo de $f$ es el conjunto
+    $\coker \, f = \modulo{N}{\Im f}$, que es un subm\'odulo de $N$.
+\end{defi}
+\begin{prop} Las sucesiones
+     $$ \bt 
+    0 \arrow{r} & \ker  f \arrow[hook]{r}{i} & M \arrow{r}{f} &  N \\[-5mm]
+    & &  M \arrow{r}{f} & N \arrow{r}{\pi} & \coker \, f \arrow{r} & 0
+    \et$$
+    son exactas.
+\end{prop}
+\begin{defi}
+    La sucesi\'on 
+    $$\bt 0 \arrow{r} & M \arrow{r}{i} & M \oplus N \arrow{r}{\pi} & N \arrow{r} & 0 \\[-5mm] 
+    & & (m,n) \arrow[mapsto]{r} & n   \\[-5mm]
+    & m \arrow[mapsto]{r} & (m,0)
+    \et$$
+    es una sucesi\'on exacta corta y la llamamos  la sucesi\'on exacta trivial.
+\end{defi}
+\begin{defi}
+    Una sucesi\'on exacta corta $\bt 0 \arrow{r} & M' \arrow{r}{i} & M \arrow{r}{p} & M'' \arrow{r} & 0 \et$ diremos que rompe (o escinde) si existe un isomorfismo $\bt M \arrow{r}{\phi} & M' \oplus M'' \et$ tal que es isomorfa a la trivial. Se tiene entonces el diagrama conmutativo
+    $$\bt 0 \arrow{r} & M' \arrow{r}{i} \arrow[dr, "\phi \circ i"'] & M \arrow[d, "\phi", "\rotatebox{270}{$\sim$}"'] \arrow{r}{p} & M'' \arrow{r} & 0 \\
+    & & M' \oplus M'' \arrow[ur, "p  \circ \phi^{-1}"'] &
+    \et$$
+\end{defi}
+\section{Suplementario de un subm\'odulo}
+\begin{defi}Sean $M', M'' \subseteq M$ subm\'odulos de $M$, diremos que son suplementarios si \begin{enumerate}[1)]
+    \item $M' + M'' = M$
+    \item $M' \cap M'' = 0$
+\end{enumerate}
+\end{defi}
+\begin{obs}
+    No todo subm\'odulo tiene suplementario.
+\end{obs}
+\begin{prop}
+    $M', M''$ son suplementarios equivale a decir que existe la siguiente sucesi\'on exacta  $$\bt 0 \arrow{r} & \cancelto{0}{M'\cap M''} \arrow{r}{i} & M' \oplus M'' \arrow{r}{\sim} & M \arrow{r} & 0 \\[-5mm]
+    & & (m',m'' ) \arrow[mapsto]{r} & m'+m'' \\[-5mm]
+    & m \arrow[mapsto]{r} & (m, -m) 
+    \et$$
+\end{prop}
+\begin{prop}
+    Sea  $$\bt 0 \arrow{r} &  M' \arrow{r}{i} & \arrow[bend right=20mm, swap]{l}{\pi} M \arrow{r}{p} & \arrow[bend left = 20mm]{l}{s} M''  \arrow{r} & 0 \et $$
+    una sucesi\'on exacta corta. Son equivalentes:
+    \begin{enumerate}[1)]
+        \item La sucesi\'on rompe.
+        \item $i$ admite retracto: $\exists \, r : M \longrightarrow M' \, / \, r \circ i = Id_{M'}$
+        \item $p$ admite secci\'on: $\exists \, s : M'' \longrightarrow M \, / \, p \circ s = Id_{M''}$
+        \item Existen morfismos $r: M \longrightarrow M'$ y $s: M'' \longrightarrow M \, / \, i \circ r + s\circ p = Id_M$
+        \item $\Im i $ tiene suplementario.
+    \end{enumerate}
+\end{prop}
+\begin{dem}
+    \begin{enumerate}[1)]
+        \item $\Rightarrow$ 2) Por hip\'otesis, se tienen los diagramas
+        $$ \bt M ' \arrow[hook]{r}{i} \arrow[rd, "i_o"] & M \arrow[d, "\sim", "\phi"'] \\ & M' \oplus M'' \arrow[bend left=10mm, swap]{lu}{r_o} \et \quad \bt r_o : M' \oplus M'' \arrow{r} & M' \\[-5mm] (m',m'') \arrow[mapsto]{r} & m' \et \qquad i_o(m') = (m', 0)  $$
+        y as\'i  $r_o$ es retracto de $i_o$, luego el retracto de $i$ es $r_o \circ \phi$.
+        \item $\Rightarrow$ 3) Existe $r: M \longrightarrow M'$, $r\circ i = Id_{M'}$. Buscamos una secci\'on $s: M'' \longrightarrow M \, / \, p\circ s = Id_{M''}$.Definimos 
+        $$\bt s: M'' \arrow{r} & M \\[-5mm] \, \, m'' \arrow[mapsto]{r} & s(m'') = \cdots \et$$
+        y vamos a construir $s(m'')$.
+
+        Sea $m \in M$ una antiimagen de $m''$ por $p$, $p(m)=m''$ (por ser la sucesi\'on exacta, $p$ es epiyectiva y existe) y creamos la modificaci\'on $m - i(r(m))$ para la antiimagen de $m''$. As\'i, definimos $s(m'') = m - i(r(m))$, y no depende de la elecci\'on de $m$, pues otra antiimagen ser\'ia $m+m_1 \, / \, m_1 \in \ker  p$ y por ser sucesi\'on exacta $\ker\, p = \Im i$, por lo que $m+i(m')$ es otra antiimagen, $s(m + i(m'))=m''$. 
+
+        Usando que $r\circ i = Id_{M'}$, sale que $s(m'') = m-i(r(m))$, y sabiendo que la antiimagen no depende de $m$, se comprueba que es morfismo de m\'odulos 
+        $$(p \circ s)(m'') = p(m-i(r(m)) = \underbrace{p(m)}_{m''} - \underbrace{p ( i }_{=0}{(r(m)))}$$
+        \item $\Rightarrow$ 4) $p$ tiene secci\'on, $s: M'' \longrightarrow M$, $p \circ s = Id_{M''}$. Buscamos $r:M \longrightarrow M'$ tal que $i \circ r + s \circ p = Id_{M}$, i.e. $i(r(m)) + s(p(m)) = m \, \iff \, i(r(m)) = m - s(p(m))$ y veamos que $m-s(p(m))$ pertenece a $\Im i$, que por ser inyectiva, ser\'a \'unico. Como $\Im i = \ker  p$, entonces $$p(m-s(p(m))) = p(m) - \cancelto{0}{p(s}(p(m))) = p(m) - p(m) = 0 $$ $$\Rightarrow m-s(p(m)) \in \Im i \Rightarrow \exists ! \, m' \, / \, m-s(p(m)) = i (m')$$
+         Definimos $r(m) = m'$, siendo $m'$ el que cumple la igualdad. Queda comprobar que $r$ es morfismo de m\'odulos.
+
+        \item $\Rightarrow$ 5) Por hip\'otesis, tenemos $r: M \longrightarrow M', \, s: M'' \longrightarrow M \, / \, i \circ r + s \circ p =Id_M$, o equivalentemente, $i(r(m)) + s(p(m)) = m \, \,  \forall \, m \in M$. Veamos que $\Im s$ es el suplementario de $\Im i$. Como $i(r(m)) + s(p(m)) = m \, \,  \forall \, m \in M$, claramente $\Im i + \Im s = M$ pues es $\forall \, m \in M$. Veamos que $\Im i \cap \Im s = 0$.
+
+        Veamos que $s$ es secci\'on de $p$, es decir, veamos que $p(s(m''))=m'' \, / \, m\coloneq s(m'')$. Aplicando $p$ en $i \circ r + s \circ p =Id_M$,
+        $$p\circ s \circ p =p \Rightarrow p(s(m')) = m'' \text{ pero } m''=p(m) \,  (\text{por ser }p\text{ epiyectiva})$$
+        $$ \Rightarrow p(s(p(m))) = p(m) = m''$$
+        Sea $m \in \Im  s \cap \Im i $, 
+        $$m = s(m'') \Rightarrow p(m) = p(s(m'')) = m'' \text{ y } p(m) = 0 \, (m \in \Im i = \ker  p) \Rightarrow m''=0$$
+        por ser $s(0)=0=m$. 
+
+        \item $\Rightarrow$ 1) $\Im i$ tiene suplementario $W\subseteq M$, entonces $M \overset{\sim}{\longrightarrow} \Im i \oplus W$, entonces
+        $$\bt \arrow[blue]{rd}{i}[swap]{\sim} \textcolor{blue}{\underline{\Im i}} \oplus W \arrow{r}{\sim} & M \arrow{d} \\
+         & \textcolor{blue}{\underline{M'}} \oplus M''\et \qquad \bt  M \arrow{r}{p} & M'' \\[-5mm] \arrow[phantom, u, "\rotatebox{90}{$\subseteq$}"] W \arrow{ru}[swap]{p ?}{\sim} \et  $$
+         y veamos que $p$ es isomorfismo sobre $W$ 
+         $$\bt W\arrow{r}{p} & M '' \\[-5mm] w \arrow[mapsto]{r} & 0 \et$$
+         es inyectiva, $p(w) = 0 \iff w \in \ker  p \iff w \in \Im i$ y como $W \cap \Im i=0$, entonces
+          $w \in \ker p \cap \Im i \iff w=0$. Veamos si $p: W \longrightarrow M''$ es epiyectiva. Sea $m \in M, \, m''\in M''$, $p(m)=m''$ por ser $p$ (sobre $M$) epiyectiva, y como $M = \Im\,  i \oplus W \Rightarrow m =i(m) + w \Rightarrow p(m) = \cancelto{0}{p(i}(m')) + p(w)$ y $p(m) = m'' \Rightarrow p(w) = m'' \Rightarrow \Im p =M \Rightarrow p$ es epiyectiva.
+\end{enumerate}
+\end{dem}
+\newpage
+Sea $M$ un $A$-módulo,
+\begin{prop}
+    Para todo m\'odulo libre $L$ existe $p$ epiyectiva tal que $\bt L \arrow{r}{p} & M \arrow{r} & 0 \et$.
+\end{prop}
+\begin{dem}
+    Sea $\{m_i\}$ un sistema de generadores, se tiene la aplicaci\'on $\bt A^{\oplus I} \arrow{r}{f} & M\et$, y se verifica que $\Im f = \langle \{m_i\} \rangle = M$ por ser sistema de generadores y $f$ epiyectiva.
+
+    Sea $k = \ker  \pi \, / \, \bt 0 \arrow{r} & k \arrow{r} & L \arrow{r}{\pi} & M \arrow{r} & 0 \et$, repitiendo para $k$, existe $L'$ libre tal que $\bt L' \arrow{r} & k \arrow{r} & 0 \et$ y se tiene la sucesi\'on exacta:
+    $$\bt L' \arrow{r}{\phi} & L \arrow{r} & M \arrow{r} & 0 \et$$
+    de forma que $M \simeq \coker \, \phi$ y así $\phi$ se puede entender como un cambio de bases (con su matriz asociada) y todo m\'odulo puede ser expresado de esta forma. Se conoce como presentaci\'on del m\'odulo. 
+
+    Si $M$ es finito generado, 
+    $$\bt 0 \arrow{r} & k \arrow{r} & A^n \arrow{r} & M \arrow{r} & 0\et$$
+    donde $k$ no necesariamente es finito generado.
+ \end{dem}
+ \begin{ejem}
+     Si $A$ es finito generado, sus subm\'odulos son los ideales $I \subset A$, que pueden no ser finito generados.
+ \end{ejem}
+ 
+\section{Los funtores $Hom_A(M, -)$ y $Hom_A(-, M)$}
+Sea $M$ un $A$-m\'odulo, para cada $A$-m\'odulo $N$ tenemos el $A$-m\'odulo $Hom_A(M,N)$. Para otro $N'$, nos produce $Hom_A(M,N')$, entonces cada $f: N \longrightarrow N'$ induce $f_*$ tal que
+$$\bt f_* : Hom_A(M,N) \arrow{r} & Hom_A(M,N') \\[-5mm]
+        h \arrow[mapsto]{r} & f_*(h) = f \circ h \\[-5mm]
+        Id \arrow[mapsto]{r} & f_*(Id) = f
+\et$$
+Otra $g: N' \longrightarrow N''$, induce $g_*: Hom_A(M,N') \longrightarrow Hom_A(M,N'')$, tal que 
+$$\bt N \arrow{r}{f} \arrow[bend left=10mm]{rr}{g\circ f} & N' \arrow{r}{g} & N'' \et$$
+induce 
+$$\bt Hom_A(M,N) \arrow{r}{f_*} \arrow[bend right=5mm]{rr}[swap]{(g\circ f)_* = g_* \circ f_*} & Hom_A(M,N') \arrow{r}{g_*} & Hom_A(M,N'') \et$$
+y es funtorial (en la categor\'ia de $A$-m\'odulos) ya que
+$$\bt A-\mathbf{mod} \arrow{r}{Hom_A(M,-)} & A-\mathbf{mod} \\[-5mm] 
+        N \arrow{d}{f} \arrow[squiggly]{r} & Hom_A(M,N) \arrow{d}{f_*}\\
+        N' & Hom_A(M,N')
+\et$$
+y es un funtor covariante (intutitivamente, mantiene en el sentido de las flechas). 
+
+De la misma forma, tenemos el funtor $Hom_A(-, M)$:
+$$\bt   & A-\mathbf{mod} \arrow{r}{Hom_A(M,-)} & A-\mathbf{mod} & \\[-5mm] 
+        & N \arrow[swap]{dl}{h \circ f} \arrow{d}{f} \arrow[squiggly]{r} & Hom_A(N,M) & h \circ f\\
+        M & \arrow{l}{h} N' & \arrow{u}{f^*} Hom_A(N', M) & h \arrow[mapsto]{u}
+\et $$
+y es un funtor contravariante (invierte el sentido de las flechas). Se verifica tambi\'en que $(f\circ g)^* = g^* \circ f^*$.
+
+\begin{defi}
+Sean $f: M \longrightarrow P$ y $g: M\longrightarrow N$, decimos que $g$ factoriza por $f$ si existe $h:P\longrightarrow N \, / \, g= h\circ f$, siendo el diagrama conmutativo:
+$$\bt M \arrow{r}{f} \arrow{d}{g} & P \arrow[dashed]{dl}{h} \\ N  \et$$
+\end{defi}
+\begin{ejem}
+    Con el diagrama: 
+    $$\bt M \arrow{r}{\pi} \arrow{d}{g} & \modulo{M}{M'} \arrow[dashed]{dl}{\bar g} \\ N  \et$$
+    $g$ factoriza por $\pi$ si y solo si $g$ se anula en $M'$ ($\equiv g(m') = 0 \, \forall \, m' \in M
+    '$), o equivalentemente, $M'\subseteq \ker g$. Definimos $\bar g$ de la \'unica forma posible:
+    $\bar g ([m]) = g(m)$, y se demuestra que no depende del representante elegido si y solo si $ M ' \subseteq \ker g$.
+\end{ejem}
+\begin{ejem}
+        $$\bt M \arrow{r}{\pi} \arrow{d}{g} & \modulo{M}{M'} \arrow[dashed]{dl}{\bar g} \\ \modulo{M}{M''}  \et$$
+    $g$ factoriza por $\pi$ si y solo si $M' \subseteq M''$. 
+\end{ejem}
+
+Sea $(*) \bt 0\arrow{r} & N' \arrow{r}{i} & N \arrow{r}{p} &N'' \et$ una sucesi\'on de m\'odulos y morfismos. Para cada m\'odulo $M$ tenemos la sucesi\'on $Hom_A(M, (*))$:
+$$ \bt 0\arrow{r} & Hom_A(M, N') \arrow{r}{i_*} & Hom_A(M, N) \arrow{r}{p_*} &  Hom_A(M, N'') \et$$
+\begin{prop}
+    $(*)$ es exacta $\iff \, Hom_A(M, (*))$ es exacta $(\forall \, M)$
+\end{prop}
+\begin{dem}
+    $\Rightarrow ) \, (*)$ es exacta, veamos que $Hom_A(M, (*))$ tambi\'en lo es. 
+    \begin{enumerate}[1)]
+        \item $i_*$ es inyectiva $\iff \forall \, h \in Hom_A(M,N'), \, i_*(h) = 0 \iff i\circ h = 0 \iff h=0$ (pues $i$ es inyectiva, $i(h(m)) = 0 \iff h(m)=0$). 
+        \item $\Im i_* = \ker  p_*$
+        \begin{itemize}
+            \item $\Im i_* \subseteq \ker p_* \, \equiv p_*\circ i_* = 0 \iff (\cancelto{0}{p\circ i})_* = 0$ 
+            \item $\ker p_* \subseteq \Im i_*$
+
+            Sea $h \in \ker  p_*, \, h:M\longrightarrow N$, $p_*(h) = 0 \iff (p \circ h) = 0$. Tenemos que $\forall\, m \in M, \, h(m) \in \ker p = \Im i \Rightarrow h(m)=i(n')$. Hemos definido la aplicaci\'on
+            $$\bt M \arrow{r}{\phi} & N' \\[-5mm] m \arrow[mapsto]{r} & n' \et \quad h(m) = i(n'), \, \exists !$$
+            tal que 
+            $$\bt M \arrow{r}{\phi} \arrow{dr}{h} & N' \arrow{d}{i} \\ & N  \et \qquad \begin{array}{l}
+                  \Rightarrow i \circ \phi = h \equiv i_*(\phi) = h  \\
+                  \Rightarrow h \in \Im i_* \text{ pues hemos construido } \phi \\
+                   \, / \, i_*(\phi) = h.
+            \end{array}$$
+        \end{itemize}
+    \end{enumerate}
+    $\Leftarrow)$ Tomamos $M=A$. Por hip\'otesis, $Hom_A(A,(*))$ es exacta, y como $Hom_A(A,N')=N'$, e igual para $N$ y $N''$, construimos $i$ y $p$ a partir de $i_*$ y $p_*$, y $(*)$ ser\'a exacta.
+\end{dem}
+
+\begin{prop}
+     $(*)$ es exacta $\iff \, Hom_A((*),M)$ es exacta $(\forall \, M)$.
+\end{prop}
+\begin{dem}
+    $\Rightarrow)$ Ejercicio
+
+    $\Leftarrow)$ Veremos varias cosas: \begin{itemize} 
+        \item Veamos que $p$ es epiyectiva. Equivalentemente, que $\Im p = N''$ o que $\modulo{N''}{\Im p} = 0$. 
+
+        Sea $M = \modulo{N''}{\Im p} = \coker\, p$, tenemos el morfismo de paso al cociente
+        $$\bt N \arrow[bend right = 10mm]{rr}{\pi \circ p =0} \arrow{r}{p} & N'' \arrow{r}{\pi} & \modulo{N''}{\Im p} = 0  \et \qquad \pi \circ p = p_*(\pi) = 0$$
+        y como $p_*$ es inyectiva, entonces $\pi = 0 \Rightarrow \modulo{N''}{\Im p} = 0$ pues al ser $p$ epiyectiva, $\Im \pi = \modulo{N''}{\Im p}$ y $\pi$ era $0$. 
+        \item $\Im i \subseteq \ker p \, \equiv p\circ i = 0 $ siendo $p\circ i: N' \longrightarrow N''$,
+        $$Id_{N''}\circ p \circ i = (p\circ i)^* (Id_{N''}) = (\underbrace{i^* \circ p^*}_{=0})(Id_{N''}) = 0 $$
+        donde $i^* \circ p^* = 0$ por ser $Hom_A((*),M)$ exacta. 
+        \item $\Im i \supseteq \ker p$. $\modulo{N}{\Im i}$ tal que 
+        $$\bt N' \arrow{r}{i} \arrow[bend right=10mm,swap]{rr}{\pi \circ i=0}& N \arrow{r}{\pi} & \modulo{N}{\Im i} \et$$
+        y como $\pi \circ i = i^*(\pi) = 0$, entonces por ser $i^*$ inyectiva y $\pi \in \ker  i^* = \Im p^*$, $\pi = p^*(h) = h \circ p$, teni\'endose el diagrama
+        $$\bt N \arrow{r}{\pi} \arrow{d}{p} & \modulo{N}{\Im i} \arrow{dl} \\ N'' \et$$
+        donde $\pi$ factoriza por $p$, que por el criterio anterior, implica que $\ker p \subseteq \Im i$.        
+    \end{itemize}
+\end{dem}
+\begin{ejem}
+    Sea $(*) \bt 0 \arrow{r} & N' \arrow{r}{i} & N \arrow{r}{p} & N'' \arrow{r} & 0 \et$ una sucesi\'on exacta corta, $Hom_A(M,(*))$
+    $$ \bt 0 \arrow{r} & Hom_A( M,N') \arrow{r}{i_*} & Hom_A(M,N) \arrow{r}{p_*} & Hom_A(M,N'') \arrow[dashed]{r} & 0 \et$$
+    es exacta, pero no podemos asegurar que $p_*$ sea epiyectiva (que la \'ultima flecha exista).
+\end{ejem}
+\begin{prop}
+    Si $N = N' \oplus N''$, es decir, si $(*)$ escinde, $p_*$ s\'i es epiyectiva y la sucesi\'on acaba en $\longrightarrow 0$, es exacta y $Hom_A(M,(*))$ escinde tambi\'en.
+\end{prop}
+\begin{dem}
+    Para su demostraci\'on se puede usar la propiedad universal o usar que existe retracto. Si $Hom_A(M,(*))$ es exacta $\forall \, M$, entonces $(*)$ es escindida, basta escoger un $M$ conveniente para la demostraci\'on.
+\end{dem}
+
+Si $(*)$ es exacta, $Hom_A((*),M)$ 
+$$ \bt 0 \arrow{r} & Hom_A(N',M) \arrow{r}{p^*} & Hom_A(N,M) \arrow{r}{i^*} & Hom_A(N'',M) \arrow[dashed]{r} & 0 \et$$
+es exacta. $i^*$ no tiene por qu\'e ser epiyectiva. De la misma forma que el anterior, si $(*)$ escinde, $Hom_A((*),M)$ es exacta y escinde. Si $\longrightarrow 0$ y $Hom_A((*),M)$ es exacta $\forall \, M$, entonces $(*)$ escinde.
+\begin{ejem} Observemos la sucesi\'on
+    $$\bt 0 \arrow{r} & \mathbb Z \arrow{r}{\cdot 2} & \mathbb Z \arrow{r}{\pi} & \modulo{\mathbb Z}{2\mathbb Z} \arrow{r} & 0 \et$$
+    que no escinde. Se puede demostrar de varias formas, por ejemplo, no hay retracto $r$. Por reducci\'on al absurdo, supongamos que $r$ existe, y como es un homomorfismo en $\mathbb Z$, tiene que ser una homotecia, $\cdot n$ (multiplicar por un $n \in \mathbb Z$). Por tanto, $r\circ \cdot 2 = Id \Rightarrow \cdot 2 \circ \cdot n = \cdot 2n = 1 \iff \nexists \, n \in \mathbb Z \, /\, 2n=1 !!$
+    De la misma forma, si suponemos que existe $s: \modulo{\mathbb Z}{2\mathbb Z}\longrightarrow \mathbb Z$ secci\'on tal que $s\circ \pi =Id$, $s([1])=0$ (??) pero $\pi(0)=0 \, !!$.
+\end{ejem}
+\begin{ejem}
+    Sea $M$ un $A$-m\'odulo, $I \subseteq A$ un ideal, $\modulo{A}{I}$ es otro subm\'odulo, tenemos que
+    $$\bt Hom_A\left( \modulo{A}{I}, M \right) & \simeq & \left\{ m \in M \, / \, i \cdot m=0 \, \forall \, i \in I \right\} \\[-5mm]
+    f \arrow[mapsto]{rr} & & f([1]) \\[-5mm]
+     f_m([a]) = a\cdot m\, / \, f_m  & & \arrow[mapsto]{ll} m \et$$
+     y tenemos el la sucesi\'on exacta
+     $$\bt 0 \arrow{r} & I \arrow[swap]{rd}{f_{|I}} \arrow[hook]{r}{i} & A \arrow{d}{f} \arrow{r}{\pi} & \modulo{A}{I} \arrow{r} & 0 \\ 
+            & & M
+     \et$$
+     que implica la sucesi\'on exacta
+     $$\bt[row sep=small, column sep=small] & & f \arrow[mapsto]{r} & f_{|I} \\[-5mm] 0 \arrow{r} & Hom_A\left( \modulo{A}{I}, M \right) \arrow{r}{\pi^*} & Hom_A\left( A, M \right) \arrow{rr}{i^*} \arrow[equal]{dd} & & Hom_A\left( I, M \right) \arrow[dashed]{r} & 0 \\[-3mm] & & & f_m\arrow[mapsto]{d} & \\[-3mm] & & M & m & \et$$
+     donde $$\Im \pi^* = \ker i^* = Hom_A\left( \modulo{A}{I}, M \right) =  \{ m \in M \, / \, f_{m|I} = 0 \equiv i \cdot m =0 \}$$
+     pues $f_m = i \cdot m$
+\end{ejem}
+\begin{ejem}
+    Observemos que 
+    $$Hom_{\mathbb Z} \left( \modulo{\mathbb Z}{2\mathbb Z}, \mathbb Z \right) = 0$$
+    Sea $0 \neq n \in \mathbb Z$, $Hom_{\mathbb Z} \left( \modulo{\mathbb Z}{n\mathbb Z}, \mathbb Z \right) = 0$, ya que $$\forall m \in \mathbb Z, \, m \cdot n = 0 \iff m=0$$
+\end{ejem}
+\noindent \textbf{Observaciones (Previas al Lema de la Serpiente).}
+Consideremos los morfismos entre $A$-m\'odulos $f: M \longrightarrow M'$, $f': M' \longrightarrow N' \, / \, \ker  f \subseteq M $, se tiene el diagrama conmutativo
+$$\bt \ker  f \arrow{d}{g} \subseteq &[-13mm] M \arrow{r}{f} \arrow{d}{g} & N \arrow{d}{g'} \\
+      \ker  f' \subseteq &[-13mm] M' \arrow{r}{f'} & N 
+\et \qquad f'\circ g = f\circ g'$$
+de forma que 
+$$g(\ker\, f) \subseteq \ker f' \qquad g'(\Im f) \subseteq \Im f'$$
+por lo que se induce el diagrama
+$$\bt M \arrow{r}{f} \arrow{d}{g} & N \arrow{d}{g'} \arrow{r} & \coker \, f \arrow{r} \arrow{d}{\bar g'} & 0\\
+      M' \arrow{r}{f'} & N  \arrow{r} & \coker \, f' \arrow{r} & 0
+\et $$
+Es decir, $g'$ induce un \'unico $\bar g'$, donde $\forall [n] \in \coker \, f$ se define $\bar g'([n]) = [g'(n)]$ y est\'a bien definida, como bien comprobar\'a Sara, con el hecho de que  $g'(\Im f) \subseteq \Im f'$.
+\begin{lem}
+    [de la Serpiente] 
+Sea $A$ un anillo. Se considera el diagrama conmutativo de $A$-módulos con filas exactas:
+$$
+\begin{tikzcd}
+	0 & {M'} & {M} & {M''} & 0 \\
+	0 & {N'} & {N} & {N''} & 0
+	\arrow["{f'}", from=1-2, to=2-2]
+	\arrow["{f}", from=1-3, to=2-3]
+	\arrow["{f''}", from=1-4, to=2-4]
+	\arrow["{i}", from=1-2, to=1-3]
+	\arrow["{p}", from=1-3, to=1-4]
+	\arrow[         from=1-4, to=1-5]
+	\arrow[         from=2-1, to=2-2]
+	\arrow["{j}", from=2-2, to=2-3]
+	\arrow["{q}", from=2-3, to=2-4]
+	\arrow[         from=2-4, to=2-5]
+	\arrow[         from=1-1, to=1-2]
+	\arrow["\circlearrowleft"{marking}, draw=none, from=1-2, to=2-3]
+	\arrow["\circlearrowleft"{marking}, draw=none, from=1-3, to=2-4]
+\end{tikzcd}
+$$
+Entonces existe un morfismo de módulos:
+$$\delta:\ker{f''}\longrightarrow\coker{f'}$$
+tal que la siguiente sucesión es exacta:
+\begin{equation*}
+    \begin{tikzcd}
+    	0 & {\ker{f'}} & {\ker{f}} & {\ker{f''}} \\
+    	&& {\coker{f'}} & {\coker{f}} & {\coker{f''}} & 0
+    	\arrow[          from=1-1, to=1-2, dashed]
+    	\arrow["{i}", from=1-2, to=1-3]
+    	\arrow["{p}", from=1-3, to=1-4]
+    	\arrow[          from=2-5, to=2-6,dashed]
+    	\arrow["{\bar \jmath}", from=2-3, to=2-4]
+    	\arrow["{\bar q}", from=2-4, to=2-5]
+    	\arrow["\delta", from=1-4, to=2-3, out=0, in=180, looseness=2, swap]
+    \end{tikzcd}
+\end{equation*}
+teni\'endose el siguiente diagrama conmutativo con las filas intermedias exactas
+$$ \begin{tikzcd}[row sep = large]
+	0 & {\ker{f'}} & {\ker{f}} & {\ker{f''}} \\
+	0 & {M'} & {M} & {M''} & 0 \\
+	0 & {N'} & {N} & {N''} & 0 \\
+	& {\coker{f'}} & {\coker{f}} & {\coker{f''}} & 0
+	\arrow[hook,        from=1-2, to=2-2]
+	\arrow["{f'}"{pos=0.2}, from=2-2, to=3-2]
+	\arrow[   from=3-2, to=4-2]
+	\arrow["{f}"{pos=0.2}, from=2-3, to=3-3, ""{coordinate, name=Z}]
+	\arrow[   from=3-3, to=4-3]
+	\arrow[hook,        from=1-4, to=2-4]
+	\arrow["{f''}"{pos=0.2}, from=2-4, to=3-4]
+	\arrow[   from=3-4, to=4-4]
+	\arrow[from=1-1, to=1-2,dashed]
+	\arrow["{i}",    from=1-2, to=1-3]
+	\arrow["{p}",    from=1-3, to=1-4]
+	\arrow["{i}",     from=2-2, to=2-3]
+	\arrow["{p}",     from=2-3, to=2-4]
+	\arrow[             from=2-4, to=2-5]
+	\arrow[             from=3-1, to=3-2]
+	\arrow["{j}",     from=3-2, to=3-3]
+	\arrow["{q}",     from=3-3, to=3-4]
+	\arrow[             from=3-4, to=3-5]
+	\arrow[             from=4-4, to=4-5 ,dashed]
+	\arrow[hook,        from=1-3, to=2-3]
+	\arrow["{\bar \jmath}",    from=4-2, to=4-3]
+	\arrow["{\bar q}",    from=4-3, to=4-4]
+	\arrow[             from=2-1, to=2-2]
+	\arrow["\delta",
+	        crossing over,
+	        from=1-4, to=4-2,
+            rounded corners,
+            to path={ -- ([xshift=12ex]\tikztostart.east)
+                    |- (Z) [near start]\tikztonodes
+                    -| ([xshift=-12ex]\tikztotarget.west)
+                    -- (\tikztotarget)}]
+\end{tikzcd}
+$$
+\end{lem}
+
+\begin{dem} Definimos $\delta$ tal que 
+$$\bt & m \arrow[mapsto]{d}{f} \arrow[mapsto]{r}{p} & m'' \arrow[mapsto]{d}{f''} \\ 
+    n' \arrow[mapsto]{r}{j} \arrow[mapsto]{d}& f(m) \arrow[mapsto]{r}{q} & 0 \\ 
+    \left[n'\right]
+\et$$donde $m$ existe por ser $p$ epiyectiva, es antiimagen de $m''$. Y adem\'as existe un \'unico $n'$ tal que
+$$\delta(m'')= [n'] \, n' \, / \, j(n') = f(m), \, m \overset{p}{\longmapsto} m''$$
+y vamos a demsotrar que no depende del $m$ escogido, ya que $m''$ podr\'ia tener otras antiim\'agenes que $m$. Sea $m_1$ otra antiimagen,
+$$j(n_1') = f(m_1) \, / \,  m_1 \overset{p}{\longmapsto} m''$$
+y veamos si $[n']=[n_1']$.
+
+$m-m_1 \in \ker p$ pues ambas provienen del mismo $m''$ por $p$, y por exactitud, $\ker p = \Im i$, luego $m-m_1 = i(m')$. Por tanto
+$$f(m)- f(m_1) = f(i(m')) = j (f(m'))$$ 
+y por otro lado, 
+$$f(m)- f(m_1) = j(n')-j(n_1')=j(n'-n_1')$$
+y por ser $j$ inyectiva, 
+$$n'-n'_1 = f'(m') \in \Im f'$$
+luego es $0$ en $\modulo{N'}{\Im f'}=\coker f'$ y por tanto van a la misma clase $[n']=[n_1']$. Queda comprobar que $\delta$ es morfismo de m\'odulos.
+
+Comprobemos la exactitud de la sucesi\'on
+\begin{itemize} 
+\item $\Im i = \ker  p$ \textcolor{red}{Ejercicio}
+\item $\ker\, \bar p = \Im \bar \jmath$ \textcolor{red}{Ejercicio}
+    \item $\Im p = \ker  \delta$
+\begin{itemize}
+    \item 
+$\Im p \subseteq \ker  \delta$
+
+Sea $m'' \in \Im p$, $m''=p(m), \, m \in \ker  \delta$, luego 
+$$\delta(m'')=[n']$$
+siendo $j(n')=f(m)=0$ (por ser $m \in \ker  f$) y por ser $j$ inyectiva, $n'=0$
+
+\item $\Im p \supseteq \ker  \delta$
+
+Sea $m'' \in \ker f''$ tal que $\delta(m'')=0$, y $\delta(m'')=[n']$ tal que $j(n')=f(m)$ siendo $m$ una antiimagen de $p(m'')$. Aplicando $q$ en la igualdad anterior, $\cancelto{0}{q(j}(n')) = q(f(m)) $ y como $[n'] = 0$, $n' \in \Im f', \, n'=f'(m'), \, m'\in M'$. Entonces
+$$j(n')=j(f'(m')) = f(i(n'))$$
+As\'i, tenemos expresado de dor formas $j(n')$, por lo que $m-i(m') \in \ker  f$ (va al 0 por $f$) y por $p$, va a $m''$ ($p(m-i(m')) = p(m) - \cancelto{0}{p(i}(m')) = m''$) y as\'i $m'' \in \Im p$, como quer\'iamos demostrar.  
+
+\end{itemize}
+\item $\Im \delta = \ker  \bar \jmath$
+\begin{itemize}
+    \item $\Im \delta \subseteq \ker  \bar \jmath$
+
+Sea $[n'] \in Im\, \delta$ que ser\'a $\delta(m'')$. Por definici\'on, $j(n') = f(m)$ siendo $m$ cualquier antiimagen por $p$ de $m''$. 
+$$\bar \jmath (\delta(m'')) = \bar \jmath ([n']) = [j(n')] = [f(m)]$$
+Como $f(m) \in Im\, f$ y es un elemento de $\coker\, f = \modulo{N}{\Im f}$, $[f(m)]=0$.
+
+\item $\Im \delta \supseteq \ker\, \bar \jmath$
+
+Sea $[n']$ tal que $\bar \jmath ([n']) = 0$, $\bar \jmath ([n']) = [j(n')]$, entonces $j(n') \in \Im f$ pues es el subm\'odulo por el que hacemos cociente, luego $j(n')=f(m)$. Sea $m''=p(m)$, 
+$$f''(m'') = f''(p(m)) = q(f(m)) = \cancelto{0}{q(j}(n')) = 0$$
+Luego hemos encontrado un $m'' \in \ker  f''$, $\delta(m'') := [n']$.
+\end{itemize}
+\end{itemize}    
+\end{dem}

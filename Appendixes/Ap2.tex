@@ -1,0 +1,68 @@
+\chapter{Teorema de representabilidad}
+\section{L\'imite proyectivo de m\'odulos}
+\begin{ejem}
+    Sean $M_1,M_2,M_3, M_4$ un n\'umero finito de $A$-m\'odulos, y damos algunos morfismos $f_{ij}$ entre ellos, y para cada pareja damos uno s\'olo. Buscamos construir un $M$ con morfismos $\pi_i$ a todos ellos, que sean compatibles con las $f_{ij}$. Buscamos que ese $M$ sea m\'inimo, de forma que cualquier otro m\'odulo $P \longrightarrow M$ sea compatible tambi\'en. 
+
+    Sabemos que $\prod M_i$ cumple tener esos morfismo, con las proyeccciones $\pi_i$, a priori no es conmutativo. Elegimos $(m_1, \ldots, m_4)$ de forma que $f_{ij}(m_i) = m_j \, \forall \, f_{ij}$, que es un subm\'odulo y ahora son conmutativos los diagramas, es decir,
+    $$\displaystyle \varprojlim M_{i}={\Big \{}(m_{i})\in \prod _{i\in I}M_{i}\;{\Big |}\;m_{i}=f_{ij}(m_{j}){\Big \}}$$
+\end{ejem}
+Consideremos ahora $\{M_i\}_{i \in I}$, escogemos $S \subset I \times I$ un subcojunto de las parejas de \'indices $(i,i')$, damos morfismo $\phi_{ij} : M_i \longrightarrow M_j$ para cada $(i,j)\in S$. Tenemos $\{M_i, \phi_{ij}\}$ un conjunto de m\'odulos y algunos morfismos entre ellos. Entonces, el l\'imite proyectivo va a tener la propiedad universal
+$$\bt \varprojlim M_i \rar{\pi_{j}} \arrow[swap]{dr}{\pi_k} & \arrow{d}{\phi_{jk}} M_j \\ & M_k \et$$\
+de forma que 
+$$\varprojlim M_i  = {\Big \{}(m_{i})\in \prod _{i\in I}M_{i}\;{\Big |}\;\phi_{ij}(m_{i}) = m_j {\mbox{ para todo }}(i,j) \in S{\Big \}} \subseteq \prod _{i\in I}M_{i}$$
+En general se pide que $I$ sea parcialmente ordenado, de forma que se eligen los morfismos $\phi_{ij}$ con $i\leq j$, y se pide que $\phi_{ii} = Id_{M_i}$ y que $\phi_{ik} = \phi_{jk} \circ \phi_{ij} \, \forall \, i \leq j \leq k$. Adem\'as que tiene un orden filtrante, es decir, que dados $i,j$ existe $k$ con $k\leq i$ , $k \leq j$. 
+\begin{defi}
+    Sea $\{M_i, \phi_{ij}\}$ un sistema de m\'odulos con $i \in I$ parcialmente ordenado y filtrante, tenemos $\phi_{ij} : M_i \longrightarrow M_j, \, i \leq j$ cumpliendo que 
+    \begin{itemize}
+        \item $\phi_{ii} = Id_{M_i}$
+        \item $\phi_{ik} = \phi_{jk} \circ \phi_{ij} \, \forall \, i \leq j \leq k$
+    \end{itemize}
+    Llamaremos a esta situaci\'on sistema proyectivo. Ahora, 
+    $$\displaystyle \varprojlim M_{i}=\Big\{ (m_{i})\in \prod _{i\in I}M_{i}\;{\Big |}\;\phi_{ij}(m_{i}) = m_j , \, \forall \, i \leq j\Big\}$$
+\end{defi}
+\begin{prop}
+    Supongamos que $I$ tiene m\'inimo: $\exists\, k \in I \, : \, k \leq i \, \forall i$. Entonces 
+    $$\varprojlim M_i = M_k$$
+\end{prop}
+\begin{dem}
+    Intuitivo.
+\end{dem}
+\begin{ejem}
+    Sea $M$ un $A$-m\'odulo, consideremos $M_i = \modulo{M}{N_i}$ siendo $N_i$ un subm\'odulo de $M$. Tenemos 
+    $$\bt M \arrow[swap]{d}{\pi_j} \rar{\pi_i} & M_i=\modulo{M}{N_i} \arrow[dashed]{dl} \\[5mm]  M_j =\modulo{M}{N_j} \et$$
+    y existe ese morfismo compatible con las $\pi$, que ser\'a \'unico, si y solo $N_i \subseteq N_j$ (o viceversa). Si $i \leq j$, $M_i \overset{ \phi_{ij}}{\longrightarrow} M_j$. Este sistema es filtrante pues dados $M_i, M_j$ tienen a $M_i \cap M_j$ como elemento relacionado con ambos y menor, el m\'inimo del $I$. De esta forma, $\varprojlim M_i = M = \modulo{M}{0}$.
+\end{ejem}
+
+Sea $F$ un funtor covariante de $A$\textbf{-m\'od} en $A$\textbf{-m\'od}. Si escogemos $R$, $Hom_A(R,-)$ es uno de este tipo. Qieremos ver que $F$ con ciertas hip\'otesis, queremos encontrar $R$ tal que $F=Hom_A(R,-)$, es decir, $R$ es el representante, demostrando que es representable. Vamos a considerar los cocientes de $R$, $R_i$ y buscaremos su l\'imite proyectivo.
+
+Para dar un cociente tenemos que dar tres datos: un subm\'odulo $R_i$, un morfismo $\xi_i: R \longrightarrow R_i$ y que este sea epiyectivo. Si buscamos este morfismo, podemos usar que $F(R_i) = Hom_A(R,R_i)$, pues todav\'ia no tenemos $R$. Entonces consideramos la pareja de un m\'odulo $[R_i. \xi_i \in F(R_i)]$, y como el funtor est\'a dado, podemos hacer esto, y estamos dando el morfismo del representante en $R_i$ sin hablar de $R$ expl\'icitamente (estamos dejando la epiyectividad a un lado).  
+
+Tenemos las parejas, que son 
+$$\bt R \rar{\xi} \arrow[swap]{d}{\xi'} & N \arrow{dl}{f} \\[4mm] N' \et$$
+y vamos a dar $f$ sin usar $R$, y este ser\'a un morfismo de parejas. Tenemos las parejas $(N,\xi)$ y $(N', \xi')$, y el morfismo de parejas $f$ va a ser un morfismo $f: N \longrightarrow N'$ y el funtor aplicado a $f$: 
+$$\bt F(f) : F(N) \rar & F(N') \\[-5mm] \hspace{10mm} \xi\rarmaps & \xi' \et$$
+es decir, $F(f)(\xi) = \xi'$, esta condici\'on es equivalente a que $f\circ \xi = \xi'$. 
+
+Veamos la epiyectividad. Sea $R \overset{\xi}{\longrightarrow} N$, veamos c\'omo decimos la epiyectividad sin usar $R$. Recordemos que:
+\begin{center}
+$\xi: R \to N$ es epiyectivo $\iff$ $Hom_A(N, P) \overset{\xi^*}{\longrightarrow} Hom_A(R, P)$ es inyectivo $\forall \, P$    
+\end{center}
+que es equivalente a 
+\begin{center}
+$(N,\xi)$ es epiyectivo $\iff$ $\bt Hom_A(N, P) \rar{\xi^*} & F(P) \\[-5mm] g:N \to P \rarmaps & F(g)(\xi) \et$ es inyectivo $\forall \, P$ \end{center}
+y diremos que esta pareja $(N,\xi)$ es m\'inima si el morfismo es inyectivo. Si sabemos que $F$ es representable es equivalente a decir que se tiene una pareja y el morfismo es epiyectivo. Es decir, hemos definido un cociente del representante que estamos buscando. Veamos que estas parejas m\'inimas son un sistema proyectivo. 
+\begin{enumerate}
+    \item Se define pareja m\'inima $(N, \xi)$ (que es un cociente del representante que estamos buscando).
+    \item Estas parejas forman un sistema proyectivo. 
+    \item Escogemos $R = \varprojlim$ de las parejas m\'inimas.
+    \item $F=Hom_A(R,-)$.
+\end{enumerate}
+
+Si $F$ es exacto por la izquierda y conmuta con productos directos $\prod_i$ $\Rightarrow$ $F$ conmuta con $\varprojlim$. Es decir, si tenemos $\{M_i, \phi_{ij}\}$ un sistema proyectivo, tenemos los morfismos $F(M_i), \, F(\phi_{ij})$. En general, se tiene el morfismo
+$$\bt F(\varprojlim M_i) \rar & \varprojlim F(M_i) \et$$
+y con las hip\'otesis que se han dado, es isomorfismo, asegurando que $ F(\varprojlim M_i) = \varprojlim F(M_i)$. 
+
+Tenemos adem\'as la sucesi\'on exacta
+$$\bt 0 \rar & \varprojlim M_i \rar[hook] & \displaystyle \prod_iM_i \rar & \displaystyle  \prod_{i \leq j} M_{i\leq j}=M_j  \\[-5mm] & & (m_i) \rarmaps & (m_{ij}) \et$$ y como $m_{ij}\in M_j$, y $M_i \longrightarrow M_j$, entonces $m_{ij} = m_j - \phi(m_i)$, que es exactamente la condici\'on de que $m_{ij}\in \varprojlim M_i$. 
+
+Al aplicar $F$ sigue siendo exacta. Adem\'as conmuta con los $\prod$, y $\ker$ del morfismo central es $F (\varprojlim M_i)$. 

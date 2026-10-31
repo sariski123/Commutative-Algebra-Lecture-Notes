@@ -1,0 +1,57 @@
+\chapter{Parcial 10/11/2025}
+\section*{Teor\'ia}
+Enunciar y demostrar el Lema de Nakayama
+\section*{Problemas}
+\begin{enumerate}[1)]
+    \item Sea $A$ un anillo e $I$ un ideal de $A$. Llamamos \textit{radical de I} al siguiente subconjunto de $A$:
+    $$\text{rad}(I) = \{a\in A \, : \, a^n \in I \text{ para alg\'un } n \in \bb N\}$$
+    Probar que $\text{rad}(I)$ coincide con la intersecci\'on de los ideales primos de $A$ que contienen a $I$.
+    \item Sean $M_1,M_2$ dos subm\'odulos de un $A$-m\'odulo $M$. Probar que hay un isomorfismo natural 
+    $$\modulo{M_1+M_2}{M_2} = \modulo{M_1}{M_1 \cap M_2}$$
+\end{enumerate}
+\chapter{Final 18/12/2025} \noindent \textbf{TEOR\'IA}
+\begin{enumerate}[1)] 
+    \item Sea $A$ un anillo, $S \subset A$ un sistema multiplicativo y $M$ un $A$-módulo. Definir la localización $M_S$ y su estructura de $A_S$-módulo. Dado un morfismo de $A$-módulos $f: M \to N$, definir el morfismo inducido $f_S: M_S \to N_S$.
+    
+    Probar que si $0 \to M' \xrightarrow{i} M \xrightarrow{\pi} M'' \to 0$ es una sucesión exacta de $A$-módulos, entonces $0 \to M'_S \xrightarrow{i_S} M_S \xrightarrow{\pi_S} M''_S \to 0$ es sucesión exacta.
+    \item Sea $f: M' \to M$ un morfismo de $A$-módulos y $N$ otro $A$-módulo. Definir el morfismo inducido $f \otimes 1: M' \otimes_A N \to M \otimes_A N$. Probar que si $M' \xrightarrow{i} M \xrightarrow{\pi} M'' \to 0$ es una sucesión exacta de $A$-módulos, entonces $M' \otimes_A N \xrightarrow{i \otimes 1} M \otimes_A N \xrightarrow{\pi \otimes 1} M'' \otimes_A N \to 0$ es exacta. Probar que para todo sistema multiplicativo $S \subset A$ se tiene un isomorfismo de $A_S$-módulos$$M \otimes_A A_S \simeq M_S$$
+\end{enumerate}
+    \textbf{PROBLEMAS}
+\begin{enumerate}[1)] 
+    \item Sea $A$ un anillo, $I$ un ideal de $A$ y $M$ un $A$-módulo finito generado. Probar que $I \cdot M = M$ si y sólo si existe $i \in I$ tal que $1+i$ anula a $M$.
+    \item Sea $M$ un $A$-módulo y $f: M \to M$ un endomorfismo de $A$-módulos. Probar que si $f^2 = f$, entonces $M = \operatorname{Ker} f \oplus \operatorname{Ker}(f - \operatorname{Id})$.
+    \item Sea $A$ un anillo íntegro. Denotemos$$A' = \{ a \in A : A/aA \text{ es de longitud finita} \}$$
+    Probar: si $a, b \in A'$, entonces $a \cdot b \in A'$ y se cumple$$l(A/abA) = l(A/aA) + l(A/bA)$$
+    
+    \noindent \textit{Soluci\'on (Gemini).}
+    La estrategia consiste en relacionar el módulo ``grande'' $A/abA$ con los módulos ``pequeños'' $A/aA$ y $A/bA$ mediante una cadena de ideales.
+    
+    \noindent 1. Construcción de la Cadena
+    
+    Consideramos la cadena de ideales descendente: $$A \supseteq aA \supseteq abA$$ Esto nos permite descomponer el cociente $A/abA$ usando el ``Tercer Teorema de Isomorfía'' o simplemente observando los cocientes paso a paso. Podemos formar la siguiente Sucesión Exacta Corta de $A$-módulos:$$0 \longrightarrow \frac{aA}{abA} \xrightarrow{\; i \;} \frac{A}{abA} \xrightarrow{\; \pi \;} \frac{A}{aA} \longrightarrow 0$$
+    \begin{itemize}
+        \item El término de la derecha ($A/aA$): Es el cociente estándar por el ideal $aA$.
+        \item El término del centro ($A/abA$): Es el objeto que queremos estudiar.
+        \item El término de la izquierda ($aA/abA$): Es el núcleo de la proyección $\pi$. Consiste en los múltiplos de $a$ (dentro de $A$) vistos módulo $abA$.
+    \end{itemize}
+    
+     \noindent 2. El Isomorfismo Clave (Usando que $A$ es íntegro) 
+    
+    Para que la fórmula funcione, necesitamos demostrar que el término de la izquierda, $aA/abA$, es ``lo mismo'' que $A/bA$. Definimos la aplicación ``multiplicación por $a$'':$$\varphi: A/bA \longrightarrow aA/abA$$$$x + bA \longmapsto ax + abA$$
+    Comprobamos que es un isomorfismo de $A$-módulos:
+    \begin{itemize}
+        \item Bien definida: Si $x \equiv y \pmod{bA}$, entonces $x - y = bk$. Multiplicando por $a$, tenemos $ax - ay = abk \in abA$, así que $ax \equiv ay \pmod{abA}$.
+        \item Epiyectiva: Cualquier elemento de $aA/abA$ tiene la forma $ax + abA$, que es claramente la imagen de $x + bA$.
+        \item Inyectiva: Aquí usamos la hipótesis de que $A$ es íntegro.Supongamos que $\varphi(x + bA) = 0$. Esto significa que $ax \in abA$, es decir, $ax = aby$ para algún $y \in A$.$$a(x - by) = 0$$ Como $A$ es un dominio de integridad y asumimos $a \neq 0$ (si $a=0$ y tiene longitud finita, $A$ sería un cuerpo o trivial, un caso degenerado), podemos cancelar la $a$.
+        $$x - by = 0 \implies x = by \in bA$$
+        Por tanto, la clase de $x$ es $0$ en $A/bA$. Conclusión del paso 2: Tenemos un isomorfismo $A/bA \cong aA/abA$.
+    \end{itemize}
+
+     \noindent 3. Aplicación de la Longitud
+    
+    La longitud es una función aditiva en sucesiones exactas. Dada la sucesión del paso 1:$$l\left( \frac{A}{abA} \right) = l\left( \frac{aA}{abA} \right) + l\left( \frac{A}{aA} \right)$$Sustituimos el término de la izquierda usando el isomorfismo del paso 2 ($l(aA/abA) = l(A/bA)$):$$l\left( \frac{A}{abA} \right) = l\left( \frac{A}{bA} \right) + l\left( \frac{A}{aA} \right)$$
+    
+     \noindent 4. Conclusión Final
+     
+     Como $a, b \in A'$, sabemos por hipótesis que $l(A/aA)$ y $l(A/bA)$ son números finitos.La suma de dos números finitos es finita, por lo tanto:$l(A/abA) < \infty$, lo que implica que $ab \in A'$.La fórmula de la longitud se cumple exactamente.
+\end{enumerate}

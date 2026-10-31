@@ -1,0 +1,466 @@
+\chapter{Producto tensorial} \justifying 
+\section{Aplicaciones bilineales}
+Sean $M, N, P$ tres $A$-m\'odulos
+\begin{defi}
+    Una aplicaci\'on $\psi: M \times N \longrightarrow P$ se dice bilineal cuando es lineal en cada factor:
+
+    Para cada $m \in M$ el morfismo $$\bt \psi(m,-) : N \arrow{r} & P \\[-5mm] \hspace{15mm} n \arrow[mapsto]{r}& \psi(m,n) \et$$
+    es lineal.
+
+    Para cada $n \in N$ el morfismo $$\bt \psi(-,n) : M \arrow{r} & P \\[-5mm] \hspace{15mm} m \arrow[mapsto]{r}& \psi(m,n) \et$$
+    es lineal.
+\end{defi}
+Denotaremos $Bil_A(M\times N, P)$ al conjunto de aplicaciones bilineales de $M \times N$ en $P$.
+\begin{prop}
+    Este conjunto es un $A$-m\'odulo.
+\end{prop}
+\begin{dem}
+    Sean $\psi_1, \psi_2 \in Bil_A(M\times N, P)$, $\psi_1+\psi_2: M \times N \longrightarrow P$ se define como
+    $$(\psi_1+\psi_2)(m,n) = \psi_1(m,n)+\psi_2(m,n)$$
+    y multiplicando por $a\in A$
+    $$\bt a \psi : M \times N \rar & P \\[-5mm] \hspace{8mm} (m,n) \rar[mapsto] & (a\psi)(m,n) &[-13mm] = a \cdot \psi(m,n) \et$$
+    y con estas operaciones es un $A$-m\'odulo.
+\end{dem}
+Sea $f: P \longrightarrow P'$ morfismo de m\'odulos, $\bt M\times N \arrow{r}{\psi} & P \arrow{r}{f} & P' \et $ de forma que $f\circ\psi$ es bilineal. As\'i, tenemos la aplicaci\'on
+$$\bt Bil(M \times N, P) \arrow{r}{f_*} & Bil(M \times N, P') \\[-5mm] \psi \arrow[mapsto]{r} & f\circ \psi \et$$
+que va a ser un morfismo de $A$-m\'odulos, y se verifica su funtorialidad, pues para $\bt P \arrow{r}{f} & P' \arrow{r}{g} & P''\et$, $g_* \circ f_* =(g\circ f)_*$. Este funtor es expl\'icitamente:
+$$ \bt Bil(M \times N, -): &[-12mm] A\mathbf{-mod}\arrow{r} & A\mathbf{-mod} \\[-7mm] & P \arrow{dd}{f} &  Bil(M \times N, P)  \arrow{dd}[swap]{f_*}
+\\[-5mm] & \arrow[squiggly]{r} \hspace{6mm} & \hspace{12mm}\\[-5mm] & P' &  Bil(M \times N, P') \et$$ 
+y vamos a ver si este funtor es representable, es decir, si $Bil_A(M \times N, -) = Hom_A(R,-)$ para cierto $A$-m\'odulo $R$. Veamos unas nociones de representaci\'on de funtores. 
+
+\section{Funtores representables}
+Sea $F:A\mathbf{-mod} \longrightarrow A\mathbf{-mod}$ un funtor, esto es, para cada $P$, $F(P)$ es otro $A$-m\'odulo, para $P'$, $F(P')$ es otro m\'odulo y para cada morfismo $f: P \longrightarrow P'$, $F(f): F(P)\longrightarrow F(P')$, verificando $F(Id_P) = Id_{F(P)}$, $F(g\circ f) = F(g) \circ F(f)$. 
+
+Sea $M$ un $A$-m\'odulo, escogemos $\xi \in F(M)$ de forma que $(M, \xi)$ define el morfismo de funtores 
+$$\bt Hom_A(M, -) \arrow{r}{\xi_*} & F \et$$
+es decir, para cada m\'odulo $P$, un morfismo $\bt Hom_A(M, P) \arrow{r}{\xi_*(P)} & F(P) \et$
+de modo que $\forall f: P \longrightarrow P'$
+$$\bt Hom_A(M, P) \arrow{r}{\xi_*(P)} \arrow{d}{f_*} & F(P) \arrow{d}{F(f)} \\ Hom_A(M, P') \arrow{r}{\xi_*(P')}  & F(P') \et$$
+el diagrama es conmutativo.
+
+Vamos a definir expl\'icitamente $\xi_*(P)$:
+$$\bt \xi_*(P): Hom_A(M,P) \arrow{r} & F(P)  \\[-5mm] g \arrow[mapsto]{r} & F(g)(\xi)\\[-5mm] M\overset{g}{\rightarrow} P \arrow[squiggly]{d} & \\ F(M)\overset{F(g)}{\rightarrow} F(P)  & \\[-7mm] \hspace{5mm} \xi \longmapsto F(f)(\xi)  \et$$
+y este funtor hace que el diagrama sea conmutativo.
+\begin{defi}
+    Un funtor $F$ diremos que es representable si existe $(R,\xi)$ siendo $R$ un $A$-m\'odulo y $\xi \in F(R)$ tal que 
+    $$\bt Hom_A(R, -) \arrow{r}{\xi_*}[swap]{\sim} & F \et$$
+    es isomorfismo, es decir, para cada $P$, $\xi_*(P)$ es isomorfismo. Se suele llamar a $R$ el representante del funtor y $\xi$ el elemento universal. 
+\end{defi}
+\begin{prop}
+    El representante $(R, \xi)$ es \'unico. 
+\end{prop}
+\begin{dem}
+    Sea $R',\xi'$ otro representante de $F$, existe un \'unico isomorfismo $\phi: R \overset{\sim}{\longrightarrow} R'$ tal que $F(\phi): F(R) \overset{\sim}{\longrightarrow} F(R')$ tal que $F(\phi)(\xi) = \xi'$. Functorializar un isomorfismo es un isomorfismo porque mantienen la composici\'on y la identidad. 
+\end{dem}
+\begin{obs}
+    Sea $F$ un funtor de $A$-m\'odulos, diremos que $F$ es exacto por la izquierda si para toda sucesi\'on exacta $\bt 0\arrow{r} & P' \arrow{r}{i} & P \arrow{r}{p} & P''\et$ la sucesi\'on $$\bt 0\arrow{r} & F(P') \arrow{r}{F(i)} & F(P) \arrow{r}{F(p)} & F(P'')\et$$ es exacta.
+
+    Sean $\{P_i\}_{i \in I}$ una colecci\'on de m\'odulos, 
+    $$\bt \prod_i P_i \arrow{r}{\pi_j} & P_j \\[-5mm] 
+    F\left(\prod_i P_i\right) \arrow{r}{F(\pi_j)} & F(P_j) \arrow[squiggly]{r}{P.U.P.D.} & F\left(\prod_i P_i\right) \arrow{r} & \prod_j F(P_j) 
+    \et$$
+    Diremos que $F$ conmuta con productos directos si el morfismo anterior es isomorfismo para toda colecci\'on de $A$-m\'odulos. 
+\end{obs}
+\begin{teo}[de Grothendieck]
+    Un funtor $F$ es representable $\iff$ $F$ es exacto por la izquierda y conmuta con productos directos. 
+\end{teo}
+\begin{propi}[Universal de las Aplicaciones Bilineales] Se cumple que $Bil(M \times N, P) \simeq Hom_A(M,Hom_A(N,P)) $
+    de forma que    
+    $$\bt \psi \arrow[mapsto]{r} &  \phi: M \rightarrow Hom(N,P)  \\[-8mm]  & \hspace{15mm} m \longmapsto \phi(m)=\psi(m,-) \\[-5mm] \psi & \arrow[mapsto]{l} \phi\et$$
+    verificando $\psi: M \times N \longrightarrow P$
+    $$\phi(m)(n) = \psi(m,n)$$
+    Estas asignaciones son lineales, $\phi$ es morfismo, la $\psi$ construida es bilineal y una es la inversa de la otra.
+    Adem\'as, es funtorial, es decir, 
+$$\bt Bil(M \times N, P) \arrow{d}\arrow{r}{\sim} & Hom_A(M,Hom_A(N,P))\arrow{d} \\ Bil(M \times N, P') \arrow{r}{\sim} & Hom_A(M,Hom_A(N,P')) \et $$
+con $f: P \longrightarrow P'$.  
+
+As\'i, es representable pues es composici\'on de dos funtores representables. 
+\end{propi}
+\begin{obs}
+    Como en $k$-espacios vectoriales $E^*=Hom(E,k)$, $Bil(E\times E, k) \simeq Hom(E,E^*)$, es decir, a cada m\'etrica se le asigna su polaridad.
+\end{obs}
+\begin{teo}
+    $F = Bil_A(M\times N, -)$ es representable.
+\end{teo}
+\begin{cor}
+    Existe un m\'odulo, que denotamos $M\underset{A}{\otimes}N$, y un elemento $\xi \in F(M\underset{A}{\otimes}N) = Bil_A(M\times N, M\underset{A}{\otimes}N)$, luego en definitiva
+    $$\bt M\times N \arrow{d}{\psi} \arrow{r}{\xi} & \arrow{dl}{f} M\underset{A}{\otimes}N \\[5mm] P \et$$
+    de modo que $$\bt Hom_A(M\underset{A}{\otimes}N, P) \arrow{r}{\xi_*}[swap]{\sim} & Bil_A(M\times N, P) \\[-5mm] f \arrow[mapsto]{r} & f\circ \xi \et$$
+    y la asignaci\'on es biun\'ivoca, cada $f$ da una \'unica $\xi$, y viceversa.
+
+    Denotaremos $\xi(m,n):=m \otimes n$, y por ser $\xi$ bilineal, \vspace{-5mm}
+    \begin{itemize}
+        \item $a(m \otimes n) = am \otimes n = m \otimes an$
+        \item $(m+m')\otimes n = m \otimes n +m'\otimes n$
+        \item $m\otimes (n+n')= m \otimes n + m \otimes n'$
+    \end{itemize}
+
+    Consideremos de nuevo $\bt M\times N  \arrow{r}{\xi} & M \underset{A}{\otimes} N\et$. 
+    Sea $\langle \Im \xi \rangle$ el subm\'odulo de $M \underset{A}{\otimes} N$ generado por $\Im \xi$. Un elemento de $\langle \Im \xi \rangle$ es de la forma 
+    $$a_1\theta_1 + \cdots + a_r \theta_r \qquad a_i \in A, \, \theta_i \in \Im \xi$$
+    Como $\theta \in \Im \xi$, $\theta = \xi(m,n) \Rightarrow a\theta = a \xi(m,n) = \xi(am,n)$, es decir, $a\theta \in \Im \xi$. En conclusi\'on, todo elemento de $\langle \Im \xi \rangle$ es de la forma
+    $$m_1 \otimes n_1 + \cdots + m_r \otimes n_r$$
+\end{cor}
+\begin{prop}
+    $\langle \Im \xi \rangle = M \underset{A}{\otimes} N$
+\end{prop}
+\begin{dem}
+    Veamos que $\modulo{M\underset{A}{\otimes}N}{\langle \Im \xi \rangle} = 0$. Llamemos a este m\'odulo $P$. Tenemos el paso al cociente $M\underset{A}{\otimes}N \overset{\pi}{\longrightarrow} P$. Por otro lado, tenemos la bilineal universal $\xi$, pero en verdad valora en $\langle \Im \xi \rangle$
+    $$\bt M \times N \arrow{r}{\xi} \arrow{d}{\xi'} & M \underset{A}{\otimes} N \\[5mm] \langle \Im \xi \rangle \arrow[hook]{ur} \et \qquad \xi = i \circ \xi'$$
+    luego tenemos que 
+    $$\bt Hom_A(M \underset{A}{\otimes} N, P )\arrow{r}{\sim} & Bil_A(M \times N, P) \\[-5mm] \pi \arrow[mapsto]{r} & \pi \circ \xi &[-22mm] = \pi \circ i \circ \xi' = 0 \Rightarrow \pi =0 \et$$
+    pues $\pi$ es epiyeciva. Por tanto, $P=0$
+\end{dem}
+\begin{ejer}
+    Si $m_1,\ldots, m_r$ son generadores de $M$ y $n_1,\ldots, n_s$ son generadoes de $N$, $m_i\otimes n_j$ son generadores de $M\underset{A}{\otimes} N$. 
+\end{ejer}
+\begin{obs}
+    $$\bt M \underset{A}{\otimes} N \arrow{r}{f} & P \\[-5mm] m \otimes n \arrow[mapsto]{r} & f(m\otimes n)= \text{ blabla}\et$$
+    realmente significa
+    $$\bt (m,n) \arrow[mapsto]{r} & \psi(m,n) = \text{blabla} \\[-5mm] M \times N \arrow{r}{\psi} \arrow{d}{\xi} & P \\[5mm] M \underset{A}{\otimes} N \arrow{ru}{f} \et$$
+    de forma que $\psi(m,n) = f(\xi(m,n)) = f(m \otimes n)$
+\end{obs}
+\begin{propi} $M \underset{A}{\otimes} N \overset{\sim}{\longrightarrow} N \underset{A}{\otimes} M$
+\end{propi}
+        \begin{dem}
+            Definimos la aplicaci\'on directa, definiendo $$\bt M \times N \arrow{r}{\psi} & N \underset{A}{\otimes} M \\[-5mm] (m,n)\arrow[mapsto]{r} & n \otimes m \et$$ es bilineal, por lo que factoriza de modo \'unico
+            $$\bt (m,n) \arrow[mapsto]{r} & n \otimes m \\[-5mm] M \times N \arrow{r}{\psi} \arrow{d}{\xi} & N \underset{A}{\otimes} N \\[5mm] M \underset{A}{\otimes} N \arrow{ru}[swap]{f} \et$$
+             y del rev\'es, $N\underset{A}{\otimes} M \longrightarrow M \underset{A}{\otimes} N $, de forma que $n \otimes m \longmapsto m \otimes n$, que por ser bilineal factoriza por la bilineal universal y que para los elementos de la forma $m \otimes n$ es una la inversa de la otra, y como todo elemento es combinaci\'on lineal de estos, lo es para todo elemento.
+        \end{dem} 
+\section{Funtorialidad}
+Sean $f: M \longrightarrow M'$ y $g:N \longrightarrow N'$, estos nos induce un morfismo
+$$\bt M \underset{A}{\otimes} N \arrow{r}{f\otimes g} & M' \underset{A}{\otimes} N' \\[-5mm] m \otimes n \arrow[mapsto]{r} & f(m)\otimes g(n) \et$$
+que se comprueba que es bilineal, por ser lineal en $m$ y en $n$. De la misma forma, para un \'unico $f:M \longrightarrow M'$, se tiene
+$$\bt M \underset{A}{\otimes} N \arrow{r}{f\otimes 1} & M' \underset{A}{\otimes} N \\[-5mm] m \otimes n \arrow[mapsto]{r} & f(m)\otimes n \et$$
+\begin{prop}
+    $\underset{A}{\otimes} N$ es exacto por la derecha. Es decir, si $\bt M' \arrow{r}{i} & M \arrow{r}{p} & \arrow{r} M'' & 0 \et$, entonces la sucesi\'on
+    $$\bt M' \underset{A}{\otimes} N\arrow{r}{i\otimes 1} & M\underset{A}{\otimes} N \arrow{r}{p\, \otimes 1} & \arrow{r} M''\underset{A}{\otimes} N & 0 \et$$
+    tambi\'en es exacta. 
+\end{prop}
+\begin{dem}
+    Basta probar que $Hom((*\underset{A}{\otimes}N), P)$ es exacta. Esta es:
+    $$ \bt 0 \arrow{r} &[-10mm] Hom((M''\underset{A}{\otimes}N),P) \arrow[equal]{d} \arrow{r} &[-10mm] Hom((M\underset{A}{\otimes}N),P) \arrow{r} \arrow[equal]{d} &[-10mm]  Hom((M'\underset{A}{\otimes}N), P) \arrow[equal]{d} \\ &[-10mm]  Hom_A(M'', Hom(N,P)) &[-10mm]  Hom_A(M, Hom(N,P)) &[-10mm]  Hom_A(M', Hom(N,P)) \et$$
+    y esta nueva sucesi\'on es $Hom((*), Hom_A(N,P))$ y como $(*)$ es exacta, esta es exacta. 
+\end{dem}
+\begin{cor}
+    Sea $M$ $A$-m\'odulo, $I \subseteq A$ un ideal, $\modulo{A}{I}$, $M \underset{A}{\otimes} \modulo{A}{I} = \modulo{M}{I \cdot M}$
+    con el morfismo
+    $$\bt  M \underset{A}{\otimes} \modulo{A}{I} \arrow{r} & \modulo{M}{I \cdot M} \\[-5mm] (m \otimes [a]) \arrow[mapsto]{r} & \left[a \cdot  m\right] \et$$
+    y el inverso
+     $$\bt \modulo{M}{I \cdot M} \arrow{r} &  M \underset{A}{\otimes} \modulo{A}{I} \\[-5mm] \left[m\right] \arrow[mapsto]{r} & m  \otimes \left[1 \right] \et$$
+     Pero es buena praxis demostrarlo con la sucesi\'on
+     $$\bt 0 \arrow{r} & I \arrow{r} &  A \arrow{r} & \modulo{A}{I} \arrow{r} & 0 \et$$
+     luego 
+    $$\bt I \underset{A}{\otimes} M \arrow{r} & A \underset{A}{\otimes} M \arrow{r} & \modulo{A}{I} \underset{A}{\otimes} M \arrow{r} & 0 \et$$
+pero $ A \underset{A}{\otimes} M = M$ por la identificaci\'on 
+$$\bt a\otimes m \arrow[mapsto]{r} & am \\[-5mm] 1 \otimes m & \arrow[mapsto]{l} m \et$$
+de forma que $$\bt I \underset{A}{\otimes} M \arrow{r} & M \\[-7mm] i \otimes m \arrow[mapsto]{r} & im \et$$
+tiene imagen $IM$ y por ser la sucesi\'on exacta, se termina la demostraci\'on.
+\end{cor}
+\section{Tensorializar por la localizaci\'on}
+Sea $M$ un $A$-m\'odulo, $S\subseteq A$ un sistema multiplicativo $A \longrightarrow A_S$ su localizaci\'on
+$$\bt M \underset{A}{\otimes} A_S \arrow{r}{\sim} & M_S \\[-5mm] m \otimes \frac{a}{s} \arrow[mapsto]{r} & \frac{am}{s} \arrow[mapsto]{r} & am \otimes \frac{1}{s} = m \otimes \frac{a}{s} \\[-5mm] m \otimes \frac{1}{s} \arrow[mapsto]{dr}& \arrow[mapsto]{l} \frac{m}{s}  \arrow[equal]{d} \\[-5mm] & \frac{1\cdot m}{s} & \et$$
+que hay que comprobar que la primera identificaci\'on no depende del representante escogido y es lineal en ambos factores. La segunda identificaci\'on es un morfismo de m\'odulos y que la composici\'on es la identidad.
+\begin{propi}
+    El producto tensorial $\otimes$ conmuta con $\displaystyle \bigoplus_i$.
+
+    Sea $\{M_i\}_{i \in I}$ una colecci\'on de $A$-m\'odulos, 
+    $$\left( \bigoplus_i M_i \right) \underset{A}{\otimes} N = \bigoplus_i \left( M_i \underset{A}{\otimes} N \right)$$
+\end{propi}
+\begin{dem}
+    Construyamos los morfismos en cada sentido.
+    $$\bt \displaystyle \left( \bigoplus_i M_i \right) \underset{A}{\otimes} N \arrow{r} & \displaystyle \bigoplus_i \left( M_i \underset{A}{\otimes} N \right)\\[-5mm] (m_i) \otimes n \arrow[mapsto]{r} & (m_i \otimes n)_{i \in I} \et$$
+    ahora usando la propiedad universal de la suma directa, para cada $j$, $\displaystyle M_j \overset{\phi_j}{\longrightarrow}  \bigoplus_i M_i$ induce
+    $$\bt M_j \underset{A}{\otimes} N \arrow{r}{\phi_j\otimes 1} &  \left( \displaystyle\bigoplus_i M_i \right)\underset{A}{\otimes} N \\
+     \displaystyle \bigoplus_j \left( M_j \underset{A}{\otimes} N \right) \arrow{ru}[swap]{\sum_j (\phi_j \otimes 1)}
+    \et$$
+
+    De otra forma, 
+    \begin{align*}
+        Hom_A\left(  \left( \bigoplus_i M_i \right)\underset{A}{\otimes} N, P \right) = & Hom_A(\bigoplus_i M_i, Hom_A(N,P)) \\ = & \prod_i Hom_A(M_i, Hom_A(N,P)) 
+    \end{align*}
+    \begin{align*}
+        Hom_A\left(  \bigoplus_i \left( M_i \underset{A}{\otimes} N\right), P \right) = & \prod_i Hom_A(M_i \underset{A}{\otimes} N ,P) \\ = &  \prod_i Hom_A(M_i , Hom_A( N ,P))  
+    \end{align*} como quer\'iamos demostrar. Faltar\'ia demostrar que si dos m\'odulos tienen los mismos $Hom$ son el mismo.
+\end{dem}
+\begin{lem}
+    Sean $M,N$ dos $A$-m\'odulos
+    $$Hom_A(M,-) \overset{\sim}{\longrightarrow} Hom_A(N,-) \iff M \simeq N$$
+\end{lem}
+\begin{dem}
+    Aplicando a $N$, tenemos el diagrama conmutativo
+    $$\bt f: M \to N & \arrow[mapsto]{l} Id_N \\[-5mm]
+    Hom_A(M,N) \arrow{r}{\sim} \arrow[shift left=5pt]{d}{g_*}& Hom_A(N,N)\arrow[shift left=5pt]{d}{g_*} \\[5mm] 
+     Hom_A(M,M) \arrow{u}{f_*}  \arrow{r}{\sim} & Hom_A(N,M)  \arrow{u}{f_*}  \\[-5mm] 
+    Id_M \arrow[mapsto]{r} &  g: N \to M \\[-5mm]
+      \et$$
+      de forma que se verifica lo que quer\'iamos
+\end{dem}
+\begin{obs}
+    Como $M=M\underset{A}{\otimes} A$, por la propiedad universal del producto directo
+    $$Hom_A(M \underset{A}{\otimes} A , P) = Hom_A(M,Hom_A(A, P)) = Hom_A(M ,P)$$
+
+    No es cierto que 
+    $$\left(\prod_i M_i\right) \underset{A}{\otimes} N \textcolor{red}{\not\simeq} \prod_i(M_i \underset{A}{\otimes} N)$$
+    solo se cumple siempre
+    $$\bt \left(\prod_i M_i\right) \underset{A}{\otimes} N \arrow{r}  \arrow{d}{\pi_j \otimes 1} & \prod_i(M_i \underset{A}{\otimes} N) \\ M_j\underset{A}{\otimes} N \et$$
+\end{obs}
+\section{Cambio de base}
+Como hemos visto, $M \underset{A}{\otimes} \modulo{A}{I} = \modulo{M}{IM}$ y $M \underset{A}{\otimes} A_S = M_S$, estos son ejemplos de un proceso general llamado cambio de base.
+
+Sea $M$ un $A$-m\'odulo, $f: A\longrightarrow B$ un morfismo de anillos, entonces $B$ es $A$-m\'odulo v\'ia $f$. Entonces $M\underset{A}{\otimes} B$ es $A$-m\'odulo (por ser producto de dos $A$-m\'odulos) pero tambi\'en es $B$-m\'odulo. Veamos c\'omo multiplicamos por $B$.
+
+Dado $b \in B$, 
+$$\bt M \otimes B \arrow{r}{h_b} & M\otimes B \\[-5mm] m \otimes b' \arrow[mapsto]{r} & m \otimes bb' \et\qquad b(m \otimes b') = m \otimes bb'$$
+y esta asignaci\'on es bilineal y verifica todas las propiedades para construir el $B$-m\'odulo. es decir, tenemos el funtor
+$$\bt A\mathbf{-mod}\arrow{r} & B\mathbf{-mod} \\[-7mm] M \arrow{dd}{f} &  M \underset{A}{\otimes} B  \arrow{dd}[swap]{f \otimes 1}
+\\[-5mm] \arrow[squiggly]{r} \hspace{6mm} & \hspace{12mm}\\[-5mm] N &  N \underset{A}{\otimes} B  \et$$
+que es el que llamaremos cambio de base. 
+
+Sea $\displaystyle L=\bigoplus_{i \in I} A$ un $A$-m\'odulo libre,
+$$L \underset{A}{\otimes} B = \left(\bigoplus_{i \in I} A\right) \underset{A}{\otimes} B = \bigoplus_i (A \underset{A}{\otimes} B) =   \bigoplus_i B $$
+dicho de otra manera, si $\{e_i\}$ son base del $A$-m\'odulo $L$, entonces $\{e_i\otimes 1\}$ son base de $L \underset{A}{\otimes} B$ (como $B$-m\'odulo). 
+
+Si $M$ es un $A$-m\'odulo finito generado, entonces $M\underset{A}{\otimes}B$ es un $B$-m\'odulo finito generado. $\{m_1, \ldots, m_n\}$ son generadores, entoces $\{m_1\otimes1, \ldots, m_n\otimes 1\}$.
+
+Se tienen los isomorfismos de $\modulo{A}{I}$-m\'odulos:
+$$M \underset{A}{\otimes} \modulo{A}{I} = \modulo{M}{IM}$$
+y de $A_S$-m\'odulos
+$$M \underset{A}{\otimes} A_S = M_S$$
+
+\begin{ejer}
+    Sean $I, J$ dos ideales de $A$, $$\modulo{A}{I}\underset{A}{\otimes} \modulo{A}{J} = \modulo{A}{I+J}$$
+\end{ejer}
+\begin{ejer}
+    Consid\'erese la sucesi\'on exacta trivial $\bt 0\arrow{r} & \arrow{r} I & \arrow{r} A & \arrow{r}\modulo{A}{I} & 0 \et$, tensorializar por $\modulo{A}{I}$ es exacto.
+    $$\bt 0 \arrow[dashed]{r} & \arrow{r} I \underset{A}{\otimes} \modulo{A}{I} & \arrow{r} A\underset{A}{\otimes} \modulo{A}{I} & \arrow{r}\modulo{A}{I}\underset{A}{\otimes} \modulo{A}{I} & 0 \\[-5mm]0 \arrow[dashed]{r} &  \arrow{r} \modulo{I}{I^2} & \arrow{r}{Id} \modulo{A}{I} & \arrow{r} \modulo{A}{I} & 0 \\[-5mm] & \left[i\right] \arrow{r} & \left[i\right]=0 \et$$
+    por $M \underset{A}{\otimes} \modulo{A}{I} = \modulo{M}{IM}$. La primera flecha no deber\'ia existir porque entonces $I^2 = I$, lo cual no es lo usual, aunque $I^2 \subseteq I$.
+\end{ejer}
+\noindent \textit{Notaci\'on.}
+    Denotaremos $M \underset{A}{\otimes}B = M_B$. Un morfismo $f: M \longrightarrow N$ induce $f\otimes1 : M_B \longrightarrow N_B$ y denotamos $f\otimes1  = f_B$.
+\begin{propi}
+    [Universal del cambio de base o f\'ormula de cambio de base] Sea $f:A\longrightarrow B$ morfismo de anillos, para todo $A$-m\'odulo $M$ y todo $B$-m\'odulo $N$ se cumple:
+    $$Hom_A(M, N) = Hom_B(M_B,N)$$
+\end{propi}
+\begin{dem}
+    Sea $f: M \longrightarrow N$ morfismo de $A$-m\'odulos, definimos $M\underset{A}{\otimes} B \longrightarrow N$ un morfismo de $B$-m\'odulos, en particular de $A$-m\'odulos.
+$$\bt M\underset{A}{\otimes} B \arrow{r} &  N \\[-5mm] m \otimes b \arrow[mapsto]{r} & b \cdot f(m) \et$$ que es una aplicaci\'on lineal en ambos factores, es $A$-bilineal. Se comprueba adem\'as que es morfismo de $B$-m\'odulos (si multiplico por un $b$, sale fuera). 
+
+Rec\'iprocamente, dado morfismo de $B$-m\'odulos
+    $$\bt M \arrow[bend left=10mm]{rr} \arrow{r}{i}&  M\underset{A}{\otimes} B \arrow{r}{g} &  N \\[-7mm] m \arrow[mapsto]{r} & m \otimes 1  \et$$ 
+    y se comprueba inmediatamente que $i$ es morfismo de $A$-m\'odulos. Y como la aplicaci\'on es morfismo de $B$-m\'odulos, es en particular de $A$-m\'odulos, luego la composici\'on es el morfismo que asociamos, es decir, dado 
+    $g: M_B \longrightarrow N$, 
+    $$\bt M\arrow{r} &  N \\[-5mm] m  \arrow[mapsto]{r} & g(m \otimes 1) \et$$
+    es de $A$-m\'odulos. 
+
+    Se comprueba adem\'as que una asignaci\'on es la inversa de la otra. 
+\end{dem}
+\begin{obs}
+    $Hom_A(M,N)$ tiene no solo estructura de $A$-m\'odulo, si no que tambi\'en tiene estructura de $B$-m\'odulo gracias a que $N$ lo es. Dada $f: M \longrightarrow N$, $b\in B$, 
+    $$b\cdot f : M \longrightarrow N \qquad (b\cdot f)(m) = b \cdot f(m)$$
+    y la igualdad de la propiedad es una igualdad de $B$-m\'odulos (en particular de $A$-m\'odulos). 
+\end{obs}
+\begin{ejer}
+    Comprobar que la Propiedad Universal es funtorial tanto en la $M$ como en la $N$. 
+\end{ejer}
+\begin{sol}
+    Si $f: N \longrightarrow N'$ es morfismo de $B$-m\'odulos (en particular de $A$-m\'odulos)
+    $$\bt Hom_A(M, N) \arrow[equal]{r} \arrow{d}{f_*} &[-8mm] Hom_B(M_B,N) \arrow{d}{f_*} \\[5mm]  Hom_A(M, N') \arrow[equal]{r} &[-8mm] Hom_B(M_B,N') \et$$
+    y si $f: M \longrightarrow M'$ es morfismo de $A$-m\'odulos, induce $f_B: M_B \longrightarrow M_B'$
+    $$\bt Hom_A(M, N) \arrow[equal]{r}  &[-8mm] Hom_B(M_B,N)  \\[5mm] \arrow{u}{f^*} Hom_A(M', N) \arrow[equal]{r} &[-8mm] Hom_B(M_B',N) \arrow{u}{(f_B)^*}\et$$
+\end{sol}
+\begin{prop}
+    El producto tensorial cambia de base. 
+    
+    En otras palabras, sean $A \longrightarrow B$, $M,N$ dos $A$-m\'odulos, entonces se verifica
+    $$(M\underset{A}{\otimes} N)_B = M_B \underset{B}{\otimes} N_B$$
+\end{prop}
+\begin{dem}Por un lado,
+    $$(M\underset{A}{\otimes} N)_B =M \underset{A}{\otimes} N \underset{A}{\otimes}B$$
+    y por otro lado
+    $$M_B \underset{B}{\otimes} N_B = M\underset{A}{\otimes} \cancel{B}\cancel{\underset{B}{\otimes}} N \underset{A}{\otimes} B = M \underset{A}{\otimes} N \underset{A}{\otimes}B$$
+    verific\'andose as\'i la igualdad. Tambi\'en se pueden tomar $Hom$ y se demuestra con las propiedades universales.
+\end{dem}
+\begin{ejer}
+    Existe un morfismo natural
+    $$Hom_A(M,N) \underset{A}{\otimes} B \longrightarrow Hom_B(M_B,N_B)$$ 
+    y por la f\'ormula, $Hom_B(M_B,N_B) = Hom_A(M,N_B)$. Dado $M \to N$ induce $M \to N_B = N \underset{A}{\otimes} B$ pues existe morfismo $N \to N\underset{A}{\otimes} B$ y se compone con este. Es decir, $Hom$ no cambia de base en general, lo cual es patol\'ogico y no es lo ideal.
+\end{ejer}
+
+\section{Construcci\'on del producto tensorial alternativa}
+Sean $M, N$ dos $A$-m\'odulos, queremos construir un $A$-m\'odulo $M \underset{A}{\otimes} N$ que cumpla que 
+$$Hom_A(M \underset{A}{\otimes}N, P) \simeq Bil_A (M \times N, P)$$
+y que sea funtorial en $P$. Es decir, queremos que el funtor $Bil_A(M \times N, -)$ sea el representable.
+
+Por definici\'on, $Bil_A(M\times N, P )\subseteq Aplic(M \times N, P)$, y vamos a estudiar este segundo funtor. 
+
+Sea $X$ un conjunto arbitrario, para cada $A$-m\'odulo $P$, tenemos el conjunto $Aplic(X, P) = \{f: X \longrightarrow P\}$, que no solo es conjunto, tambi\'en es $A$-m\'odulo. Dadas $f,g$, se define $f+g$ y $af$ aplicando a elementos, como siempre. 
+
+Dado un morfismo $f: P \longrightarrow P'$ de $A$-m\'odulos, induce
+$$\bt Aplic(X,P) \rar &  Aplic(X,P') \\[-5mm] g \rarmaps & f\circ g \et$$
+un morfismo de $A$-m\'odulos. 
+
+Es decir, tenemos un funtor de $A$-m\'odulos
+$$\bt Aplic(X, -): &[-12mm] A\mathbf{-mod}\arrow{r} & A\mathbf{-mod} \\[-7mm] & P \arrow{dd}{f} &  Aplic(X,P)  \arrow{dd}[swap]{f_*}
+\\[-5mm] & \arrow[squiggly]{r} \hspace{6mm} & \hspace{10mm}\\[-5mm] & P' &  Aplic(X,P') \et$$
+y vamos a ver que $Aplic(X,P)$ es reprentable. Tenemos 
+$$A^X = \bigoplus_{x\in X} A_x$$
+suma directa de tantas $A$ como elementos de $X$. Elegimos $e_x \in A^X$, la base est\'andar. De forma que todo $e \in A^X$ puede ser expresado como $e = \sum_{\text{finito}} a_x \cdot e_x$ con $a_x \in A^X$. 
+
+Y de hecho, $A^X$ representa a $Aplic(X, -)$, por la siguiente identificaci\'on:
+$$\bt Aplic(X, P) \rar[equal] & Hom_A(A^X, P) \\[-5mm] f:X\to P \rarmaps & \tilde f: &[-22mm] A^X \rar & P \\[-5mm] & & e_x \rarmaps & \tilde f (e_x) &[-12mm] \coloneq f(x) \\[-5mm] 
+f &\arrow[mapsto]{l} \tilde f \\[-5mm] f(x) \coloneq \tilde f(e_x) &
+\et$$
+por lo que en general,
+$$\tilde f \left(\sum_{\text{finito}} a_x \cdot e_x \right) = \sum a_x f(x)$$
+
+Consideramos ahora $X = M\times N$, y sabemos identificar $Aplic(M \times N, P) = Hom_A(A^{M \times N}, P)$, y tenemos $Bil_A(M\times N, P) \subseteq Aplic(M \times N, P)$, luego $Bil_A(M\times N, P) \subseteq Hom_A(A^{M \times N}, P)$, y veamos qu\'e condici\'on cumplen en $Hom_A(A^{M \times N}, P)$. 
+
+Recordemos que $f: M\times N \longrightarrow P$ es bilineal si cumple que
+\begin{enumerate}
+    \item $f(m +am', n) = f(m,n) + af(m',n)$
+    \item $f(m,n+an') = f(m,n) + af(m,n')$
+\end{enumerate}
+Con la correspondencia $f \longleftrightarrow \tilde f$ con $f(x) = \tilde f(e_x)$. Consideramos $\tilde f: A^{M \times N} \longrightarrow P$, y por ser los elementos $x\in M \times N$, $x=(m,n)$, luego $f(m,n) = \tilde f(e_{(m,n)})$, $\tilde f$ cumple:
+\begin{enumerate}
+    \item $\tilde f(e_{(m+am', n)}) = \tilde f(e_{(m,n)} + a \tilde f(e_{(m',n')}) \equiv  \tilde f (e_{m+am', n} - e_{m, n} -a e_{m', n} ) = 0 $
+    \item $'' \qquad '' \qquad '' \qquad '' \qquad '' \qquad '' \qquad '' \quad  \,  \equiv\tilde f (e_{m, n+an'} - e_{m, n} -a e_{m', n'} ) = 0  $
+\end{enumerate}
+es decir, se anula sobre los elementos de $A^X$ de la forma que observamos arriba, que generan un subm\'odulo $C \subseteq A^X$. 
+
+De forma que 
+$$Bil_A(M \times  N, P) = \left\{ \begin{array}{c}
+      \tilde f: A^X \longrightarrow P \text{ morfismos de } \\
+      A{\text{-m\'odulos que se anulan sobre }C}
+\end{array} \right\} = Hom_A\left(\modulo{A^X}{C}, P\right)$$
+demostrando as\'i que el funtor es representable y $\modulo{A^X}{C} = M \underset{A}{\otimes} N$. De la siguiente forma, para cada $e_{(m,n)} \in A^X$, al tomar clase $[e_{(m,n)}] \longmapsto m \otimes n$. 
+
+\section{$A$-\'Algebras}
+\begin{defi}
+    Cuando $A \longrightarrow B$ es morfismo de anillos, diremos que $B$ es una $A$-\'algebra. 
+
+    Llamaremos morfismo de $A$-\'algebras $B \longrightarrow B'$ al morfismo de anillos que haga el tri\'angulo conmutativo
+    $$\bt A \arrow{r} \arrow{dr} & B \arrow{d} \\ & B' \et$$
+    para otra $A$-\'algebra $B'$ con morfismo $A\longrightarrow B'$. Denotaremos 
+    $$Hom_{A-alg}(B,B')$$
+    al conjunto de los morfismos de $A$-\'algebras de esta forma.
+\end{defi}
+\begin{obs}
+    Sea $B$ una $A$-\'algebra, la aplicaci\'on
+    $$\bt B\underset{A}{\otimes} B' \arrow{r}{S_B} & B \\[-5mm] b \otimes b' \arrow[mapsto]{r} & bb' \\[-5mm] b\otimes 1 \arrow[mapsto]{r} & b\et$$
+    es el morfismo diagonal, que es de $A$-m\'odulos y epiyectivo. 
+\end{obs}
+\begin{prop}
+    El producto tensorial de $A$-\'algebras es $A$-\'algebra. 
+\end{prop}
+\begin{dem}
+    Sean $B, C$ dos $A$-\'algebras, como son $A$-\'algebras en particular son $A$-m\'odulo, de forma que $B\underset{A}{\otimes} C$ es $A$-m\'odulo, y para ser $A$-\'algebra falta dar un producto
+    $$\bt B\underset{A}{\otimes} C  \times B\underset{A}{\otimes} C \arrow{r} & B\underset{A}{\otimes} C  \\[-5mm] (O,O') \arrow[mapsto]{r} & O \cdot O' \et$$
+    de forma que la composici\'on de los morfismos
+    $$\bt B\underset{A}{\otimes} C  \times B\underset{A}{\otimes} C  \arrow{d} \\ B\underset{A}{\otimes} C  \underset{A}{\otimes} B\underset{A}{\otimes} C \arrow[equal]{d} \\ B\underset{A}{\otimes} B  \underset{A}{\otimes} C\underset{A}{\otimes} C \arrow{r}{S_B \otimes S_C} & B \underset{A}{\otimes} C \et$$
+    es el producto, que verifica las propiedades necesarias.
+\end{dem}
+\begin{prop} Existe un morfismo 
+    $$\bt A \arrow{r} & B \underset{A}{\otimes} C \\[-5mm] a \arrow[mapsto]{r} & a\cdot (1\otimes 1) \et$$
+    que dota a $B \underset{A}{\otimes} C$ de estructura de $A$-\'algebra, por el diagrama conmutativo
+    \[ % <-- Es mejor usar \[...\] que $$...$$ en LaTeX
+    \begin{tikzcd}[row sep=tiny, column sep=tiny] 
+        & & f(a) \arrow[mapsto]{rrdd} \\
+        & & B \arrow{dr} \\
+        a\arrow[mapsto]{rrdd}\arrow[mapsto]{rruu} & A \arrow{rr} \arrow{ru}{f} \arrow{rd}[swap]{g} & & B \underset{A}{\otimes} C &[-3mm] a\cdot (1\otimes 1)\\
+        & & C \arrow{ru} \\
+        & & g(a)\arrow[mapsto]{rruu} &
+    \end{tikzcd}\]
+    pues $a\cdot (1\otimes 1) = a\otimes 1 = 1\otimes a$, $f(a)\otimes 1 = a\cdot 1 \otimes 1$ y $1 \otimes a\cdot 1 = 1\otimes g(a)$. $f$ y $g$ son morfismos de anillos.
+\end{prop}
+\begin{propi}
+    [Universal del producto tensorial de $A$-\'algebras] 
+    $$Hom_{A-alg}(B \underset{A}{\otimes} C, D) = Hom_{A-alg}(B,D) \times Hom_{A-alg}(C,D)$$
+\end{propi}
+\begin{dem} Para la primera asignaci\'on, construimos
+    $$\bt & B \arrow{d}{i} \\  C \arrow{r}{j} & B \underset{A}{\otimes} C \arrow{rd}{f}\\ & & D \et$$
+    $$\bt Hom_{A-alg}(B \underset{A}{\otimes} C, D) \arrow[equal]{r} & Hom_{A-alg}(B,D) \times Hom_{A-alg}(C,D) \\[-5mm] f \arrow[mapsto]{r} & (f\circ i , f\circ j) \\[-5mm] 
+    \, & \arrow[mapsto]{l} (f,g) \et$$
+    teniendo $f:B\to D, g:C \to D$, vamos a construir un morfismo $B \underset{A}{\otimes} C \longrightarrow D$, como queremos que sea de $A$-\'algebras,
+    $$\bt B \underset{A}{\otimes} C \arrow{r} & D \\[-5mm] b\otimes c \arrow[mapsto]{r} &f(b) \cdot g(c) \et$$
+    lineal en $C$ y $D$, y para comprobar que es de $A$-\'algebras, veamos que el producto va al producto, y basta hacerlo para elemetos de la forma $b\otimes c$. 
+\end{dem}
+\begin{prop}
+    La propiedad universal es funtorial. Es decir, si existe un morfismo de $A$-\'algebras $f: D \longrightarrow D'$, entonces
+    $$\bt Hom_{A-alg}(B \underset{A}{\otimes} C, D) \arrow{d}{f_*} \arrow[equal]{r} & Hom_{A-alg}(B,D) \times Hom_{A-alg}(C,D) \arrow[shift left=10mm]{d}{f_*} \arrow[shift right=10mm]{d}{f_*} \\ Hom_{A-alg}(B \underset{A}{\otimes} C, D') \arrow[equal]{r} & Hom_{A-alg}(B,D') \times Hom_{A-alg}(C,D') \et$$
+\end{prop}
+\begin{obs}
+    A pesar de que antes el funtor $Hom_{A-mod} (M,-)$ nos daba un $A$-m\'odulo, con las $A$-\'algebras ya no es el caso, 
+    $$\bt Hom_{A-alg} (B,-): &[-10mm] \{A-\mathbf{alg}\} \arrow{r} &  \mathbf{Conj} \\[-7mm] &[-10mm] D \arrow{dd}{f} & Hom_{A-alg}(B,D) \arrow{dd}[swap]{f^*}
+    \\[-5mm] &[-10mm] \arrow[squiggly]{r} \hspace{10mm} & \hspace{10mm}\\[-5mm] &[-10mm] D' & Hom_{A-alg}(B,D') \et$$
+\end{obs}
+\section{Cambio de base en $A$-\'algebras}
+Sea $f: A \longrightarrow A'$ el morfismo de anillos que ser\'a cambio de base.
+\begin{prop}
+    Toda $A'$-\'algebra es una $A$-\'algebra (v\'ia $f$). Todo morfismo de $A'$-\'algebras es en particular un morfismo de $A$-\'algebras.
+\end{prop}
+\begin{dem}
+    Dado $A \longrightarrow A'$, tenemos para todo $A'\longrightarrow B'$, por lo que componiendo 
+    $$A \longrightarrow A' \longrightarrow B'$$
+    tenemos la estructura de $A$-\'algebra.
+\end{dem}
+\begin{prop}
+    Si $B$ es una $A$-\'algebra, entonces $B\underset{A}{\otimes} A'$ es $A'$-\'algebra (v\'ia $A' \longrightarrow B\underset{A}{\otimes} A'$). 
+
+    Si $g: B\longrightarrow C$ es un morfismo de $A$-\'algebras, $g\otimes 1$ es morfismo de $A'$-\'algebras. 
+\end{prop}
+\begin{defi}
+    Esto define el funtor de cambio de base
+    $$\bt A-alg \arrow[squiggly]{r} & A'-alg \\[-5mm] B \arrow[squiggly]{r} & B\underset{A}{\otimes} A' \et$$
+\end{defi}
+\noindent\textbf{F\'ormula (de cambio de base o de los puntos)}. Sea $B$ una $A$-\'algebra, $B'$ una $A'$-\'algebra (luego $A$-\'algebra), se tiene la f\'ormula
+$$Hom_{A-alg}(B,B') = Hom_{A'-alg} (B\underset{A}{\otimes} A' , B')$$
+y como siempre, ser\'a funtorial tanto en $B$ como en $B'$. 
+\begin{dem}
+    Sea $f : A \longrightarrow A'$ el morfismo de cambio de base, $g: B \longrightarrow B'$ un morfismo de $A$-\'algebras, queremos construir a partir de este $B \underset{A}{\otimes} A' \longrightarrow B'$ morfismo de $A'$-\'algebras. Y lo construimos con elementos de la forma $b\otimes a'$: 
+    $$\bt B \underset{A}{\otimes} A'\arrow{r} & B' \\[-5mm] b\otimes a' \arrow[mapsto]{r} & a'\cdot g(b) \et$$
+    que hay que comprobar que es lineal en ambos, hay que comprobar que es de anillos (que el producto va al producto) y que el morfismo es de $A'$-\'algebras.
+
+    En el otro sentido, dado $g: B\underset{A}{\otimes} A' \longrightarrow B'$ morfismo de $A'$-\'algebras, en particular es de $A$-\'algebras, luego componi\'endolo con $B \longrightarrow B\underset{A}{\otimes} A'$, 
+    $$\bt B \arrow[bend left=10mm]{rr} \arrow{r}{i} & B\underset{A}{\otimes} A'\arrow{r}{g}& B' \et$$
+    es un morfismo de $A$-\'algebras.
+\end{dem}
+\begin{ejem}
+    Sea $\bb Z$, una $A$-\'algebra es dar un morfismo en un anillo $A$. Con $\bb Z\longrightarrow A$ solo hay un morfismo, luego solo hay una estructura de $\bb Z$-\'algebra. Este morfismo es \'unico porque $n \longmapsto 1+\overset{n)}{\cdots}+ 1$ y  $-n \longmapsto (-1)+\overset{n)}{\cdots}+ (-1)$. 
+
+    As\'i, la categor\'ia de $\bb Z$-\'algebras son los anillos, y los morfismos de $\bb Z$-\'algebras son morfismos de anillos. 
+\end{ejem}
+\begin{ejem}
+    Sea $A$ un anillo, una $A$-\'algebra sencilla es $A[x]$, pues $p\in A[x]$ es tal que $p = \sum a_i x^i \, / \, a_i \in A$. Adem\'as $A \subset A[x]$ por ser $a \longmapsto a+0x+0x^2 + \cdots$. 
+
+    Y esto nos da la siguiente
+\end{ejem}
+\noindent \textbf{Propiedad (Universal de }$A\left[x\right]$\textbf{).}
+    $$Hom_{A-alg} (A[x],B) = B$$
+\begin{dem}
+    Dado $f:A[x] \longrightarrow B$, le asignamos $f(x)$, es decir, aplicar $f$ al polinomio b\'asico $x$.
+
+    Para la asignaci\'on contraria, dado $b$, le asignamos el morfismo dado en el siguiente diagrama conmutativo, es decir, es el morfismo consistente en darle al polinomio el valor $b$, $f(P(x)) = P(b)$
+    $$\bt A \arrow{d} \\ A\left[x\right] \arrow{r} & B \\[-7mm] x \arrow[mapsto]{r} & b  \\[-7mm] \sum a_i x^i \arrow[mapsto]{r} & \sum a_i b^i \et$$
+    
+    As\'i, tenemos las asignaciones
+    $$\bt Hom_{A-alg} (A[x],B) \arrow[equal]{r} & B \\[-7mm] f :A[x] \to B \arrow[mapsto]{r} & f(x) \\[-7mm] A[x] \to B & \arrow[mapsto]{l} b \\[-7mm] \, \, \, \, \sum a_ix^i \mapsto \sum a_ib^i \et$$
+
+    Se comprueba que una asignaci\'on es la inversa de la otra. Y adem\'as es funtorial.
+\end{dem}
+\noindent \textbf{Propiedad (Universal de }$A\left[x_1, \ldots,x_n\right]$\textbf{).}
+   
+    Se verifica que
+    $$\bt Hom_{A-alg} (A[x_1, \ldots,x_n],B) \arrow[equal]{r} & B\times \overset{n)}{\cdots} \times B \\[-5mm] f \arrow[mapsto]{r} & (f(x_1),\ldots, f(x_n))\\[-5mm] f & \arrow[mapsto]{l} (b_1,\ldots, b_n)\et$$
+    tal que $f(P(x_1, \ldots, x_n)) = P(b_1, \ldots, b_n)$. 
+\begin{ejer}
+    Si hacemos 
+    $$\bt A[x] \underset{A}{\otimes} A[y] \arrow{r} & B \et$$
+    entonces 
+    $$Hom_{A-alg} (A[x] \underset{A}{\otimes} A[y]) = B \times B ' = Hom_{A-alg} (A[x,y],B)$$
+    luego al tener los mismos $Hom$, construir expl\'icitamente el isomorfismo $A[x] \underset{A}{\otimes} A[y] \simeq A[x,y]$. B\'asicamente, $x\otimes 1 \longmapsto x, \, 1 \otimes y \longmapsto y$. 
+
+    En general, 
+    $$A[x_1,\ldots,x_n] = A[x_1] \underset{A}{\otimes} A[x_2] \underset{A}{\otimes} \cdots \underset{A}{\otimes} A[x_n]$$
+    y adem\'as lo podemos cambiar de base, pues si $A \longrightarrow A'$ es este cambio de base, $A[x]\underset{A}{\otimes} A' = A'[x]$. 
+\end{ejer}

@@ -1,0 +1,459 @@
+\chapter{Localizaci\'on} \justifying
+Sea $A$ un anillo, 
+\begin{defi}
+    Un subconjunto $S \subseteq A$ es un sistema multiplicativamente cerrado si cumple las siguientes condiciones: \vspace{-3mm}
+    \begin{enumerate}
+        \item $1\in S$
+        \item Si $s,s'\in S$, entonces $s\cdot s' \in S$
+    \end{enumerate}
+\end{defi}
+Definimos una relaci\'on de equivalencia en $A \times S$ tal que $(a,s) \sim (a',s') \iff \, \exists \, t \in S$ tal que
+$$t(as'-a's) = 0$$
+
+Denotaremos $A_S = \modulo{A\times S}{ \sim}$, y $[(a,s)] = \frac{a}{s}$. As\'i,
+$$\dfrac{a}{s} = \dfrac{at}{as} \, \equiv \, (a,s) \sim (at,st)$$
+\begin{prop}
+    $A_S$ tiene estructura de anillo \vspace{-3mm}
+    \begin{itemize}
+        \item $\frac{a}{s} + \frac{a'}{s'} = \frac{as'+a's}{ss'}$
+        \item $\frac{a}{s} \cdot \frac{a'}{s'} = \frac{aa'}{ss'}$
+        \item $0=\frac{0}{1} = \frac{0}{s}$
+        \item $1=\frac{1}{1} = \frac{s}{s}$
+    \end{itemize}
+\end{prop}
+Veamos qu\'e tiene que ver este anillo con $A$. 
+$$\bt A \arrow{r}{i} & A_S \\[-5mm] a \arrow[mapsto]{r} & \frac{a}{1}  \et$$
+es un morfismo de anillos (no tiene por qu\'e ser inyectivo ni epiyectivo). Si $i(a)=0=\frac{0}{a}=\frac{0}{a}$, existe $t \in S$ tal que $t\cdot a =0$, y si el anillo no es \'integro, $a$ puede no ser $0$. 
+
+Sea $s \in S$, $i(s)=\frac{s}{1}$ es invertible (no tiene por qu\'e tenerlo en $S$). Ahora, $\frac{s}{1} \cdot \frac{1}{s} = \frac{1}{1}$. 
+
+Denotaremos 
+$$A^{\times} = \{ a\in A, \, a \text{ es invertible} \} \subseteq A$$
+que es un subgrupo con el producto.
+
+\section{Propiedad Universal de $A_S$}
+Tenemos el diagrama 
+$$\bt  S \subseteq A \arrow{r}{i} \arrow{d}{f} & A_S \arrow[dashed]{ld}{f'} \\ 
+B \et$$
+siendo $f$ morfismo de anillos.
+\begin{propi}[Universal de $A_S$]
+$f$ factoriza por $i$, es decir, existe $f': A_S \longrightarrow B$ tal que $f = f' \circ i$ $$\iff f(S) \subseteq B^{\times}$$
+  
+\end{propi}
+\begin{dem}
+    
+$\Rightarrow)$ Como todos los elementos de $S$ son invertibles, y $f$ es morfismo de anillos, $f$ mantiene los invertibles ($f$ de un invertible es invertible), $f(s)$ es invertible $\forall \, s \in S$, luego $f(s) \in B^{\times}$
+
+$\Leftarrow)$ Definimos $f': A_S\longrightarrow B$, $f' (\frac{a}{s}) = f(a) \cdot f(s)^{-1}$ pues por hip\'otesis tiene inverso, es la \'unica forma posible de definirla. Queda comprobar que est\'a bien definido, es morfismo de anillos y no depende del representante escogido. Comprobar que $f=f'\circ i$. 
+
+Veamos que la localizaci\'on es funtorial. Sea $f: A \longrightarrow A'$ un morfismo de anillos, sean $S\subseteq A$ y $S' \subseteq A'$ sendos sistemas multiplicativos, tal que $f(S) \subseteq S'$ lo cual induce el diagrama conmutativo
+$$\bt A \arrow{d} \arrow{r}{f} & A'  \arrow{d} \\ A_S \arrow{r} & A'_{S'} \\[-5mm] \frac{a}{s} \arrow[mapsto]{r} & \frac{f(a)}{f(s)}  \et$$
+donde queda comprobar que el morfismo inferior est\'a bien definido, no depende del representante, etc. Otra forma de definirlo podr\'ia ser:
+$$\bt A \arrow{d} \arrow{rd} \arrow{r}{f} & A'  \arrow{d} \\ A_S \arrow{r} & A'_{S'} \\[-5mm] \frac{a}{s} \arrow[mapsto]{r} & \frac{f(a)}{f(s)}  \et$$
+
+Si consideramos $S' = f(S)$, tenemos tambi\'en ambos sistemas multiplicativos. 
+
+Si $S\subseteq S'$ siendo ambos sistemas multiplicativos de $A$, tenemos un morfismo \\
+$A_S \longrightarrow A_S'$ siendo ambos compatibles con el morfismo y teni\'endose el tri\'angulo conmutativo
+$$\bt & A \arrow{rd} \arrow{dl} & \\ A_S \arrow{rr} & & A_{S'} \\[-5mm] \frac{a}{s} \arrow[mapsto]{rr} & & \frac{a}{s}\et$$
+
+Sea 
+$$\bar S = \{a \in A \,  / \, i(a) \text{ es invertible en } A_S\} = i^{-1}(A_S^{\times})$$
+de forma que $S\subseteq \bar S$ y tenemos un morfismo $A_S \overset{\sim}{\longrightarrow} A_{\bar S}$, que es isomorfismo. La inversa se construye por la propiedad universal de la localizaci\'on:
+$$\bt \bar S \subseteq A \arrow{r}{\bar i} \arrow{d}{i} & A_{\bar S} \arrow{ld} \\ A_S \et$$
+factoriza y su inversa coincide con \'el.
+\end{dem}
+Sean $S_1, S_2$ dos sistemas multiplicativos de $A$, 
+$$S_1\cdot S_2 = \{s_1\cdot s_2, \, s_1 \in S_1, \, s_2\in S_2\}$$
+es un sistema multiplicativo tal que $S_1, S_2 \subseteq S_1 \cdot S_2$, de forma que 
+$$\bt[row sep=small, column sep=small] & A_{S_1} \arrow{rd} & \\ A \arrow{ur} \arrow{dr} & & A_{S_1\cdot S_2} \\ & A_{S_2} \arrow{ru} &  \et$$
+\begin{ejem}
+    Sea $a\in A$, se tiene el sistema multiplicativo $S= \{ 1, a, a^2, a^3, \ldots \}$, de forma que $A_{\{1,a,a^2, \ldots\}} = A_a$. Si considermos el sistema 
+    multiplicativo m\'as pequeño $\{1, a^3, a^6, a^9, \ldots \}$, queda como ejercicio comprobar que $A_{a^3} \longrightarrow A_a$ es un isomorfismo. 
+    Como $a^3$ es invertible en $A_{a^3}$, $a$ tambi\'en lo es y el morfismo $i$ factoriza por la localizaci\'on:
+    $$\bt a \arrow[mapsto]{d} &[-10mm] A \arrow{d} \arrow{r} & A_a\arrow[dashed]{dl} \\ \frac{a}{1} & A_{a^3}  \et$$
+
+    Sea $\p \subset A$ un ideal primo, definimos 
+    $$S = A - \p = \{a\in A \, / \, a \nin \p\}$$
+    y localizando, denotaremos $A_{A-\p} = A_{\p}$ lo cual tampoco induce a error pues $1 \nin \p$.
+
+    Sea $\p \in \q$, $A-\q \subseteq A-\p$, induce el morfismo $A_\q \longrightarrow A_\p$
+
+    Un caso particular de localizar por un primo es cuando $A$ anillo \'integro ($ab = 0 \implies a=0 \text{ \'o } b=0 \equiv \p=\{0\}$ es un ideal primo). Localizamos
+    $$A_0 = A_{A-\{0\}} = \left\{\frac{a}{b}, \, a,b\in A, \, b \neq 0\right\}$$
+    y vemos que es un cuerpo. $\frac{a}{b} \neq 0 \implies a\neq 0$ luego tiene inverso $\frac{b}{a}$. Esto es lo que llamamos el cuerpo de fracciones de $A$, denotado por $A_0 = \Sigma_A$. El morfismo $A \longrightarrow A_0$ es inyectivo (por ser \'integro $A$). 
+
+    Como $A$ es \'integro, sea $S\subseteq A$ con $0 \nin S$, los elementos de $A_S$ verifican
+    $$\frac{a}{s} = \dfrac{a'}{s'} \iff \exists \, t \in S \, / \, t(as' -a's) = 0 \equiv as'-a's = 0$$
+    pues $t\neq 0$. Adem\'as $A \hookrightarrow A_S$ es inyectivo, pues $a \longmapsto \frac{a}{1} = \frac{0}{1} \iff a=0$. 
+
+    Sea $S \subseteq A-\{0\}$, $A_S \longrightarrow A_0$ es inyectivo. Entonces, si $A$ es \'integro $A_0$ contiene a todas las posibles localizaciones que puedas hacer, para cualquier primo $\p$, $A_\p \hookrightarrow A_0$. 
+
+    Observemos que $\mathbb Z_0 = \mathbb Q$, $k[x]_0 = k(x) = \left\{ \frac{p(x)}{q(x)} \, / \, p(x), q(x) \in k[x], \, q(x) \nin 0 \right\}$. $k[x,y]_0=k(x,y)$ e igual para $n$ variables.  
+\end{ejem}
+\vfill \newpage
+\section{Espectro de un anillo}
+\begin{defi}
+    Sea $A$ un anillo,
+    $$Spec \, A = \text{ conjunto de ideales primos de } A$$
+    y como todo ideal maximal es primo, denotamos al conjunto de ideales maximales de $A$ como $Spec_{max} \, A \subset Spec\, A$. Denotaremos $X = Spec \, A$, cuyos elementos (puntos), $x\in X$ definen ideales primos $\p_x$, que localizan $A_{\p_x} = A_x$. 
+\end{defi}
+\begin{obs}
+¿Por qu\'e se estudia el espectro?
+
+Es el mundo real que uno ve a partir de ciertas observaciones. Para estudiar cierto objeto, lo observamos, medimos su temperatura, tamaño, densidad, dureza, etc. que son funciones en los n\'umeros reales, y se pueden sumar, restar, etc. y las funciones que construyes a partir de ellas, son un anillo. 
+
+El espectro es lo que vemos a partir de estas observaciones. Si solo tenemos una observaci\'on, solo sabemos la temperatura por ejemplo, solo distinguimos puntos con distinta temperatura. Entonces dos puntos con la misma temperatura son indistinguibles. Al usar otra observaci\'on, por ejemplo, la presi\'on, distinguimos m\'as puntos, y puntos que era indistinguinles ahora no los son, aunque habr\'a puntos indistinguibles todav\'ia. Entonces lo que vemos es lo que observamos/medimos, es nuestra realidad. 
+
+As\'i pues, el espectro son los puntos que vemos con esas observaciones. Si otro observador tiene m\'as medidas, su anillo es distinto y por tanto su espectro tambi\'en. Podemos identificar el laboratorio con el anillo de observaciones, y el espectro con los resultados de esas observaciones. 
+
+Consideremos $A$ un anillo, $S \subseteq A$ un sistema multiplicativo, $i:A \longrightarrow A_S$ el morfismo de localizaci\'on.
+
+\end{obs}\begin{teo}
+    $Spec\, A_S = \{ \p \in Spec \, A \, / \, \p \cap S = \emptyset\}$
+\end{teo}
+\begin{dem}
+    Sea $\q$ un primo de $A_S$. Sea $\p = i^{-1} (\q) = \{ a\in A \, / \, i(a) \in \q\}$. Veamos que $\p \cap S = \emptyset$. Si hubiera $s\in S$, $s\in \p$, entonces $i(s) \in \q$, siendo $i(s)$ invertible, y cualquier primo con invertibles, es el anillo, entonces $\q = A_S \, !!$. En efecto hemos establecido la inclusi\'on $\subseteq$, con $\q \longrightarrow i^{-1}(\q)$.
+
+    Sea ahora $\p$ primo de $A$ tal que $\p \cap S = \emptyset$, construimos $\q = \p \cdot A_S$.  M\'as expl\'icitamente, como ejercicio probar que $$\p \cdot A_S = \left\{\frac{a}{s} \in A_S \,  / \, a \in \p\right\}$$
+    y se comprueba eligiendo otro $\frac{a'}{s'}$. Veamos que $\q$ es primo. Si $\frac{a}{s}\cdot \frac{b}{t} \in \p A_S$, $\frac{ab}{st} \in \p A_S \iff ab \in \p \implies a\in \p$ \'o $b \in \p$ luego /$\q$ es primo. Adem\'as no es el total $\q \nin A_S$. Si lo fuera, $\frac{1}{1} \nin \q$ porque $1 \nin \p$ porque por hip\'otesis $\p$ era primo, luego no era el total. Y se ha demostrado la inclusi\'on contraria $\supseteq$ con la asignaci\'on $\p A_S \longleftarrow \p$. Queda comprobar que una asignaci\'on es la contrario de la otra.
+\end{dem}
+\begin{obs}
+    En general, para cualquier $f : A \longrightarrow B$ morfismo de anillos, si $\q \in B$ es un ideal primo, entonces $f^{-1}(\q)$ es primo de $A$. 
+
+    Siempre que tengamos $I \subseteq A$ ideal, tenemos un ideal en $B$ denotado por $I \cdot B$ y es el ideal de $B$ generado por $f(I)$.
+\end{obs}
+\begin{ejems}
+    Escojamos el anillo $A$, $a\in A$, y el sistema $A_a$, $\p$ corta a $S = \{1, a , a^2, \ldots\} \iff a \in \p$, luego 
+    $$Spec\, A_a = Spec \, A -(a)_0 $$
+    siendo $(a)_0 = \{\p \in Spec \, A \, / \, a \in \p \}$. 
+
+Para cualquier ideal $I \subseteq A$, $\displaystyle (I)_0 = \bigcap_{a\in I} (a)_0$ son los primos que contienen a $I$, y se define una topolog\'ia donde los cerrados son los ceros de un ideal. Si consideramos $a \in A$, $x\in X = Spec \, A$, diremos notacionalmente $a(x)=0$. O dicho como antes, $(a)_0 = \{\p_x \in Spec \, A \, / \, a \in \p_x \} = \{ x\in X \, /\, a(x)=0\}$. 
+
+Como $A_a=\{ \frac{b}{a^n}, b\in A\}$ es dividir, es un proceso aritm\'etico. Tenemos un proceso geom\'etrico, la f\'ormula de $Spec\, A_a$ nos hace pasar al abierto complementario, pues nos quitamos los ceros de $a$. 
+
+Caso particular, sea $\q \in Spec \, A$, $A_\q$, $S=A-\q$, 
+$$Spec\, A_\q = \{ \p \in Spec\, A \, / \, \p \subseteq \q \}$$
+pues $\q\cap S = \q \cap A-\q = \emptyset$. Sea $\p$ primo,
+$$\bt A \arrow{r}& A_\p \\[-5mm] \p \arrow[mapsto]{r} & \p \cdot A_\p \et$$
+siendo $\p A_\p$ se convierte en el \'unico ideal maximal de $A_\p$. 
+\end{ejems}
+
+Entonces en el ejemplo anterior hemos hecho local el anillo $A$. 
+\begin{ejem}
+    Sea $\mathbb Z$, en \'el, todo ideal es principal, todo ideal son los m\'ultiplos de alguien.
+    $$Spec\, \mathbb Z = \left\{ \begin{array}{cc}
+         0 &  \text{ (minimal)}\\
+         (p) & p = \text{ nº primo (maximal)} 
+    \end{array}\right.$$
+    Si hacemos $\mathbb Z_{64}$, 
+    $$Spec\, \mathbb Z_{64} = Spec \, \mathbb Z - \{(2)\}$$
+    pues el ideal del 2 es el \'unico que contiene al 64. Sea $p$ primo
+    $$Spec \, \mathbb Z_p = Spec \, \mathbb Z - \{(p)\}$$
+    pero tambi\'en podemos hacer $\mathbb Z _{(p)}$ estando localizando en el ideal primo $p$, 
+    $$Spec\, \mathbb Z_{(p)} = \{(0), (p)\} $$
+\end{ejem}
+\begin{defi}
+    Decimos que un anillo $A$ es local cuando tiene un \'unico ideal maximal. Lo denotamos por $\mc O$ y a su maximal $\m$. 
+\end{defi}
+\begin{ejem}
+    El anillo $A_\p$ es local de maximal $\m = \p A_\p$. 
+\end{ejem}
+Sea $\mc O$, $\m$ su maximal. Los elementos de $\mc O$ son invertibles si y solo si no están contenidos en el maximal $ \m$. 
+
+Si $a\nin \m$, entonces $a$ es invertible. Como $a\nin \m$, $(a)\nsubseteq \m $, entonces $(a) = \mc O$, y $1$ es m\'ultiplo de $a$, luego $a$ es invertible. 
+
+El rec\'iproco es cierto pues si $a\in \m$ invertible, $\m = \mc O$. 
+\section{Localizaci\'on de m\'odulos}
+Sea $M$ un $A$-m\'odulo, $S\subseteq A$ un sistema multiplicativo, definimos la relaci\'on en $M \times S$ tal que 
+$$(m,s) \sim (m',s') \text{ si existe } t\in S \, : \, t(s'm-sm')=0$$
+que es de equivalencia igual que vimos en anillos. Denotaremos $M_S = \modulo{(M\times S)}{\sim} = S^{-1}M$ al m\'odulo localizado por el sistema multiplicativo $S$. 
+
+Denotaremos $[(m,s)]=\frac{m}{s}$ verificando que $\frac{m}{s}=\frac{tm}{ts} \, \forall\, t \in S$. Ponemos estructura de m\'odulo en $M_S$:
+\begin{itemize}
+    \item $\displaystyle \frac{m}{s}+\frac{m'}{s'} = \frac{s'm+sm'}{ss'}$ bien definida.
+    \item $\displaystyle 0=\frac{0}{1}=\frac{0}{s}$
+    \item $\displaystyle -\frac{m}{s}=\frac{-m}{s}$
+\end{itemize} es un grupo abeliano. Adem\'as, $M_S$ tiene estructura de $A_S$-m\'odulo:
+\begin{itemize}
+    \item $\displaystyle \frac{a}{t} \cdot \frac{m}{s} = \frac{am}{ts}$ bien definida
+    \item Axiomas de m\'odulos
+\end{itemize}
+
+Si $S=\{1,a,a^2, \ldots\}$, denotaremos $M_S = M_a$
+
+Si $S=A-\p_x$, $M_S = M_{\p_x}=M_x$.
+
+No solo cada m\'odulo tiene su localizado, si no que esta construcci\'on es funtorial. Sea $f:M\longrightarrow N$ un morfismo de $A$-m\'odulos, este nos induce un morfismo de $A_S$-m\'odulos $f_S:M_S \longrightarrow N_S$ definido por $f_S(\frac{m}{s}) = \frac{f(m)}{s}$, que debemos comprobar que est\'a bien definido, que la suma va a la suma, etc.
+
+$Id: M \longrightarrow M$, $Id_S=Id_{M_S}$
+
+Si $\bt M \arrow{r}{f} & N \arrow{r}{g} & P \et$, $\bt M_S \arrow{r}{f_S} & N_S \arrow{r}{g_S} & P_S \et$ de forma que $$g_S \circ f_S = (g\circ f)_S$$
+
+\begin{prop}
+    [Exactitud de la localizaci\'on] Si $(*)$ es una sucesi\'on exacta de $A$-m\'odulos, entonces $(*)_S$ es una sucesi\'on exacta de $A_S$-m\'odulos.
+\end{prop}
+\begin{dem} \, \vspace{-3mm}
+\begin{enumerate}
+    \item $i_S$ es inyectiva, es decir, $\ker i_S = 0$.
+
+    Sea $\frac{m'}{s}\in \ker i_S$, $i_S(\frac{m'}{s}) = \frac{i(m')}{s} = 0 \iff \exists \, t\in S \, : \, t \cdot i(m')=0 = i(t\cdot m') \Rightarrow t\cdot m' = 0 \Rightarrow \frac{m'}{s}=0 $
+\item $p_S$ es epiyectiva. 
+
+Sea $\frac{m''}{s} \in M''_S$, como $p$ es epiyectiva, $m''=p(m)$, luego $\frac{m''}{s}=p_S(\frac{m}{s})$. 
+\item - $p\circ i =0 \Rightarrow (p\circ i)_S = 0 = p_S \circ i_S \Rightarrow \Im i_S \subseteq \ker  p_S$
+
+- Sea $\frac{m}{s} \in \ker  p_S$, $p_S (\frac{m}{s}) = 0 = \frac{p(m)}{s} \Rightarrow \exists \, t \in S \, : \, t \cdot p(m) = 0$ y como $p$ es morfismo de m\'odulos, $tp(m)=p(tm)=0$ y $tm \in \ker\, p = \Im i$, lo que nos dice en definitiva que $tm=i(m')$ y la fracci\'on de partida
+$$\frac{m}{s} = \frac{tm}{ts} = \frac{i(m')}{ts} = i_S\left(\frac{m'}{ts}\right)$$
+luego el elemento de partida lo hemos expresado como un elemento de $\Im i_S$, por lo que $\Im i_S \supseteq \ker  p_S$.
+\end{enumerate}
+\end{dem}
+\begin{cor}
+    Sea $f:M \longrightarrow N$ un morfismo de $A$-m\'odulos, que induce $f_S: M_S \longrightarrow N_S$, se cumple que 
+    $$(\ker\, f)_S = \ker f_S \qquad (\coker f)_S=\coker f_S\qquad (\Im f)_S = \Im f_S$$
+\end{cor}
+\begin{dem}
+    $\bt 0\arrow{r} & \ker  f \arrow[hook]{r}{i}  & M \arrow{r}{f} & N\et$ es exacta, luego 
+    $$\bt 0\arrow{r} & (\ker  f)_S \arrow[hook]{r}{i_S}  & M_S \arrow{r}{f_S} & N_S\et$$ es exacta y como en 
+    $\bt 0\arrow{r} & M' \arrow[hook]{r}{i}  & M \arrow{r}{f} & M''\et$ se cumple $M'\simeq \ker\, f$ en general, 
+    $(\ker f)_S = \ker\, f_S$.
+
+    $\bt M \arrow{r}{f} & N \arrow{r}{\pi} & \coker\, f \arrow{r} & 0 \et$ es exacta, entonces 
+    $$\bt M_S \arrow{r}{f_S} & N_S \arrow{r}{\pi_S} & (\coker\, f)_S \arrow{r} & 0 \et$$ es exacta y como en $\bt M' \arrow{r}{f}  & M \arrow{r}{p} & M''\arrow{r} & 0 \et$  se cumple que $\coker f \simeq M''$ en general, $(\coker f)_S=\coker f_S$. 
+
+    Faltaría comprobar la de $\Im f_S$
+\end{dem}
+\section{Anulador de un m\'odulo}
+Sea $M$ un $A$-m\'odulo
+\begin{defi}
+    $a\in A$ anula a $m \in M$ si $am=0$
+\end{defi}
+Dado $m \in M$, 
+\begin{defi}
+    Definimos $An_A(m) = An(m) = \{ a\in A \, : \, a\cdot m=0\} \subseteq A$ y es un ideal de $A$. 
+\end{defi}
+Usaremos el sub\'indice si hay que aclarar el anillo sobre el que actuamos.
+\begin{defi}
+    Llamaremos $\displaystyle An(M) = \{a\in A \, : \, a\cdot m=0\, \forall \, m \in M \} = \bigcap_{m\in M} An(m)$.
+\end{defi}
+\begin{prop}
+    $An(m)=An(\langle m \rangle)$. En general, si $\{m_1, \ldots, m_n\}$ son generadores de $M$, $An(M) = An(m_1)\cap \cdots \cap An(m_n)$. 
+\end{prop}
+
+Sea $I$ un ideal de $A$, construimos $\modulo{A}{I}$ que es un $A$-m\'odulo, donde $a\cdot [b]=[ab]$. 
+$[1]$ es generador de $\modulo{A}{I}$, luego $a\cdot [1]=0 \iff [a]=0 \iff a \in I$. 
+En definitiva, $An_A(\modulo{A}{I}) = I$. Observ\'ese que $An_{\nicefrac{A}{I}}(\modulo{A}{I})=0$. 
+\begin{prop}
+    Un $A$-m\'odulo $M$ es mon\'ogeno si y solo si $M \simeq \modulo{A}{I}$ (y adem\'as $I=An(M)$)
+\end{prop}
+\begin{dem} 
+    $\Rightarrow)$ Supongamos $M$ mon\'ogeno, sea $m \in M$ un generador, que nos produce un morfismo 
+    $$\bt 0 \arrow{r} & An (m) = An(M) \arrow{r} &A \arrow{r}{f_m} & M \arrow{r} & 0  \\[-5mm] & & a \arrow[mapsto]{r}& am \et \quad  \Rightarrow M \simeq \modulo{A}{An(M)}$$
+
+    $\Leftarrow)$ $M \simeq \modulo{A}{I}$ es mon\'ogeno, luego $M$ es mon\'ogeno.
+\end{dem} 
+\begin{obs}
+    Si $m_1, \ldots, m_n$ son generadores de $M$, entonces $\frac{m_1}{1}, \cdots, \frac{m_n}{1}$ son generadores de $M_S$ como $A_S$-m\'odulo. Entonces
+    $$\frac{m}{s} = \frac{a_1m_1+\cdots+a_nm_n }{s} = \frac{a_1}{s} \cdot \frac{m_1}{1} + \cdots +\frac{a_n}{s} \cdot \frac{m_n}{1}$$
+\end{obs}
+\begin{prop}
+Sea $M$ un $A$-m\'odulo finito generado, $S\subseteq A$ un sistema multiplicativo
+$$M_S = 0  \iff S \text{ corta a } An(M) \, (S\cap An(M) \neq \emptyset)$$
+\end{prop}\begin{dem} Sea $m_1, \ldots, m_n$ un sistema de generadores de $M$
+    
+    $\Rightarrow)$ Supongamos $M_S = 0$ (toda fracci\'on es nula), entonces $\frac{m_1}{1} =0$ es deicr
+    $$\exists s_1\in S\, : \, s_1 m_1 = 0$$
+    para todo $m_i$. Escogiendo $s = s_1 \cdots s_n \in S$, que anula a $m_1, \ldots, m_n$, luego $s\in An(M)$. 
+
+    $\Leftarrow)$ $S$ corta a $An(M)$, entonces existe $t\in S, t\in An(M)$. Veamos que $M_S=0$.
+
+    Sea $\frac{m}{s} \in M_S$ y entonces como $t\in S$
+    $$\frac{m}{s} = \frac{tm}{ts} = \frac{0}{ts}$$
+    pues $t\in An(M)$
+\end{dem}
+
+\section{Soporte de un m\'odulo}
+Sea $M$ un $A$-m\'odulo y $X=Spec\, A$,
+\begin{defi}
+    Llamamos soporte de $M$ al conjunto de ideales primos tales que 
+    $$sop(M)=\{x\in X\, : \, M_x\neq 0\} \subseteq Spec\, A$$
+\end{defi}
+\begin{prop}
+    Sea $M$ un $A$-m\'oudulo finito generado, entonces
+    $$sop(M)=(An(M))_0= \{x\in X \, : \, An(M) \subseteq \p_x\}$$
+\end{prop}
+\begin{dem}
+    $x\in sop(M) \iff M_x\neq 0 \iff A-\p_x $ no corta a $An(M)$ (por la proposici\'on anterior), lo cual es equivalente a decir que $\p_x \supseteq An(M)$. 
+\end{dem}
+\begin{ejem}
+    Si $\modulo{A}{I}$ es el m\'odulo,
+    $$sop\left(\modulo{A}{I}\right) = (I)_0$$
+\end{ejem}
+\begin{prop}
+    Sea $M$ un $A$-m\'odulo y $X = Spec\, A$. Son equivalentes: \vspace{-3mm}
+    \begin{enumerate}[a)]
+        \item $M=0$
+        \item $M_x= 0 \, \forall x\in Spec \, A$
+        \item $M_x= 0 \, \forall x\in Spec_{max} \, A$
+    \end{enumerate}
+\end{prop}
+\begin{dem}
+    $a) \Rightarrow b) \Rightarrow c)$ son inmediatas. Veamos que $c) \Rightarrow a)$. Demostraremos la contrarrec\'iproca, y supongamos que $M\neq 0$. Sea $0\neq m \in M$ y consideremos $\langle m \rangle$, que es un subm\'odulo mon\'ogeno, luego $\langle m \rangle \simeq \modulo{A}{I}$ y entonces $I \neq A$ pues $\modulo{A}{I} \neq 0$ por hip\'otesis y por tanto existe $\m_x$ tal que $I\subseteq \m_x$ (todo ideal distinto del total est\'a incluido en un maximal). Este $\m_x$ es primo contiendo a $I$, luego $x \in sop(\modulo{A}{I}) = sop (\langle m \rangle) $ de forma que por definici\'on de soporte $\langle m \rangle_x \neq 0$. Como $\langle m \rangle \hookrightarrow M$, y al ser la localizaci\'on exacta, $\langle m \rangle_x \hookrightarrow M_x$ es inyectiva tambi\'en. Como por hip\'otesis $\langle m \rangle_x \neq 0$, por inyectividad, $M_x \neq 0$. 
+\end{dem}
+\begin{cor}
+    Sea $f: M \longrightarrow N$ un morfismo de $A$-m\'odulos, para cada $x \in X$, \\ $f_x : M_x \longrightarrow N_x$.
+\begin{center}
+    
+    $f$ es inyectiva $\iff f_x$ es inyectiva $\forall \, x \in Spec\, A$ $\iff f_x$ es inyectiva $\forall \, x \in Spec_{max}\, A$
+
+    $f$ es epiyectiva $\iff f_x$ es epiyectiva $\forall \, x \in Spec\, A$ $\iff f_x$ es epiyectiva $\forall \, x \in Spec_{max}\, A$
+
+     $f$ es isomorfismo $\iff f_x$ es isom. $\forall \, x \in Spec\, A$ $\iff f_x$ es isom. $\forall \, x \in Spec_{max}\, A$
+
+     $f$ es nula $\iff f_x$ es nula $\forall \, x \in Spec\, A$ $\iff f_x$ es nula $\forall \, x \in Spec_{max}\, A$
+     
+\end{center}
+\end{cor}
+\begin{dem}
+    $f$ es inyectiva $\iff \ker  f=0 \iff (\ker  f)_x = 0 \, \forall \, x \in Spec\, A \iff(\ker  f)_x = 0 \forall x \in Spec_{max}\, A $ y como $(\ker  f)_x=\ker  f_x = 0 \iff f_x$ es inyectiva.
+
+    La epiyectividad se hace igual pero con $\coker f$.
+
+    El tercero es trivial con ambos.
+
+    El \'ultimo se demuestra con que $\Im f=0$. 
+\end{dem}
+\begin{ejer}
+    Sean $M, N$ dos $A$-m\'odulos, si $sop(M) \cap sop(N) = \emptyset$, entonces \\$Hom_A(M,N) = 0$.
+\end{ejer}
+\begin{obs}
+    Supongamos $I$ ideal de $A$, $A \overset{\pi}{\longrightarrow} \modulo{A}{I}$, si $M$ es un $\modulo{A}{I}$-m\'odulo, entonces es $A$-m\'odulo v\'ia $\pi$, definimos $a\cdot m = \pi(a) \cdot m$. Y adem\'as, $M$ est\'a anulado por $I$: $i \cdot m = 0 \, \forall \, i \in I, \, \forall \, m \in M$, o dicho de otra forma, $I \subseteq An_A(M)$. 
+
+    Rec\'iprocamente, si $M$ es un $A$-m\'odulo anulado por $I$, entonces $M$ es $\modulo{A}{I}$-m\'odulo, definiendo $[a] \cdot m = a \cdot m$, que est\'a bien definido justamente porque $I$ es sobre el que se hace m\'odulo.
+
+    Esto nos da la equivalencia de categor\'ias: Un $A$-m\'odulo anulado por $I$ es un $\modulo{A}{I}$-m\'odulo.
+
+    Sea $I \subseteq A$ un ideal, definimos $I \cdot M$ como el subconjunto de $M$ cuyos elementos son sumas finitas de la forma $i \cdot m$, es decir
+    $$I\cdot M = \{ i_1 m_1 + \cdots + i_r m_r , \, i_j \in I, \, m_j \in M \}$$
+
+    Supongamos que $m_1, \ldots, m_n$ son generadores de $M$, entonces todo elemento de $I\cdot M$ es de la forma $i_1 m_1 + \cdots + i_n m_n , \, i_r \in I$.
+
+    Hacemos ahora cociente por este, de forma que $\modulo{M}{IM}$ est\'a anulado por $I$ (si $M$ no est\'a anulado por $I$, pues si lo estuviera sería como no hacer nada). As\'i, $i \cdot [m] = [i\cdot m] = 0$ pues $i\cdot m \in I\cdot M$. 
+
+    Recordemos que $M$ sea $A$-m\'odulo significa que \vspace{-5mm}
+    \begin{enumerate}
+        \item $M,+$ grupo abeliano
+        \item Propiedades con el producto
+    \end{enumerate}
+    Consideremos
+    $$End_{gr} M = \{ f: M \longrightarrow M , \, \text{ morfismo de grupos }\}$$
+    como anillo (no conmutativo).
+
+    Si $M$ es $A$-m\'odulo, 
+    $$\bt A \arrow{r}{\phi} & End_{gr}(M) \\[-5mm] a \arrow[mapsto]{r} & h_a: M \rightarrow M   \et$$
+    es decir, la estructura de m\'odulo es equivalente al morfismo de anillos $\phi$, con $\phi(a)=h_a$ y con $a\cdot m = \phi(a) \cdot m$. Adem\'as, $An(M) = \ker  \phi$. 
+    
+    Si $I$ anula a $M$, es lo mismo que decir que $\phi$ se anula sobre $I$, que es lo mismo que decir que $\phi$ factoriza por $\modulo{A}{I}$: 
+    $$\bt A \arrow{rr}{\phi} \arrow{rd}{\pi} & & End_{gr}(M) \\[5mm] & \arrow{ur}{\bar \phi} \modulo{A}{I}   \et$$
+    que es equivalente a ver $M$ como $\modulo{A}{I}$-m\'odulo como vimos antes.
+\end{obs}
+\begin{ejer}
+    Sea $S\subseteq A$, $f:A \longrightarrow B$ un morfismo de anillos, gracias al morfismo, $B$ es un $A$-m\'odulo, y podemos hacer
+    $$B_S = \left\{ \frac{b}{s} , \, b\in B, \, s\in S \right\}$$
+    no solo es $A_S$-m\'odulo si no que tambi\'en es un anillo:
+    $$\frac{b}{s} \cdot \frac{b'}{s'} = \frac{bb'}{ss'}$$
+    Probar que est\'a bien definido, que no depende del representante. Adem\'as $f_S : A_S\longrightarrow B_S$ es un morfismo de anillo, de forma que $B_S$ es un $A_S$-m\'odulo.
+
+    Por otro lado, como $f$ es morfismo de anillos, $f(S)$ es un sistema multiplicativo en $B$, luego $B_{f(S)}$ es un nuevo anillo con un nuevo morfismo $A_S \longrightarrow B_{f(S)}$. 
+
+    As\'i pues, $B_S$ y $B_{f(S)}$ son isomorfos, haciendo el siguiente diagrama compatible
+    $$\bt &[5mm] B_S \arrow{dd}{\sim} &[-12mm] \frac{b}{s} \arrow[mapsto]{dd} \\ A_S \arrow{ru} \arrow{rd} &[5mm] &[-12mm]  \\ &[5mm] B_{f(S)} &[-12mm] \frac{b}{f(s)} \et$$
+\end{ejer}
+\begin{propis}
+    Sea $A$ un anillo e $I\subseteq A$ un ideal, tenemos el paso al cociente
+    $$\bt A \arrow{r} & \modulo{A}{I} \\[-5mm] a \arrow[mapsto]{r} & \bar a \et$$
+    Si $M$ es un $A$-m\'odulo, podemos hacer
+    $$\bt M \arrow{r} & \modulo{M}{I\cdot M} \\[-5mm] m \arrow[mapsto]{r} & \bar m \et$$
+    y podemos entender $\modulo{M}{I\cdot M}$ como $\modulo{A}{I}$-m\'odulo, de forma que 
+    $$\bar a \cdot \bar m = \overline{a\cdot m}$$
+    Si $f:M \longrightarrow N$ es un morfismo de $A$-m\'odulos, $I\cdot M \subseteq M$ verifica que $f:I\cdot M \longrightarrow I\cdot N$, pues
+    $$f\left(\sum a_i m_i \right) = \sum a_i f(m_i)$$
+    luego induce un morfismo de $\modulo{A}{I}$-m\'odulos $$\bt \modulo{M}{I\cdot M} \arrow{r}{\bar f} & \modulo{N}{I\cdot N} \\[-5mm] \bar m \arrow[mapsto]{r} & \bar f (\bar m) = \overline{f(m)} \et$$
+
+    As\'i pues tenemos un funtor de $A$-m\'odulos a $\modulo{A}{I}$-m\'odulos, verificando que $\overline{g\circ f} = \bar g \circ \bar f$.
+\end{propis}
+\begin{prop}
+    Si $\bt M' \arrow{r}{i} & M \arrow{r}{p} & M'' \arrow{r} & 0  \et$ es una sucesi\'on exacta de $A$-m\'odulos, entonces
+    $$\bt \modulo{M'}{I\cdot M'} \arrow{r}{\bar i} & \modulo{M}{I\cdot M} \arrow{r}{\bar p} & \modulo{M''}{I\cdot M''} \arrow{r} & 0  \et$$ es sucesi\'on exacta de $\modulo{A}{I}$-m\'odulos. \end{prop}
+    \begin{dem}
+        $\bar p$ es epiyectiva es bastante inmediato por el paso al cociente que tambi\'en es epiy.
+
+        $\Im \bar i \subseteq \ker\, \bar p$ es inmediato por $\bar p \circ \bar i = \overline{p \circ i} = \bar 0 = 0$.
+
+        $\Im \bar i \supseteq \ker\, \bar p$. Tenemos $M \overset{p}{\longrightarrow}M'' \longrightarrow 0$ epiyectivo, de forma que $IM \overset{p}{\longrightarrow} IM''$ es tambi\'en epiyectiva (porque sus elementos de la forma $\sum a_i m'_i$ y escogemos antiimagen, etc).  
+        Sea  $$\bar m \in \ker\, \bar p \iff \bar p (\bar m) =0 \iff \overline{p(m)}=0 $$
+        $$\iff p(m)\in IM'' \iff p(m) = p(m_1), \, m_1 \in IM$$ 
+        por ser $p$ epiyectiva en $IM$, por lo que $p(m-m_1) = 0 \Rightarrow m-m_1\in \ker\, p = \Im i$, lo que nos dice que $$m-m_1 = i(m') \Rightarrow \overline{m-m_1} = \overline{i(m')} = \bar i (\bar m')$$ y a su vez, $\overline{m-m_1} = \bar m - \bar m_1 = \bar m-0 \Rightarrow\bar m = \bar i (\bar m')$ y por tanto $\bar m \in \Im \bar i$
+    \end{dem}    
+Si $M$ es un $A$-m\'odulo generado por $m_1, \ldots, m_n$, entonces $\modulo{M}{IM}$ es un $\modulo{A}{I}$-m\'odulo generado por $\bar m_1, \ldots, \bar m_n$. 
+\begin{cor}
+Sean $m_1, \ldots, m_n\in M$, $\langle m_1, \ldots, m_n \rangle \hookrightarrow M$, consideramos $\modulo{M}{\langle m_1, \ldots, m_n \rangle}$ y le hacemos cociente, verfic\'andose la igualdad:
+$$\modulo{\modulo{M}{\langle m_1, \ldots, m_n \rangle}}{I \cdot \modulo{M}{\langle m_1, \ldots, m_n \rangle} } = \modulo{\left(\modulo{M}{IM}\right)}{\langle \bar m_1, \ldots, \bar m_n \rangle}$$
+\end{cor}
+
+\noindent\textbf{\textit{Notaci\'on.}}
+    Denotaremos $\bar M = \modulo{M}{IM}$
+
+\begin{dem} Se tiene la sucesi\'on exacta
+    $$\bt 0 \arrow{r} & \langle m_1, \ldots, m_n \rangle \arrow[hook]{r}{i} & M \arrow{r}{p} & \modulo{M}{\langle m_1, \ldots, m_n \rangle} \arrow{r} & 0 \et$$
+    de forma que la sucesi\'on ``modulada'' (haciendo m\'odulo por $IM$) es exacta:
+    $$\bt \overline{\langle m_1, \ldots, m_n \rangle} \arrow{r}{\bar i} & \overline{\modulo{M}{IM}} \arrow{r}{\bar p} & \overline{\modulo{M}{\langle m_1, \ldots, m_n \rangle}} \arrow{r} & 0 \\[-5mm] \bar m_i \arrow[mapsto]{r} & \bar m_i \et$$
+    siendo 
+    $$\overline{\modulo{M}{\langle m_1, \ldots, m_n \rangle}}  \simeq \coker \bar i = \modulo{\bar M}{\Im \bar i}$$
+    y $\overline{\langle m_1, \ldots, m_n \rangle}$ est\'a generado por $\bar m_1 , \ldots, \bar m_n$ y como $\Im \bar i = \langle \bar m_1 , \ldots, \bar m_n \rangle$, queda demostrado. 
+\end{dem}
+
+Sea $\mc O$ un anillo local y $\m $ su maximal 
+\begin{defi}
+    $\modulo{\mc O}{\m} = k$ es un cuerpo que llamamos cuerpo residual. 
+\end{defi}
+Si ahora tenemos $M$ un $\mc O$-m\'odulo, $\modulo{M}{\m M}$ es un $k$-espacio vectorial. Si $f:M \longrightarrow N$ es un morfismo de $\mc O$-m\'odulos, 
+$$\bt \modulo{M}{\m M} \arrow{r}{\bar f} & \modulo{N}{\m N}  \et \text{ es morfismo de } k\text{-espacios vectoriales. }$$
+\begin{lem}
+    [de Nakayama] Sea $\mc O$ un anillo local, de maximal $\m$. Sea $M$ un $\mc O$-m\'odulo \underline{finito generado}, 
+    $$M=0 \iff \modulo{M}{\m M} = 0$$
+\end{lem}
+\begin{dem}
+    $\Rightarrow)$ Trivial
+
+    $\Leftarrow)$ $\modulo{M}{\m M} =0 \equiv \m M = M$. Sea $m_1, \ldots, m_n$ un sistema de generadores m\'inimo, entonces la igualdad anterior nos dice que todo $m \in M$ se puede expresar como
+    $$m = a_1 m_1 + \cdots a_n m_n \qquad m_i \in \m$$
+    Escogemos $m_1=a_1m_1+\cdots+a_nm_n, \,a_i \in \m$, de forma que
+    $$(1-a_1)m_1=a_2m_2+\cdots+a_nm_n \Rightarrow 1-a_1\nin \m$$
+    Si $(1-a_1)\in \m \Rightarrow 1\in \m$ lo cual no puede pasar. Entonces $(1-a_1)$ tiene invertible por no estar en el maximal y estar en un anillo local, y cumple
+    $$m_1 = (1-a_1)^{-1} a_2m_2 + \cdots + (1-a_1)^{-1} a_nm_n$$
+    de forma que $m_2, \ldots, m_n$ son generadores !!, por lo que el sistema incial no era m\'inimo, hemos llegado a contradicci\'on, demostr\'andose la hip\'otesis contraria, no existen sistemas de generadores luego $M=0$.
+\end{dem}
+\begin{cor}
+    Sea $M$ $\mc O$-m\'odulo finito generado, \vspace{-3mm}
+    \begin{enumerate}[a)]
+        \item  $m_1, \ldots, m_n$ son generadores $\iff$ $\bar m_1, \ldots, \bar m_n $ son generadores del $k=\modulo{\mc O}{\m}$-espacio vectorial $\modulo{M}{\m M}$. 
+
+    \item $m_1, \ldots, m_n$ son un sistema m\'inimo de generadores $\iff$ $\bar m_1, \ldots, \bar m_n $ son base del $k=\modulo{\mc O}{\m}$-espacio vectorial $\modulo{M}{\m M}$. 
+
+    \end{enumerate}
+    Esto nos dice c\'omo encontrar un sistema m\'inimo de generadores de un m\'odulo en un anillo local.
+\end{cor}
+\begin{dem}
+    a) $\Leftarrow)$ Sean $\bar m_1, \ldots, \bar m_n$ generadores, 
+    $$\modulo{\modulo{M}{\m M}}{\langle \bar m_1, \ldots,\bar  m_n \rangle} = 0$$
+    pero $$\modulo{\modulo{M}{\m M}}{\langle \bar m_1, \ldots,\bar  m_n \rangle} = \modulo{\modulo{M}{\langle m_1, \ldots, m_n \rangle}}{\m \cdot \modulo{M}{\langle \bar m_1, \ldots,\bar  m_n \rangle}} =0 $$
+    y usando el Lema de Nakayama, $\modulo{M}{\langle m_1, \ldots, m_n \rangle} = 0$, luego $m_1, \ldots, m_n$ son generadores. 
+
+    b) Es consecuencia de a).
+\end{dem}
+\begin{ejer}
+    Sea $f: M \longrightarrow N$ morfismo de $\mc O$-m\'odulos, $N$ finito generado \\ $\bar f : \modulo{M}{\m M} \longrightarrow \modulo{N}{\m N} $ 
+    $$f \text{ es epiyectivo } \iff \bar f \text{ es epiyectivo }$$
+    es decir, estudiar la epiyectividad de un morfismo de $\mc O$-m\'odulos se reduce a estudiar la epiyectividad de una aplicaci\'on entre espacios vectoriales. 
+\end{ejer}
